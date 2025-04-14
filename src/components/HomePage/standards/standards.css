@@ -1,0 +1,68 @@
+._fm-standards-container {
+    padding: 130px 0;
+    z-index: 1;
+    position: relative;
+}
+
+.standard-card {
+    border-radius: 24px;
+    color: #FFF;
+    position: relative;
+    height: 460px;
+}
+
+.standard-card-content {
+    padding: 24px 24px 32px;
+}
+
+.standard-card-title {
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 16px;
+}
+
+.standard-card-text {
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.standard-card-icon-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 247, 219, 1);
+}
+
+.standard-card-icon {
+    transform: translate(39px, 28px);
+}
+
+.card-top-right-curve {
+    position: absolute;
+    top: -10px;
+    right: -30px;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+    border-radius: 28px 0 0 0;
+    border: 10px solid transparent;
+    border: 10px solid rgba(255, 247, 219, 1);
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.card-bottom-left-curve {
+    position: absolute;
+    bottom: -30px;
+    left: -10px;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+    border-radius: 28px 0 0 0;
+    border: 10px solid transparent;
+    border: 10px solid rgba(255, 247, 219, 1);
+    border-right: 0;
+    border-bottom: 0;
+}

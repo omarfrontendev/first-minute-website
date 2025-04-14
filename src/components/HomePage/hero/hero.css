@@ -1,0 +1,26 @@
+._fm-hero-section {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+h1._fm-main-title {
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 88px;
+    letter-spacing: 0%;
+    text-align: center;
+    max-width: 847px;
+}
+.overlay,
+.rectangular {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    /* background-color: #4a4265; */
+    width: 258px;
+    height: 70%;
+    z-index: -1;
+    background: linear-gradient(to bottom, rgba(54, 46, 87, 1) -120px, rgba(255, 247, 219, 0) 120%);
+}

@@ -1,0 +1,16 @@
+._fm-section-title {
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 88px;
+}
+
+.main_bg_color {
+    background-color: #FFF7DB;
+}
+
+.services-bg-image{
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 32%;
+}
