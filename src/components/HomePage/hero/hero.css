@@ -23,7 +23,7 @@ h1._fm-main-title {
     width: 258px;
     height: 70%;
     z-index: -1;
-    background: linear-gradient(to bottom, #362E57 -40%, #fff7db00 200%);
+    background: linear-gradient(to bottom, #362e57e4 -10%, #fff7db00);
     /* background: linear-gradient(to bottom, #362E57 -35%, #362E57 -35%, #fff7db00 98%); */
 }
 
