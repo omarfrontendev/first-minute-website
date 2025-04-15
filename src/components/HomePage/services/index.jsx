@@ -4,7 +4,7 @@ import Subtract from './Subtract.png';
 import './services.css';
 
 const ServicesSection = () => (
-    <section className='_fm-services-container d-flex align-items-center'>
+    <section className='_fm-services-container d-flex align-items-center' id='services'>
         <div className='d-flex gap-5'>
             <h2 className='_fm-section-title'>خدماتنا</h2>
             <div className='d-flex gap-4'>

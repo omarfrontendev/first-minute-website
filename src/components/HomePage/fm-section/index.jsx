@@ -2,7 +2,9 @@ import FMTitle from "./fm-title";
 import './fm.css';
 
 const FMSection = () => (
-    <FMTitle />
+    <section id="fm-section">
+        <FMTitle />
+    </section>
 );
 
 export default FMSection;
