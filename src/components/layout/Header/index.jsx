@@ -4,7 +4,7 @@ import LOGO from './logo.png';
 
 const Header = () => {
     return (
-        <nav className="_fm-nav _fm-container d-flex align-items-center justify-content-between">
+        <nav className="_fm-nav d-flex align-items-center justify-content-between">
             <a className="d-flex aling-items-center justify-content-center" href="#">
                 <img src={LOGO} className='_fm-logo' alt="" />
             </a>

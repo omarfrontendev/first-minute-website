@@ -4,17 +4,16 @@
     left: 0;
     width: 100%;
     z-index: 100000;
+    padding: 32px;
 }
+
 ._fm-link-main,
 ._fm-link {
     font-weight: 400;
     font-size: 16px;
     line-height: 28px;
     letter-spacing: 0%;
-    text-align: right;
     text-decoration: none;
-    font-size: 16px;
-    line-height: 28px;
     opacity: .7;
 }
 
@@ -22,9 +21,6 @@
     color: #FAE87D !important;
     background-color: #D16166;
     opacity: 1;
-    /*  ========================  */
-    /*  ========================  */
-    /*  ========================  */
     border-radius: 30px;
     padding: 8px 24px;
 
@@ -34,4 +30,27 @@
     width: 200px;
     height: 80px;
     object-fit: contain;
+}
+
+@media(max-width: 1550px) {
+    ._fm-nav {
+        padding: 18px;
+    }
+
+    ._fm-link-main,
+    ._fm-link {
+        font-size: 14px;
+        line-height: 28px;
+    }
+
+    ._fm-link-main {
+        border-radius: 30px;
+        padding: 6px 18px;
+
+    }
+
+    ._fm-logo {
+        width: 120px;
+        height: auto;
+    }
 }

@@ -66,3 +66,24 @@
     border-right: 0;
     border-bottom: 0;
 }
+
+@media(max-width: 1550px) {
+    .standard-card {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .standard-card-title {
+        font-weight: 800;
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
+
+    .standard-card-content {
+        padding: 20px 20px 26px;
+    }
+
+    .standard-card-text {
+        max-width: 350px;
+    }
+}

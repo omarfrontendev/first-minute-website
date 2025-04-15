@@ -8,9 +8,22 @@
     background-color: #FFF7DB;
 }
 
-.services-bg-image{
+.services-bg-image {
     position: absolute;
     top: 0;
     right: 0;
     opacity: 32%;
+}
+
+@media(max-width: 1550px) {
+    ._fm-section-title {
+        font-size: 52px;
+    }
+
+    .services-bg-image {
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: 32%;
+    }
 }

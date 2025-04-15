@@ -12,6 +12,7 @@ h1._fm-main-title {
     text-align: center;
     max-width: 847px;
 }
+
 .overlay,
 .rectangular {
     position: absolute;
@@ -22,5 +23,22 @@ h1._fm-main-title {
     width: 258px;
     height: 70%;
     z-index: -1;
-    background: linear-gradient(to bottom, rgba(54, 46, 87, 1) -120px, rgba(255, 247, 219, 0) 120%);
+    background: linear-gradient(to bottom, #362E57 -40%, #fff7db00 200%);
+    /* background: linear-gradient(to bottom, #362E57 -35%, #362E57 -35%, #fff7db00 98%); */
+}
+
+@media(max-width: 1550px) {
+
+    h1._fm-main-title {
+        font-size: 52px;
+        line-height: 76px;
+        max-width: 700px;
+    }
+
+    .overlay,
+    .rectangular {
+        width: 210px;
+        height: 70%;
+    }
+
 }

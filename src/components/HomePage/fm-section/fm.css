@@ -27,3 +27,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+@media(max-width: 1550px) {
+    ._fm-title {
+        font-size: 52px;
+    }
+    ._fm-text {
+        font-size: 38px;
+        line-height: 60px;
+        max-width: 900px;
+    }
+}
