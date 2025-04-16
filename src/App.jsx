@@ -9,6 +9,7 @@ import MainBgSectionImg from './components/layout/main-bg-section'
 import Vector1 from './assets/Vector-1.png';
 import Vector2 from './assets/Vector.png';
 import './styles/global.css'
+import Footer from './components/layout/Footer'
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
       <MainBgSectionImg> */}
       </MainBgSectionImg>
       <ContactUs />
+      <Footer />
     </>
   )
 }

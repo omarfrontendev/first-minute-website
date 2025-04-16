@@ -24,13 +24,28 @@
     opacity: 1;
     border-radius: 30px;
     padding: 8px 24px;
+    transition: .3s ease-in-out;
+}
 
+._fm-link-main:hover {
+    background-color: #B8555A;
 }
 
 ._fm-logo {
     width: 200px;
     height: 80px;
     object-fit: contain;
+}
+
+._fm-footer {
+    padding: 32px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+    text-align: center;
+    color: #1E1E1E;
+    border-top: 1px solid #1E1E1E1A;
+    opacity: .7;
 }
 
 @media(max-width: 1550px) {
@@ -46,12 +61,19 @@
 
     ._fm-link-main {
         border-radius: 30px;
-        padding: 6px 18px;
+        /* padding: 6px 18px; */
 
     }
 
     ._fm-logo {
-        width: 120px;
+        width: 140px;
         height: auto;
     }
+
+    
+._fm-footer {
+    padding: 28px;
+    font-size: 14px;
+    line-height: 28px;
+}
 }

@@ -50,7 +50,7 @@
     background-color: #FFF;
     box-sizing: border-box;
     color: #1E1E1EBF;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     font-size: 14px;
     line-height: 20px;
     color: #1E1E1EBF;
@@ -96,7 +96,13 @@ input[type="number"] {
     box-sizing: border-box;
     text-align: center;
     margin-top: 26px;
+    transition: .3s ease-in-out;
 }
+
+.contact-us-submit-btn:hover {
+    background-color: #B8555A;
+}
+
 
 .contact-us-left-boxes {
     transform: translateX(100px);
