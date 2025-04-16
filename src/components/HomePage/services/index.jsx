@@ -12,7 +12,7 @@ import { Navigation } from 'swiper/modules';
 const ServicesSection = () => {
 
     return (
-        <section className='_fm-services-container container' id='services'>
+        <section className='_fm-services-container' id='services'>
             <div className='d-flex gap-5'>
                 <div>
                     <h2 className="_fm-section-title">خدماتنا</h2>

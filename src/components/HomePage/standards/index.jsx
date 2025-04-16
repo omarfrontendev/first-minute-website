@@ -2,7 +2,7 @@ import StandardCard from "./standard-card";
 import TimeIcon from './01.svg';
 
 const Standards = () => (
-    <section className='_fm-standards-container d-flex flex-column align-items-center justify-content-center container' id='standards'>
+    <section className='_fm-standards-container d-flex flex-column align-items-center justify-content-center' id='standards'>
         <h2 className='_fm-section-title mb-4'>معــــــــاييـــرنــــــــــــــــــــــــــــــــــــــــــا</h2>
         <div className='d-flex gap-4'>
             <StandardCard
