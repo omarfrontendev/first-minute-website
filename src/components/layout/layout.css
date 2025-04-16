@@ -1,6 +1,7 @@
 ._fm-container {
     position: relative;
     padding: 0 20px;
+    /* max-width: 1200px; */
 }
 
 ._fm-overlay,
@@ -20,4 +21,7 @@
 ._fm-overlay {
     background-image: url('/src/components/layout/Header/test.png');
     opacity: 1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }

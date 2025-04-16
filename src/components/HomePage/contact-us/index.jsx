@@ -3,7 +3,7 @@ import AboutUsImage from './about-us.png';
 import './contact-us.css';
 
 const ContactUs = () => (
-    <section className='_fm-contact-us main_bg_color' id="contact-us">
+    <section className='_fm-contact-us main_bg_color container' id="contact-us">
         <div className='contact-us-form-box d-flex flex-column'>
             <h3 className='contact-us-title'>نحن دائمًا هنا لدعمك، يسعدنا تواصلك معنا.</h3>
             <form className='contact-us-form'>

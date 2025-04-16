@@ -28,9 +28,9 @@ function App() {
       </div>
       <MainBgSectionImg>
         <FMSection />
-      </MainBgSectionImg>
-      <MainBgSectionImg>
         <FMContent />
+      {/* </MainBgSectionImg>
+      <MainBgSectionImg> */}
       </MainBgSectionImg>
       <ContactUs />
     </>

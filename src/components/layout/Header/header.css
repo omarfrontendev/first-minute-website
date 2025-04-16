@@ -1,7 +1,8 @@
 ._fm-nav {
     position: absolute !important;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%);
     width: 100%;
     z-index: 100000;
     padding: 32px;

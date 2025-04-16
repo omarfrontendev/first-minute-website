@@ -5,7 +5,7 @@
 }
 
 ._fm-service-card {
-    width: 332px;
+    /* width: 332px; */
     height: 463px;
     border-radius: 24px;
     padding: 32px;
@@ -103,6 +103,25 @@
     border-top: 0;
     border-radius: 0 0 32px 0;
     transform: translateY(-100%);
+}
+
+._fm-services-container .swiper_button_prev,
+._fm-services-container .swiper_button_next {
+    all: unset;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #D161661F;
+    color: #D16166;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+._fm-services-container .swiper_button_next:disabled,
+._fm-services-container .swiper_button_prev:disabled {
+    opacity: .4;
 }
 
 @media(max-width: 1550px) {

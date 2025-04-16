@@ -68,9 +68,26 @@ body {
     font-family: 'Lama Sans', sans-serif !important;
     /* font-family: 'Cairo', sans-serif !important; */
     margin: 0;
+    /* background-color: #FFF7DB; */
+    background-color: #FFF7DB !important;
 }
 
 a {
     text-decoration: none;
     color: black !important;
 }
+
+.container {
+    max-width: 100% !important;
+}
+
+.mySwiper {
+    width: 100%;
+    padding: 20px 0;
+  }
+  
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+  }
+  

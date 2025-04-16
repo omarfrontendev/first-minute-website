@@ -50,6 +50,28 @@
     background-color: #FFF;
     box-sizing: border-box;
     color: #1E1E1EBF;
+    border: 2px solid transparent;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1E1E1EBF;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+
+.contact-us-form .input-box textarea:focus,
+.contact-us-form .input-box input:focus {
+    border-color: #D16166;
 }
 
 .contact-us-form .input-box textarea::placeholder,
@@ -133,11 +155,11 @@
 
     .contact-us-form .input-box textarea,
     .contact-us-form .input-box input {
-        height: 36px;
+        /* height: 36px; */
     }
 
     .contact-us-form .input-box textarea {
-        height: 120px;
+        height: 150px;
     }
 
     .contact-us-form {
