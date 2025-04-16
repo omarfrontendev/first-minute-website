@@ -19,7 +19,7 @@
 }
 
 ._fm-overlay {
-    background-image: url('/src/components/layout/Header/test.png');
+    background-image: url('/src/assets/test.png');
     opacity: 1;
     background-repeat: no-repeat;
     background-position: center;

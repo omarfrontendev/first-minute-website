@@ -1,4 +1,4 @@
-import Card from './Rectangle.png';
+import Card from '../../../assets/Rectangle.png';
 const FMContent = () => (
     <div className="_fm-title-screen d-flex align-items-center justify-content-center">
         <p className="_fm-text">

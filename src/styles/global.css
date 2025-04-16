@@ -1,3 +1,79 @@
+@font-face {
+    font-family: 'Lama Sans';
+    src: url('/fonts/Web/Standard/LamaSans-Regular.woff2') format('woff2'),
+        url('/fonts/Web/Standard/LamaSans-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lama Sans';
+    src: url('/fonts/Web/Standard/LamaSans-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lama Sans';
+    src: url('/fonts/Web/Standard/LamaSans-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lama Sans';
+    src: url('/fonts/Web/Standard/LamaSans-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    /* color: rgba(255, 255, 255, 0.87); */
+    /* background-color: #242424; */
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lama Sans', sans-serif !important;
+    margin: 0;
+    background-color: #FFF7DB !important;
+}
+
+a {
+    text-decoration: none;
+    color: black !important;
+}
+
+.mySwiper {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+}
+
+
 ._fm-section-title {
     font-weight: 800;
     font-size: 64px;
@@ -15,6 +91,33 @@
     opacity: 32%;
 }
 
+._fm-hero-section {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+._fm-main-subtitle {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+    color: #D16166;
+}
+
+._fm-main-desc {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.BG-temp {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
 @media(max-width: 1550px) {
     ._fm-section-title {
         font-size: 52px;
@@ -25,5 +128,11 @@
         top: 0;
         right: 0;
         opacity: 32%;
+    }
+
+    h1._fm-main-title {
+        font-size: 52px;
+        line-height: 76px;
+        max-width: 700px;
     }
 }

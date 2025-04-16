@@ -1,0 +1,30 @@
+._fm-component-box:nth-child(odd) {
+    flex-direction: row;
+}
+
+._fm-component-box:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+._fm-component-subtitle {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+    color: #D16166;
+}
+
+._fm-component-title {
+    margin: 24px 0 16px;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 60px;
+    color: #1E1E1E;
+}
+
+._fm-component-text {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 32px;
+    color: #1E1E1E;
+    max-width: 500px;
+}

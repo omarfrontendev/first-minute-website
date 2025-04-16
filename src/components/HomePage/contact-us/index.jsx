@@ -1,10 +1,10 @@
-import AboutUsImage from './about-us.png';
+import AboutUsImage from '../../../assets/about-us.png';
 
 import './contact-us.css';
 
 const ContactUs = () => (
-    <section className='_fm-contact-us main_bg_color' id="contact-us">
-        <div className='contact-us-form-box d-flex flex-column'>
+    <section className='_fm-contact-us main_bg_color'>
+        <div className='contact-us-form-box d-flex flex-column' id="contact-us">
             <h3 className='contact-us-title'>نحن دائمًا هنا لدعمك، يسعدنا تواصلك معنا.</h3>
             <form className='contact-us-form'>
                 <div className='input-box'>

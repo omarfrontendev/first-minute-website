@@ -1,15 +1,20 @@
 import ServiceCard from './service-card';
-import { Swiper, SwiperSlide } from "swiper/react";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from 'swiper/modules';
 
 import 'swiper/css/bundle';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
 import './services.css';
-import { Navigation } from 'swiper/modules';
 
 const ServicesSection = () => {
+
+    const service = {
+        title: "كتابة المحتوى الإبداعي",
+        text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+    }
 
     return (
         <section className='_fm-services-container' id='services'>
@@ -22,7 +27,6 @@ const ServicesSection = () => {
                     </div>
                 </div>
                 <Swiper
-                    effect="fade"
                     className="mySwiper services-slider"
                     navigation={{
                         nextEl: ".swiper_button_next",
@@ -30,35 +34,18 @@ const ServicesSection = () => {
                     }}
                     spaceBetween={16}
                     slidesPerView={3.35}
-                    // breakpoints={{
-                    //     768: {
-                    //         slidesPerView: 2,
-                    //     },
-                    //     992: {
-                    //         slidesPerView: 3,
-                    //     },
-                    // }}
                     modules={[Navigation]}
                 >
                     {/* <SliderNavigation /> */}
-                    <SwiperSlide>
-                        <ServiceCard title="كتابة المحتوى الإبداعي" text="إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام." image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <ServiceCard title="كتابة المحتوى الإبداعي" text="إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام." image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <ServiceCard title="كتابة المحتوى الإبداعي" text="إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام." image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <ServiceCard title="كتابة المحتوى الإبداعي" text="إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام." image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <ServiceCard title="كتابة المحتوى الإبداعي" text="إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام." image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <ServiceCard title="كتابة المحتوى الإبداعي" text="إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام." image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s" />
-                    </SwiperSlide>
+                    {Array(10).fill(service).map((service, i) => (
+                        <SwiperSlide key={i}>
+                            <ServiceCard
+                                title={service?.title}
+                                text={service?.text}
+                                image={service?.image}
+                            />
+                        </SwiperSlide>
+                    ))}
                 </Swiper>
             </div>
         </section>

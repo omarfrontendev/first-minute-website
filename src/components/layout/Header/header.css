@@ -1,11 +1,22 @@
 ._fm-nav {
-    position: absolute !important;
+    position: fixed !important;
     top: 0;
     left: 50%;
     transform: translate(-50%);
     width: 100%;
     z-index: 100000;
     padding: 32px;
+    transition: .3s ease-in-out;
+}
+
+._fm-nav.show {
+    transform: translate(-50%, 0%);
+    background-color: #fff7db56;
+    backdrop-filter: blur(4px);
+}
+
+._fm-nav.hide {
+    transform: translate(-50%, -100%);
 }
 
 ._fm-link-main,
@@ -70,10 +81,10 @@
         height: auto;
     }
 
-    
-._fm-footer {
-    padding: 28px;
-    font-size: 14px;
-    line-height: 28px;
-}
+
+    ._fm-footer {
+        padding: 28px;
+        font-size: 14px;
+        line-height: 28px;
+    }
 }

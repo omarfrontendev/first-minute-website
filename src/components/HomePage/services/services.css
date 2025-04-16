@@ -151,6 +151,10 @@
         height: 60px;
     }
 
+    .service-arrow-icon > svg {
+        width: 32px;
+    }
+
     .card-bottom-curve {
         bottom: -10px;
         left: -30px;
@@ -177,5 +181,12 @@
         border-top: 0;
         border-radius: 0 0 32px 0;
         transform: translateY(-100%);
+    }
+
+    ._fm-services-container .swiper_button_prev,
+    ._fm-services-container .swiper_button_next {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
     }
 }
