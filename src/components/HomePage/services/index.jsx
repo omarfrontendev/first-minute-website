@@ -8,61 +8,64 @@ import 'swiper/css/bundle';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './services.css';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+const services = [
+    {
+        title: "كتابة المحتوى الإبداعي",
+        text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+    },
+    {
+        title: "كتابة المحتوى الإبداعي",
+        text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+    },
+    {
+        title: "كتابة المحتوى الإبداعي",
+        text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+    },
+    {
+        title: "كتابة المحتوى الإبداعي",
+        text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+    },
+    {
+        title: "كتابة المحتوى الإبداعي",
+        text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+    },
+    {
+        title: "كتابة المحتوى الإبداعي",
+        text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+    },
+    {
+        title: "كتابة المحتوى الإبداعي",
+        text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+    },
+    {
+        title: "كتابة المحتوى الإبداعي",
+        text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+    },
+];
 
 const ServicesSection = () => {
 
     const firstSlideRef = useRef(null);
     const [slidesPerView, setSlidesPerView] = useState(1);
-
-    const services = [
-        {
-            title: "كتابة المحتوى الإبداعي",
-            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-        },
-        {
-            title: "كتابة المحتوى الإبداعي",
-            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-        },
-        {
-            title: "كتابة المحتوى الإبداعي",
-            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-        },
-        {
-            title: "كتابة المحتوى الإبداعي",
-            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-        },
-        {
-            title: "كتابة المحتوى الإبداعي",
-            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-        },
-        {
-            title: "كتابة المحتوى الإبداعي",
-            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-        },
-        {
-            title: "كتابة المحتوى الإبداعي",
-            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-        },
-        {
-            title: "كتابة المحتوى الإبداعي",
-            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-        },
-    ]
+    const [btnClicked, setBtnClicked] = useState(false);
 
     const colors = [
         "#000000",
@@ -100,6 +103,16 @@ const ServicesSection = () => {
         }
     };
 
+    const handleSlideBtn = (btn) => {
+
+        gsap.fromTo([`.${btn}`], {
+            scale: .7
+        }, {
+            scale: 1
+        })
+    };
+
+
     useEffect(() => {
         calculateSlidesPerView();
         window.addEventListener("resize", calculateSlidesPerView);
@@ -112,8 +125,8 @@ const ServicesSection = () => {
                 <div>
                     <h2 className="_fm-section-title">خدماتنا</h2>
                     <div className='d-flex justify-content-end gap-3 px-3 px-sm-0'>
-                        <button className='swiper_button_prev'><FaArrowRightLong /></button>
-                        <button className='swiper_button_next'><FaArrowLeftLong /></button>
+                        <button className='swiper_button_prev' onClick={() => handleSlideBtn("swiper_button_prev")}><FaArrowRightLong /></button>
+                        <button className='swiper_button_next' onClick={() => handleSlideBtn("swiper_button_next")}><FaArrowLeftLong /></button>
                     </div>
                 </div>
                 <Swiper
@@ -124,7 +137,6 @@ const ServicesSection = () => {
                     }}
                     spaceBetween={16}
                     slidesPerView={slidesPerView}
-                    // slidesPerView={Math.floor(slidesPerView)}
                     modules={[Navigation]}
                 >
                     {servicesColored.map((service, i) => (
