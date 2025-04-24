@@ -1,5 +1,5 @@
 import '../Header/header.css';
-import LOGO from './logo.png';
+import LOGO from '../../../assets/logo.svg';
 
 const Footer = () => (
     <>

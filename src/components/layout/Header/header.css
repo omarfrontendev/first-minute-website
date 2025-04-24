@@ -5,7 +5,6 @@
     transform: translate(-50%);
     width: 100%;
     z-index: 100000;
-    padding: 32px;
     transition: .3s ease-in-out;
 }
 
@@ -21,12 +20,13 @@
 
 ._fm-link-main,
 ._fm-link {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 16px;
     line-height: 28px;
     letter-spacing: 0%;
     text-decoration: none;
     opacity: .7;
+    color: #1E1E1E !important;
 }
 
 ._fm-link-main {
@@ -35,7 +35,6 @@
     opacity: 1;
     border-radius: 30px;
     padding: 8px 24px;
-    transition: .3s ease-in-out;
 }
 
 ._fm-link-main:hover {
@@ -59,7 +58,11 @@
     opacity: .7;
 }
 
-@media(max-width: 1550px) {
+._fm-open-menu-btn {
+    display: none;
+}
+
+/* @media(max-width: 1550px) {
     ._fm-nav {
         padding: 18px;
     }
@@ -72,8 +75,6 @@
 
     ._fm-link-main {
         border-radius: 30px;
-        /* padding: 6px 18px; */
-
     }
 
     ._fm-logo {
@@ -87,4 +88,111 @@
         font-size: 14px;
         line-height: 28px;
     }
+} */
+
+@media(max-width: 1199px) {
+    ._fm-nav {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    ._fm-link-main,
+    ._fm-link {
+        font-size: 14px;
+        line-height: 28px;
+    }
+
+    ._fm-link-main {
+        border-radius: 30px;
+    }
+
+    ._fm-logo {
+        width: 110px;
+        height: auto;
+    }
+
+
+    ._fm-footer {
+        padding: 28px;
+        font-size: 14px;
+        line-height: 28px;
+    }
+}
+
+@media(max-width: 991px) {
+
+    ._fm-link-main,
+    ._fm-link {
+        font-size: 12px;
+        line-height: normal;
+    }
+
+    ._fm-link-main {
+        padding: 12px 24px;
+    }
+
+    ._fm-footer {
+        padding: 18px;
+        font-size: 12px;
+        line-height: normal;
+    }
+
+}
+
+@media(max-width: 768px) {
+    ._fm-nav {
+        flex-direction: row-reverse;
+        padding: 8px 18px;
+    }
+
+    ._fm-nav._fm-nav.show {
+        background-color: #fff7dbcf;
+    }
+
+    .nav-links {
+        display: none !important;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 230px;
+        flex-direction: column;
+        background: #FFF;
+        height: 100vh;
+        padding-right: 28px;
+        justify-content: center;
+        align-items: flex-start !important;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: .3s ease-in-out;
+    }
+
+    ._fm-nav.menu-opened .nav-links {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    ._fm-nav.hide.menu-opened {
+        top: 86.53px;
+        transition: none;
+    }
+
+    ._fm-nav.show.menu-opened {
+        /* top: 0; */
+        transition: none;
+    }
+
+    ._fm-open-menu-btn {
+        display: flex;
+        margin-left: 3px;
+        z-index: 1;
+    }
+
+    ._fm-nav.menu-opened ._fm-open-menu-btn {
+        opacity: 1;
+    }
+
+    ._fm-logo {
+        z-index: 1;
+    }
+
 }

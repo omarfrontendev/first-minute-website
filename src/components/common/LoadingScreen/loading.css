@@ -1,0 +1,59 @@
+.bg_box {
+    position: relative;
+    z-index: 10;
+    height: 50vh;
+    background-color: #D16166;
+}
+
+.loading-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+}
+
+.progress-num {
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 48px;
+    color: #EBEBEB;
+    position: absolute;
+    bottom: 8%;
+    z-index: 10000000000000000000;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: .3;
+}
+
+#logo-svg {
+    stroke: #FAE87D;
+    fill: #FAE87D;
+    stroke-dasharray: 4500;
+    stroke-dashoffset: 4500;
+    fill-opacity: 0;
+    /* stroke-width: 3px; */
+
+    animation:
+      drawStroke 8s ease forwards,
+      showFill 0.3s ease forwards .6s;
+}
+
+@keyframes drawStroke {
+    from {
+        stroke-dashoffset: 4500;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes showFill {
+    from {
+        fill-opacity: 0;
+    }
+    to {
+        stroke-width: 0px;
+        fill-opacity: 1;
+    }
+}

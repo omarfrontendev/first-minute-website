@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import ServiceCard from './service-card';
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,18 +11,107 @@ import './services.css';
 
 const ServicesSection = () => {
 
-    const service = {
-        title: "كتابة المحتوى الإبداعي",
-        text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-    }
+    const firstSlideRef = useRef(null);
+    const [slidesPerView, setSlidesPerView] = useState(1);
+
+    const services = [
+        {
+            title: "كتابة المحتوى الإبداعي",
+            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+        },
+        {
+            title: "كتابة المحتوى الإبداعي",
+            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+        },
+        {
+            title: "كتابة المحتوى الإبداعي",
+            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+        },
+        {
+            title: "كتابة المحتوى الإبداعي",
+            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+        },
+        {
+            title: "كتابة المحتوى الإبداعي",
+            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+        },
+        {
+            title: "كتابة المحتوى الإبداعي",
+            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+        },
+        {
+            title: "كتابة المحتوى الإبداعي",
+            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+        },
+        {
+            title: "كتابة المحتوى الإبداعي",
+            text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
+
+        },
+    ]
+
+    const colors = [
+        "#000000",
+        "#D16166",
+        "#94BABF",
+        "#362E57",
+        "#FAE87D",
+    ];
+
+    const servicesColored = services.map((service, index) => {
+        const color = colors[index % colors.length];
+        return { ...service, color };
+    })
+
+    const calculateSlidesPerView = () => {
+        const rect = firstSlideRef.current?.getBoundingClientRect();
+
+        if (!rect) return;
+
+
+        const slideWidth = 348;
+        const spaceBetween = 0;
+        const sidebarWidth = window.innerWidth - rect.right;
+
+        const availableWidth = window.innerWidth - sidebarWidth - 32;
+        const totalSlideWidth = slideWidth + spaceBetween;
+
+        const count = availableWidth / totalSlideWidth;
+
+
+        if (window.innerWidth >= 460) {
+            setSlidesPerView(count > 0 ? count : 1);
+        } else {
+            setSlidesPerView(1);
+        }
+    };
+
+    useEffect(() => {
+        calculateSlidesPerView();
+        window.addEventListener("resize", calculateSlidesPerView);
+        return () => window.removeEventListener("resize", calculateSlidesPerView);
+    }, []);
 
     return (
         <section className='_fm-services-container' id='services'>
-            <div className='d-flex gap-5'>
+            <div className='d-flex _fm-services-content'>
                 <div>
                     <h2 className="_fm-section-title">خدماتنا</h2>
-                    <div className='d-flex justify-content-end gap-3'>
+                    <div className='d-flex justify-content-end gap-3 px-3 px-sm-0'>
                         <button className='swiper_button_prev'><FaArrowRightLong /></button>
                         <button className='swiper_button_next'><FaArrowLeftLong /></button>
                     </div>
@@ -33,16 +123,17 @@ const ServicesSection = () => {
                         prevEl: ".swiper_button_prev"
                     }}
                     spaceBetween={16}
-                    slidesPerView={3.35}
+                    slidesPerView={slidesPerView}
+                    // slidesPerView={Math.floor(slidesPerView)}
                     modules={[Navigation]}
                 >
-                    {/* <SliderNavigation /> */}
-                    {Array(10).fill(service).map((service, i) => (
-                        <SwiperSlide key={i}>
+                    {servicesColored.map((service, i) => (
+                        <SwiperSlide key={i} ref={i === 0 ? firstSlideRef : null}>
                             <ServiceCard
                                 title={service?.title}
                                 text={service?.text}
                                 image={service?.image}
+                                color={service?.color}
                             />
                         </SwiperSlide>
                     ))}

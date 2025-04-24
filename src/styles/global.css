@@ -1,5 +1,13 @@
 @font-face {
     font-family: 'Lama Sans';
+    src: url('/fonts/Web/Standard/LamaSans-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lama Sans';
     src: url('/fonts/Web/Standard/LamaSans-Regular.woff2') format('woff2'),
         url('/fonts/Web/Standard/LamaSans-Regular.woff') format('woff');
     font-weight: 400;
@@ -25,11 +33,20 @@
 
 @font-face {
     font-family: 'Lama Sans';
+    src: url('/fonts/Web/Standard/LamaSans-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lama Sans';
     src: url('/fonts/Web/Standard/LamaSans-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
+
 
 :root {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -56,6 +73,7 @@ body {
     font-family: 'Lama Sans', sans-serif !important;
     margin: 0;
     background-color: #FFF7DB !important;
+    overflow: hidden;
 }
 
 a {
@@ -65,30 +83,56 @@ a {
 
 .mySwiper {
     width: 100%;
-    padding: 20px 0;
+    display: flex;
+    padding: 80px 16px;
 }
 
 .swiper-slide {
     display: flex;
+    align-items: center;
     justify-content: center;
+    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
+/* .swiper-slide:hover>div, */
+.swiper-slide:hover {
+    width: calc(332px * 1.199) !important;
+}
 
 ._fm-section-title {
     font-weight: 800;
     font-size: 64px;
     line-height: 88px;
+    overflow: hidden;
 }
 
 .main_bg_color {
     background-color: #FFF7DB;
 }
 
-.services-bg-image {
+.services-bg-image-2,
+.services-bg-image-1 {
     position: absolute;
     top: 0;
     right: 0;
     opacity: 32%;
+    width: 799px;
+    height: 1527.2899169921875px;
+    left: 799px;
+}
+
+.services-bg-image-1 {
+    z-index: 0;
+}
+
+.services-bg-image-2 {
+    top: 204px;
+    right: 4px;
+}
+
+.services-bg-image-2>img,
+.services-bg-image-1>img {
+    position: absolute;
 }
 
 ._fm-hero-section {
@@ -98,16 +142,19 @@ a {
 }
 
 ._fm-main-subtitle {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 16px;
     line-height: 28px;
     color: #D16166;
 }
 
 ._fm-main-desc {
-    font-weight: 700;
     font-size: 18px;
     line-height: 32px;
+}
+
+._fm-main-desc ._special_bold {
+    font-weight: 700;
 }
 
 .BG-temp {
@@ -116,11 +163,48 @@ a {
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
+.overlay {
+    background-color: #000;
+    opacity: .6;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate(0);
+    border-radius: 24px;
+    z-index: 0;
+    position: absolute;
+}
+
+._fm-nav {
+    padding: 32px;
+}
+
+._fm-nav,
+._fm-container {
+    position: relative;
+    padding-left: 32px;
+    padding-right: 32px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+/* 
 @media(max-width: 1550px) {
     ._fm-section-title {
         font-size: 52px;
+    }
+
+    ._fm-nav {
+        padding: 20px;
+    }
+
+    ._fm-container {
+        padding: 0 20px;
     }
 
     .services-bg-image {
@@ -134,5 +218,57 @@ a {
         font-size: 52px;
         line-height: 76px;
         max-width: 700px;
+    }
+} */
+
+@media(max-width: 1199px) {
+
+    ._fm-nav {
+        padding: 18px;
+    }
+
+    ._fm-container {
+        padding: 0 18px;
+    }
+
+    /* TODO: fix section title responsive */
+    ._fm-section-title,
+    h1._fm-main-title {
+        font-size: 48px;
+        line-height: 68px;
+    }
+}
+
+@media(max-width: 991px) {
+
+    ._fm-nav {
+        padding: 18px;
+        /* max-width: 768px; */
+    }
+
+    ._fm-container {
+        padding: 0 18px;
+        /* max-width: 768px; */
+    }
+
+    ._fm-section-title,
+    h1._fm-main-title {
+        font-size: 32px;
+        line-height: 52px;
+    }
+}
+
+@media(max-width: 574px) {
+
+    ._fm-section-title,
+    h1._fm-main-title {
+        font-size: 26px;
+        line-height: 42px;
+    }
+
+    .mySwiper {
+        padding-left: 0;
+        padding-top: 0;
+        padding-bottom: 0;
     }
 }

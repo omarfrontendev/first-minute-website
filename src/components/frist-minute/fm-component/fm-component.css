@@ -1,9 +1,9 @@
 ._fm-component-box:nth-child(odd) {
-    flex-direction: row;
+    flex-direction: row-reverse;
 }
 
 ._fm-component-box:nth-child(even) {
-    flex-direction: row-reverse;
+    flex-direction: row;
 }
 
 ._fm-component-subtitle {
@@ -19,6 +19,7 @@
     font-size: 48px;
     line-height: 60px;
     color: #1E1E1E;
+    max-width: 700px;
 }
 
 ._fm-component-text {
@@ -27,4 +28,10 @@
     line-height: 32px;
     color: #1E1E1E;
     max-width: 500px;
+}
+
+@media(max-width: 768px) {}
+
+.-fm_component-image {
+    max-width: 100%;
 }

@@ -11,19 +11,27 @@ import Vector2 from '../assets/Vector.png'
 const Home = () => (
     <>
         <MainBgSectionImg>
-            <HeroSection />
+            <div className="_fm-container">
+                <HeroSection />
+            </div>
         </MainBgSectionImg>
-        <div className='_fm-container main_bg_color'>
-            <div className='services-bg-image'>
-                <img src={Vector2} alt="" />
+        <div className="position-relative overflow-hidden">
+            <ServicesSection />
+            <div className="_fm-container">
+                <Standards />
+            </div>
+            <div className='services-bg-image-1'>
                 <img src={Vector1} alt="" />
             </div>
-            <ServicesSection />
-            <Standards />
+            <div className='services-bg-image-2'>
+                <img src={Vector2} alt="" />
+            </div>
         </div>
         <MainBgSectionImg>
-            <FMSection />
-            <FMContent />
+            <div className="_fm-container">
+                <FMSection />
+                <FMContent />
+            </div>
         </MainBgSectionImg>
         <ContactUs />
     </>

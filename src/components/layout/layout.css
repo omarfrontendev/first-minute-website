@@ -1,12 +1,4 @@
-._fm-container {
-    position: relative;
-    padding: 0 20px;
-    /* max-width: 1200px; */
-}
-
-._fm-overlay,
-._fm-bg-main-image {
-    background-color: #FFF7DB;
+._fm-overlay {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -14,13 +6,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: .2;
     z-index: -1;
-}
-
-._fm-overlay {
     background-image: url('/src/assets/test.png');
-    opacity: 1;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

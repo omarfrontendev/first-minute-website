@@ -3,13 +3,6 @@
     position: relative;
 }
 
-._fm-title {
-    font-weight: 800;
-    font-size: 64px;
-    line-height: 88px;
-    color: #1E1E1E;
-}
-
 ._fm-text {
     font-weight: 800;
     font-size: 48px;
@@ -28,7 +21,7 @@
     transform: translate(-50%, -50%);
 }
 
-@media(max-width: 1550px) {
+/* @media(max-width: 1550px) {
     ._fm-title {
         font-size: 52px;
     }
@@ -37,4 +30,46 @@
         line-height: 60px;
         max-width: 900px;
     }
+} */
+
+@media(max-width: 1199px) {
+    ._fm-text {
+        font-size: 36px;
+        line-height: 60px;
+        max-width: 830px;
+    }
+
+    ._fm-cards img,
+    ._fm-cards {
+        width: 190px;
+    }
+
+}
+
+@media(max-width: 991px) {
+    ._fm-text {
+        font-size: 28px;
+        line-height: normal;
+        max-width: 659px;
+    }
+
+    ._fm-cards img,
+    ._fm-cards {
+        width: 140px;
+    }
+
+}
+
+@media(max-width: 574px) {
+    ._fm-text {
+        font-size: 18px;
+        line-height: normal;
+        max-width: 322px;
+    }
+
+    ._fm-cards img,
+    ._fm-cards {
+        width: 100px;
+    }
+
 }

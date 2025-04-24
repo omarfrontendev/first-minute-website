@@ -15,10 +15,45 @@
     height: 1px;
     background: #FFF;
     top: 50%;
-    transform: translate(155%, 0);
+    transform: translate(155%, 100%);
 
 }
 
 .scroll-down.dark::after {
     background-color: #362E57;
+}
+
+/* @media(max-width: 1550px) {
+    .scroll-down {
+        font-size: 11px;
+        line-height: 16px;
+        bottom: 34px;
+    }
+
+    .scroll-down::after {
+        width: 100px;
+        transform: translate(165%, 100%);
+    }
+} */
+
+@media(max-width: 1199px) {
+    .scroll-down {
+        font-size: 10px;
+        line-height: 14px;
+    }
+    .scroll-down::after {
+        width: 80px;
+        transform: translate(176%, 100%);
+    }
+}
+
+@media(max-width: 574px) {
+    .scroll-down {
+        font-size: 8px;
+        line-height: 14px;
+    }
+    .scroll-down::after {
+        width: 60px;
+        transform: translate(176%, 100%);
+    }
 }

@@ -5,7 +5,7 @@ import './fm-component.css';
 const FMComponent = ({ title, subtitle, text }) => (
     <div className="_fm-component-box d-flex align-items-center justify-content-between">
         <div className='_fm-component-image'>
-            <img src={Image} alt="..." />
+            <img src={Image} alt="..." className='-fm_component-image' />
         </div>
         <div className='_fm-component-content'>
             <span className='_fm-component-subtitle'>{subtitle}</span>

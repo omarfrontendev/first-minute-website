@@ -12,32 +12,64 @@ h1._fm-main-title {
     max-width: 847px;
 }
 
-.overlay,
 .rectangular {
     position: absolute;
-    bottom: 0;
+    z-index: -2;
     left: 50%;
-    transform: translate(-50%, 0);
-    /* background-color: #4a4265; */
+    transform: translate(-50%, 0%);
     width: 258px;
-    height: 70%;
-    z-index: -1;
-    background: linear-gradient(to bottom, #362e57e4 -10%, #fff7db00);
-    /* background: linear-gradient(to bottom, #362E57 -35%, #362E57 -35%, #fff7db00 98%); */
+    background: linear-gradient(180deg, #362E57 -4.28%, hsl(47, 100%, 93%));
+    height: calc(50% + 180px);
+    bottom: 0;
 }
 
+.rectangular .overlay {
+    border-radius: 0;
+    background-color: #362E57;
+    opacity: .5;
+}
+/* 
 @media(max-width: 1550px) {
 
-    h1._fm-main-title {
-        font-size: 52px;
-        line-height: 76px;
-        max-width: 700px;
-    }
-
-    .overlay,
     .rectangular {
         width: 210px;
-        height: 70%;
+        height: calc(50% + 240px);
+
+    }
+
+} */
+ 
+
+@media(max-width: 1199px) {
+
+    .rectangular {
+        width: 194px;
+        /* height: calc(50% + 206px); */
+
+    }
+
+    ._fm-hero-section h1._fm-main-title {
+        max-width: 670px
+    }
+    
+}
+
+@media(max-width: 991px) {
+    ._fm-hero-section h1._fm-main-title {
+        max-width: 500px
+    }
+
+    .rectangular {
+        width: 129px;
+        /* height: calc(50% + 180px); */
+    }
+
+}
+
+@media(max-width: 574px) {
+
+    .rectangular {
+        width: 105px;
     }
 
 }
