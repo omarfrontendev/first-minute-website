@@ -65,7 +65,6 @@ const ServicesSection = () => {
 
     const firstSlideRef = useRef(null);
     const [slidesPerView, setSlidesPerView] = useState(1);
-    const [btnClicked, setBtnClicked] = useState(false);
 
     const colors = [
         "#000000",
@@ -104,14 +103,12 @@ const ServicesSection = () => {
     };
 
     const handleSlideBtn = (btn) => {
-
         gsap.fromTo([`.${btn}`], {
             scale: .7
         }, {
             scale: 1
         })
     };
-
 
     useEffect(() => {
         calculateSlidesPerView();

@@ -45,6 +45,7 @@ const onStartAnimation = () => {
 
     heroTl.from(['.inner-word'], {
         y: 40,
+        scale: 1,
         opacity: 0,
         duration: 1,
         ease: 'back.out(1.7)',

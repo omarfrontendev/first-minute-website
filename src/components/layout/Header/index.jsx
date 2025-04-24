@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { BiMenuAltRight } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
+import gsap from 'gsap';
 
 const Header = () => {
     const [isNavbarVisible, setIsNavbarVisible] = useState(null);
@@ -20,6 +21,14 @@ const Header = () => {
         } else {
             setIsNavbarVisible(null);
         }
+    };
+
+    const handleSlideBtn = (btn) => {
+        gsap.fromTo([`.${btn}`], {
+            scale: .7
+        }, {
+            scale: 1
+        })
     };
 
     useEffect(() => {
@@ -64,7 +73,7 @@ const Header = () => {
                 <a href="#standards" className="_fm-link">معاييرنا</a>
                 <a href="#services" className="_fm-link">خدماتنا</a>
                 <Link to="/first-minute" className="_fm-link">أول دقيقة</Link>
-                <a href="#contact-us" className="_fm-link _fm-link-main">تواصل معنا</a>
+                <a onClick={() => handleSlideBtn("_fm-link._fm-link-main")} href="#contact-us" className="_fm-link _fm-link-main">تواصل معنا</a>
             </div>
         </nav>
     );

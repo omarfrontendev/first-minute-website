@@ -5,6 +5,7 @@ const HeroSection = () => {
     return (
         <div className="_fm-hero-section d-flex align-items-center justify-content-center position-relative ">
             <h1 className="_fm-main-title hero">
+            {/* هنا، حيث تصبح البداية حكاية، والإبداع توقيعاً لكل لحظة */}
                 {"هنا، حيث تصبح البداية حكاية، والإبداع توقيعاً لكل لحظة."
                     .split(" ")
                     .map((word, i) => (
