@@ -6,9 +6,6 @@ import gsap from 'gsap';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ease: 'back.out(1.7)',
-// ease: 'power2.inOut',
-
 const onStartAnimation = () => {
     const heroTl = gsap.timeline();
 
@@ -132,7 +129,7 @@ const LoadingScreen = ({ progress }) => {
     }, [progress]);
 
     return (
-        <div className='overflow-hidden position-absolute h-100 w-100' style={{ zIndex: 10000000, pointerEvents: "none" }}>
+        <div className='overflow-hidden position-fixed h-100 w-100' style={{ zIndex: 10000000, pointerEvents: "none" }}>
             <div className='loading-logo'>
                 <LogoFav />
             </div>
