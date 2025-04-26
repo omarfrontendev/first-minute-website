@@ -6,6 +6,8 @@
     width: 100%;
     z-index: 100000;
     transition: .3s ease-in-out;
+    padding: 32px;
+    max-width: 1600px;
 }
 
 ._fm-nav.show {
@@ -32,17 +34,17 @@
 
 ._fm-link:hover {
     opacity: 1 !important;
+    color: #B8555A !important;
 }
 
 ._fm-link:not(._fm-link-main)::after {
     content: "";
     position: absolute;
-    bottom: -2px;
+    bottom: -1px;
     right: 0;
-    /* بدل left: 0 */
     width: 0;
     height: 2px;
-    background-color: #000;
+    background-color: #B8555A;
     border-radius: 10px;
     transition: 0.2s ease-in;
 }
@@ -220,6 +222,10 @@
 }
 
 @media(max-width: 575px) {
+    ._fm-nav {
+        /* padding: 0 18px; */
+    }
+
     ._fm-logo {
         width: 150px;
         height: 60px;

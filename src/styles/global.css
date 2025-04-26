@@ -185,16 +185,13 @@ a {
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
-._fm-nav {
-    padding: 32px;
-}
-
-._fm-nav,
+/* ._fm-nav, */
 ._fm-container {
     position: relative;
     padding-left: 32px;
     padding-right: 32px;
-    max-width: 1440px;
+    /* max-width: 1440px; */
+    max-width: 1600px;
     margin: 0 auto;
 }
 
@@ -245,10 +242,6 @@ a {
 }
 
 @media(max-width: 991px) {
-
-    ._fm-nav {
-        padding: 18px;
-    }
 
     ._fm-container {
         padding: 0 18px;

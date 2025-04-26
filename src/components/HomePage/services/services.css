@@ -3,7 +3,8 @@
     padding-left: 0;
     z-index: 1;
     position: relative;
-    /* max-width: 1600px; */
+    max-width: 1568px;
+    overflow: hidden;
     /* max-width: 1440px; */
     margin: 0 auto;
 }
