@@ -36,13 +36,14 @@ const Standards = () => {
             scrollTrigger: {
                 trigger: '._fm-standards-container',
                 scroller: 'body',
-                start: 'top 80%',
+                start: 'top 100%',
                 toggleActions: 'restart',
             },
         });
 
         masterTL.fromTo("._fm-standards-container ._fm-section-title", {
             y: 120,
+            opacity:0,
             stagger: .1,
             ease: 'back.out(1.2)',
             filter: "blur(6px)"
