@@ -27,7 +27,30 @@
     text-decoration: none;
     opacity: .7;
     color: #1E1E1E !important;
+    position: relative;
 }
+
+._fm-link:hover {
+    opacity: 1 !important;
+}
+
+._fm-link:not(._fm-link-main)::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    /* بدل left: 0 */
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    border-radius: 10px;
+    transition: 0.2s ease-in;
+}
+
+._fm-link:not(._fm-link-main):hover::after {
+    width: 100%;
+}
+
 
 ._fm-link-main {
     color: #FAE87D !important;
@@ -90,7 +113,7 @@
     }
 } */
 
-@media(max-width: 1199px) {
+/* @media(max-width: 1199px) {
     ._fm-nav {
         padding-left: 18px;
         padding-right: 18px;
@@ -137,7 +160,7 @@
         line-height: normal;
     }
 
-}
+} */
 
 @media(max-width: 768px) {
     ._fm-nav {
@@ -154,7 +177,7 @@
         position: fixed;
         top: 0;
         right: 0;
-        width: 230px;
+        width: 270px;
         flex-direction: column;
         background: #FFF;
         height: 100vh;
@@ -163,7 +186,7 @@
         align-items: flex-start !important;
         opacity: 0;
         transform: translateX(100%);
-        transition: .3s ease-in-out;
+        transition: .3s ease-in;
     }
 
     ._fm-nav.menu-opened .nav-links {
@@ -172,7 +195,7 @@
     }
 
     ._fm-nav.hide.menu-opened {
-        top: 86.53px;
+        top: 116.53px;
         transition: none;
     }
 
@@ -183,7 +206,6 @@
 
     ._fm-open-menu-btn {
         display: flex;
-        margin-left: 3px;
         z-index: 1;
     }
 
@@ -195,4 +217,11 @@
         z-index: 1;
     }
 
+}
+
+@media(max-width: 575px) {
+    ._fm-logo {
+        width: 150px;
+        height: 60px;
+    }
 }

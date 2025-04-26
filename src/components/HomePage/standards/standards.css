@@ -3,7 +3,9 @@
     z-index: 1;
     position: relative;
 }
-
+.standard-card-box {
+    flex: 1;
+}
 .standard-card {
     border-radius: 24px;
     color: #FFF;
@@ -38,6 +40,7 @@
     line-height: 20px;
     color: rgba(255, 255, 255, 1);
     margin-bottom: 0;
+    max-width: 346px;
 }
 
 .standard-card-icon-box {
@@ -122,38 +125,43 @@
     }
 
     .standard-card {
-        height: 380px;
+        height: 335px;
     }
 
     .standard-card-content {
-        padding: 24px 16px 32px;
+        /* padding: 24px 16px 32px; */
     }
 
-    .standard-card-title {
+    /* .standard-card-title {
         font-size: 20px;
         line-height: 30px;
         margin-bottom: 12px;
-    }
-
+    } */
+    /* 
     .standard-card-text {
         font-size: 12px;
-    }
+    } */
 
     .standard-card-icon-box img {
         width: 130px;
     }
 }
 
-@media(max-width: 991px) {
-    ._fm-standards-container>div.d-flex.gap-4 {
+@media(max-width: 1023px) {
+    .standards-list {
         flex-wrap: wrap;
     }
 
-    .standard-card {
-        height: 300px;
-        flex-basis: calc(50% - 12px);
+    .standard-card-box {
         flex-grow: 0;
     }
+    .standard-card-box {
+        flex-basis: calc(50% - 8px);
+    }
+}
+
+/* @media(max-width: 991px) {
+
 
     .standard-card-content {
         padding: 24px 16px 32px;
@@ -168,10 +176,14 @@
     .standard-card-icon-box img {
         width: 130px;
     }
-}
+} */
 
-@media(max-width: 574px) {
+@media(max-width: 768px) {
     ._fm-standards-container>div.d-flex.gap-4 {
+        flex-direction: column;
+    }
+
+    .standards-list {
         flex-direction: column;
     }
 
@@ -179,16 +191,20 @@
         /* height: auto; */
         flex-basis: 100%;
         flex-grow: 0;
+        /* width: 443px;
+        height: 463px; */
+        max-width: 100%;
     }
+
     .standard-card-content {
-        height: 250px;
+        /* height: 275px; */
         justify-content: flex-end;
         display: flex;
         flex-direction: column;
     }
 
-    
-    .standard-card-icon-box img {
+
+    /* .standard-card-icon-box img {
         width: 100px;
-    }
+    } */
 }

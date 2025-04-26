@@ -1,17 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { LogoFav } from '../../../icons';
-import './loading.css';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TextPlugin } from "gsap/TextPlugin";
 import gsap from 'gsap';
 
-gsap.registerPlugin(ScrollTrigger);
+import './loading.css';
+
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 const onStartAnimation = () => {
     const heroTl = gsap.timeline();
 
     heroTl.to(['.loading-logo', ".progress-num"], {
         opacity: 0,
-        ease: 'back.out(1.7)',
+        ease: 'back.out(1.2)',
     });
 
     heroTl.to('.top', {
@@ -37,25 +39,21 @@ const onStartAnimation = () => {
         opacity: 0,
         duration: 0.6,
         scale: 0,
-        ease: 'back.out(1.7)',
+        ease: 'back.out(1.2)',
         stagger: 0.1,
         filter: 'blur(6px)',
     }, "<0.6");
 
-
-    heroTl.from(['.inner-word'], {
-        y: 40,
-        scale: 1,
-        opacity: 0,
-        duration: 1,
-        ease: 'back.out(1.7)',
-        stagger: 0.1,
-        filter: 'blur(6px)',
-    }, "<-0.3");
-
     heroTl.to("body", {
         overflow: "auto"
     }, "<");
+
+    heroTl.from(`#hero-title .inner-word`, {
+        y: 80,
+        stagger: .1,
+        ease: 'back.out(1.2)',
+        filter: "blur(6px)"
+    }, "<0.8");
 
     const serviceTl = gsap.timeline({
         delay: .2,
@@ -68,16 +66,15 @@ const onStartAnimation = () => {
     });
 
     serviceTl.fromTo('._fm-services-container ._fm-section-title', {
-        y: 40,
-        opacity: 0,
-        filter: 'blur(6px)',
-        ease: 'back.out(1.7)',
+        y: 80,
+        stagger: .1,
+        ease: 'back.out(1.2)',
+        filter: "blur(6px)"
     },
         {
             y: 0,
             opacity: 1,
             filter: 'blur(0px)',
-            ease: 'back.out(1.7)',
             stagger: 0.1,
         }
     );
@@ -87,14 +84,14 @@ const onStartAnimation = () => {
         opacity: 0,
         filter: 'blur(4px)',
         stagger: 0.17777,
-        ease: 'back.out(.9)',
+        ease: 'back.out(.8)',
     }, '<0.2');
 
     serviceTl.from(['.swiper_button_prev', '.swiper_button_next'], {
         scale: 0,
         filter: 'blur(14px)',
         stagger: 0.2,
-        ease: 'back.out(1.7)',
+        ease: 'back.out(2)',
     }, '<0.3');
 
 };

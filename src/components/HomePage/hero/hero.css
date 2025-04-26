@@ -9,7 +9,16 @@ h1._fm-main-title {
     font-size: 64px;
     line-height: 88px;
     text-align: center;
-    max-width: 847px;
+    /* max-width: 847px; */
+}
+
+#hero-title {
+    position: absolute;
+    left: calc(50% - 7px);
+    transform: translate(-50%, -50%);
+    height: 176px;
+    width: 847px;
+    top: 50%;
 }
 
 .rectangular {
@@ -29,48 +38,60 @@ h1._fm-main-title {
     opacity: .5;
 }
 
-/* 
-@media(max-width: 1550px) {
-
-    .rectangular {
-        width: 210px;
-        height: calc(50% + 240px);
-
-    }
-
-} */
- 
-
 @media(max-width: 1199px) {
-
     .rectangular {
         width: 194px;
-        /* height: calc(50% + 206px); */
-
     }
-
-    ._fm-hero-section h1._fm-main-title {
-        max-width: 670px
-    }
-    
 }
 
 @media(max-width: 991px) {
-    ._fm-hero-section h1._fm-main-title {
-        max-width: 500px
+    #hero-title {
+        max-width: 785px;
+
     }
 
     .rectangular {
         width: 129px;
-        /* height: calc(50% + 180px); */
+    }
+
+}
+
+@media(max-width: 768px) {
+    #hero-title {
+        max-width: 514px;
+    }
+
+}
+
+@media(max-width: 575px) {
+    #hero-title {
+        max-width: 100%;
+    }
+
+    .rectangular {
+        /* width: 105px; */
+    }
+
+}
+
+@media(max-width: 370px) {
+    #hero-title {
+        font-size: 28px;
+    }
+
+    .rectangular {
+        /* width: 105px; */
     }
 
 }
 
 @media(max-width: 574px) {
+    #hero-title {
+        max-width: 100%;
+    }
 
     .rectangular {
-        width: 105px;
+        /* width: 105px; */
     }
 
 }

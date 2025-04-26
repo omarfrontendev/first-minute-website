@@ -2,6 +2,9 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useState, useRef, useLayoutEffect } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { TextPlugin } from "gsap/TextPlugin";
+
+// gsap.registerPlugin(TextPlugin);
 
 const ServiceCard = ({ title, text, image, color }) => {
     const [hovered, setHovered] = useState(false);
@@ -24,40 +27,45 @@ const ServiceCard = ({ title, text, image, color }) => {
     }, []);
 
     useGSAP(() => {
-        if (linkRef.current && cardRef.current) {
-            gsap.to([linkRef.current], {
-                scale: hovered ? 1.2 : 1,
-                right: hovered ? 8 : -2,
-                bottom: hovered ? 8 : -2,
-                duration: 0.4,
-
-            });
-            gsap.to([cardRef.current], {
-                height: hovered ? cardSize.height * 1.18 : cardSize.height,
-                duration: .4,
-                ease: 'back.out(.3)',
-            });
-            gsap.to([textRef.current], {
-                y: hovered ? 0 : 140,
-                opacity: hovered ? 1 : 0,
-                duration: 0.4,
-            });
+        if (window.innerWidth > 575) {
+            if (linkRef.current && cardRef.current) {
+                gsap.to([linkRef.current], {
+                    scale: hovered ? 1.2 : 1,
+                    right: hovered ? 8 : -2,
+                    bottom: hovered ? 8 : -2,
+                    duration: 0.4,
+                });
+                gsap.to([cardRef.current], {
+                    height: hovered ? cardSize.height * 1.18 : cardSize.height,
+                    paddingTop: hovered ? "46px" : "32px",
+                    duration: 0.4,
+                });
+            }
         }
     }, { dependencies: [hovered, cardSize, linkSize] });
+    
 
     return (
         <div
             ref={cardRef}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className="_fm-service-card d-flex flex-column justify-content-between gap-2"
+            className={`_fm-service-card d-flex flex-column justify-content-between gap-2 ${hovered ? "service-hovered" : ""}`}
         >
             <img className="service-card-image" src={image} alt="" />
             <div className="overlay"></div>
             <div className="service-card-content">
                 <h4 className="serviec-card-title">{title}</h4>
                 <div className="overflow-hidden">
-                    <p className="service-card-text" ref={textRef}>{text}</p>
+                    <p className="service-card-text">
+                        {text.split(" ")
+                            .map((word, i) => (
+                                <span key={i} style={{ display: "inline-block", overflow: "hidden" }}>
+                                    <span id="service-inner-word" style={{ display: "inline-block" }}>{word}&nbsp;</span>
+                                </span>
+                            ))}
+                        {/* {text} */}
+                    </p>
                 </div>
             </div>
             <button ref={linkRef} className="service-card-link d-flex align-items-center justify-content-center">

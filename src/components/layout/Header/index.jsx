@@ -56,14 +56,14 @@ const Header = () => {
             {isMenuOpen ? (
                 <MdClose
                     onClick={() => setIsMenuOpen(false)}
-                    size={20}
+                    size={25}
                     color="#D16166"
                     className="_fm-open-menu-btn"
                 />
             ) : (
                 <BiMenuAltRight
                     onClick={() => setIsMenuOpen(true)}
-                    size={20}
+                    size={25}
                     color="#D16166"
                     className="_fm-open-menu-btn"
                 />

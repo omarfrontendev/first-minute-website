@@ -85,11 +85,11 @@ const ServicesSection = () => {
         if (!rect) return;
 
 
-        const slideWidth = 348;
+        const slideWidth = 363;
         const spaceBetween = 0;
         const sidebarWidth = window.innerWidth - rect.right;
 
-        const availableWidth = window.innerWidth - sidebarWidth - 32;
+        const availableWidth = window.innerWidth - sidebarWidth;
         const totalSlideWidth = slideWidth + spaceBetween;
 
         const count = availableWidth / totalSlideWidth;
@@ -110,6 +110,7 @@ const ServicesSection = () => {
         })
     };
 
+
     useEffect(() => {
         calculateSlidesPerView();
         window.addEventListener("resize", calculateSlidesPerView);
@@ -119,8 +120,10 @@ const ServicesSection = () => {
     return (
         <section className='_fm-services-container' id='services'>
             <div className='d-flex _fm-services-content'>
-                <div>
-                    <h2 className="_fm-section-title">خدماتنا</h2>
+                <div className='d-flex flex-row flex-sm-column align-items-center align-items-sm-end'>
+                    <div className='overflow-hidden'>
+                        <h2 className="_fm-section-title">خدماتنا</h2>
+                    </div>
                     <div className='d-flex justify-content-end gap-3 px-3 px-sm-0'>
                         <button className='swiper_button_prev' onClick={() => handleSlideBtn("swiper_button_prev")}><FaArrowRightLong /></button>
                         <button className='swiper_button_next' onClick={() => handleSlideBtn("swiper_button_next")}><FaArrowLeftLong /></button>

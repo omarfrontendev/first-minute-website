@@ -1,8 +1,9 @@
 ._fm-services-container {
-    padding: 160px 32px 164px 0;
+    padding: 160px 32px 0;
+    padding-left: 0;
     z-index: 1;
     position: relative;
-    max-width: 1600px;
+    /* max-width: 1600px; */
     /* max-width: 1440px; */
     margin: 0 auto;
 }
@@ -28,6 +29,21 @@
     position: relative;
     position: relative;
     overflow: hidden;
+}
+
+#service-inner-word {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: .4s ease-in;
+    filter: blur(3px);
+    overflow: auto;
+    margin-bottom: -3px;
+}
+
+._fm-service-card:hover #service-inner-word {
+    filter: blur(0px);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 ._fm-service-card .overlay {
@@ -75,6 +91,10 @@
     color: rgba(229, 229, 229, 1);
 }
 
+/* #service-inner-word {
+    opacity: 0;
+} */
+
 .service-card-link {
     all: unset;
     position: absolute;
@@ -86,6 +106,7 @@
     background-color: rgba(255, 247, 219, 1);
     width: 100px;
     height: 100px;
+    /* transition: .3s ease-in; */
 }
 
 /* TODO: fix arrow icon size */
@@ -228,18 +249,18 @@
     }
 
     ._fm-service-card {
-        padding: 26px;
+        /* padding: 26px; */
         /* height: 440px; */
     }
 
     .serviec-card-title {
-        font-size: 20px;
+        /* font-size: 20px;
         line-height: 30px;
-        margin-bottom: 12px;
+        margin-bottom: 12px; */
     }
 
     .service-card-text {
-        font-size: 12px;
+        /* font-size: 12px; */
     }
 
     /* .service-arrow-icon {
@@ -260,30 +281,32 @@
 @media(max-width: 991px) {
 
     ._fm-services-container {
-        padding: 78px 18px 80px 0;
+        /* padding: 0px 18px; */
+        padding-right: 18px;
+        /* padding-left: 18px; */
     }
 
     ._fm-services-container .swiper_button_prev,
     ._fm-services-container .swiper_button_next {
-        width: 26px;
+        /* width: 26px;
         height: 26px;
-        font-size: 10px;
+        font-size: 10px; */
     }
 
     ._fm-service-card {
-        padding: 22px 22px 22px 40px;
+        /* padding: 22px 22px 22px 40px; */
         /* height: 400px; */
     }
 
-    .serviec-card-title {
+    /* .serviec-card-title {
         font-size: 18px;
         line-height: normal;
         margin-bottom: 12px;
-    }
+    } */
 
-    .service-card-text {
+    /* .service-card-text {
         font-size: 12px;
-    }
+    } */
 
     /* .service-arrow-icon {
         width: 50px;
@@ -302,7 +325,7 @@
 
 @media(max-width: 768px) {
     .service-card-link {
-        transform: translate(9px, 9px) scale(0.809);
+        /* transform: translate(9px, 9px) scale(0.809); */
     }
 }
 
@@ -312,21 +335,27 @@
         gap: 24px;
     }
 
-    ._fm-services-container {
-        padding: 78px 18px 80px 0;
-    }
+    /* ._fm-services-container {
+        padding: 0 18px;
+    } */
 
     ._fm-services-container ._fm-section-title+div {
         justify-content: flex-start !important;
     }
-    
+
     ._fm-services-content ._fm-section-title {
         padding-top: 0;
+    }
+
+    ._fm-service-card #service-inner-word {
+        filter: blur(0px);
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 @media(max-width: 460px) {
     ._fm-services-container {
-        padding: 78px 18px 80px 18px;
+        padding: 120px 18px 0;
     }
 }

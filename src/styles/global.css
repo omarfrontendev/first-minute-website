@@ -84,7 +84,7 @@ a {
 .mySwiper {
     width: 100%;
     display: flex;
-    padding: 80px 16px;
+    padding: 80px 16px 164px;
 }
 
 .swiper-slide {
@@ -92,6 +92,7 @@ a {
     align-items: center;
     justify-content: center;
     transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+    /* transition: ".3s ease" */
 }
 
 /* .swiper-slide:hover>div, */
@@ -180,6 +181,10 @@ a {
     position: absolute;
 }
 
+.title-cover {
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+}
+
 ._fm-nav {
     padding: 32px;
 }
@@ -223,38 +228,45 @@ a {
 
 @media(max-width: 1199px) {
 
-    ._fm-nav {
+    /* ._fm-nav {
         padding: 18px;
-    }
+    } */
 
     ._fm-container {
-        padding: 0 18px;
+        /* padding: 0 18px; */
     }
 
     /* TODO: fix section title responsive */
-    ._fm-section-title,
+    /* ._fm-section-title,
     h1._fm-main-title {
         font-size: 48px;
         line-height: 68px;
-    }
+    } */
 }
 
 @media(max-width: 991px) {
 
     ._fm-nav {
         padding: 18px;
-        /* max-width: 768px; */
     }
 
     ._fm-container {
         padding: 0 18px;
-        /* max-width: 768px; */
     }
 
     ._fm-section-title,
     h1._fm-main-title {
-        font-size: 32px;
-        line-height: 52px;
+        font-size: 52px;
+        line-height: 62px;
+    }
+}
+
+@media(max-width: 768px) {
+
+    ._fm-section-title,
+    h1._fm-main-title {
+        font-size: 39px;
+        line-height: 49px;
     }
 }
 
@@ -262,13 +274,17 @@ a {
 
     ._fm-section-title,
     h1._fm-main-title {
-        font-size: 26px;
-        line-height: 42px;
+        font-size: 34px;
+        line-height: 39px;
     }
 
     .mySwiper {
+        padding-right: 0;
         padding-left: 0;
         padding-top: 0;
-        padding-bottom: 0;
+    }
+
+    .swiper-slide:hover {
+        width: 100% !important;
     }
 }

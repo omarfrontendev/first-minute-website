@@ -16,15 +16,15 @@ const Home = () => (
             </div>
         </MainBgSectionImg>
         <div className="position-relative overflow-hidden">
-            <ServicesSection />
-            <div className="_fm-container">
-                <Standards />
-            </div>
             <div className='services-bg-image-1'>
                 <img src={Vector1} alt="" />
             </div>
             <div className='services-bg-image-2'>
                 <img src={Vector2} alt="" />
+            </div>
+            <ServicesSection />
+            <div className="_fm-container">
+                <Standards />
             </div>
         </div>
         <MainBgSectionImg>
