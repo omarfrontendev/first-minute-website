@@ -5,6 +5,7 @@ import FMContent from "../HomePage/fm-section/fm-content";
 import ThirdScreen from "../HomePage/fm-section/ThirdScreen";
 import FourthScreen from "../HomePage/fm-section/FourthScreen";
 import FivthScreen from "../HomePage/fm-section/FivthScreen";
+import SixthScreen from "../HomePage/fm-section/SixthScreen";
 
 const StickySection = () => {
   const sectionRefs = useRef([]);
@@ -33,7 +34,7 @@ const StickySection = () => {
 
 
   const sections = [FMTitle, FMContent, ThirdScreen,
-    FourthScreen, FivthScreen
+    FourthScreen, FivthScreen, SixthScreen
   ];
 
   return (

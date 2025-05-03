@@ -11,6 +11,34 @@ const FivthScreen = () => {
     useGSAP(() => {
         const cards = gsap.utils.toArray(".screen_card");
 
+        ScrollTrigger.create({
+            trigger: ".fivth_screen",
+            start: "top 10%",
+            end: "bottom 50%",
+            toggleActions: "restart",
+            markers: true,
+            onEnterBack: () => {
+                // gsap.to(
+                //     cards[cards?.length - 1],
+                //     {
+                //         scale: 1
+                //     }
+                // );
+
+                gsap.to(cards[cards?.length - 1], {
+                    delay: 0.5,
+                    y: "-100%",
+                    duration: 0.5
+                })
+                gsap.to(cards[cards?.length - 1], {
+                    zIndex: 1,
+                    delay: 1,
+                    y: "0",
+                    duration: 0.5
+                });
+            },
+        });
+
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".fivth_screen",

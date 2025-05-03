@@ -28,6 +28,7 @@
     border-radius: 4px;
     background-color: aquamarine;
     display: block;
+    z-index: 1;
 }
 
 .screen_card:nth-child(1) {
