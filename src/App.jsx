@@ -12,7 +12,7 @@ import './styles/global.css';
 function App() {
   const [progress, setProgress] = useState(null);
 
-  const onFinish = () => {};
+  const onFinish = () => { };
 
   useEffect(() => {
     const images = document.images;

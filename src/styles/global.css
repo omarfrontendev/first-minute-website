@@ -73,7 +73,7 @@ body {
     font-family: 'Lama Sans', sans-serif !important;
     margin: 0;
     background-color: #FFF7DB !important;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 a {
@@ -194,6 +194,17 @@ a {
     max-width: 1600px;
     margin: 0 auto;
 }
+
+.panel {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .screen_step {
+    height: 100vh;
+} */
 
 /* 
 @media(max-width: 1550px) {

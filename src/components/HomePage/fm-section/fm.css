@@ -1,5 +1,4 @@
 ._fm-title-screen {
-    height: 100vh;
     position: relative;
 }
 
@@ -13,12 +12,49 @@
     z-index: 1;
 }
 
-._fm-cards img,
 ._fm-cards {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+._fm-cards .screen_card {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 150px;
+    height: 200px;
+    border-radius: 4px;
+    background-color: aquamarine;
+    display: block;
+}
+
+.screen_card:nth-child(1) {
+    background-color: #FF6384;
+}
+
+.screen_card:nth-child(2) {
+    background-color: #36A2EB;
+}
+
+.screen_card:nth-child(3) {
+    background-color: #FFCE56;
+}
+
+.screen_card:nth-child(4) {
+    background-color: #4BC0C0;
+}
+
+.screen_card:nth-child(5) {
+    background-color: #9966FF;
+}
+
+
+#text-fm-section .inner__word {
+    /* transform: translateY(100%); */
+    overflow: auto;
+    margin-bottom: -18px;
 }
 
 /* @media(max-width: 1550px) {
@@ -32,18 +68,29 @@
     }
 } */
 
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+
 @media(max-width: 1199px) {
     ._fm-text {
         font-size: 36px;
         line-height: 60px;
         max-width: 830px;
     }
-
-    ._fm-cards img,
-    ._fm-cards {
-        width: 190px;
-    }
-
 }
 
 @media(max-width: 991px) {
@@ -53,9 +100,8 @@
         max-width: 659px;
     }
 
-    ._fm-cards img,
-    ._fm-cards {
-        width: 140px;
+    #text-fm-section .inner__word {
+        margin-bottom: 0;
     }
 
 }
@@ -67,9 +113,15 @@
         max-width: 322px;
     }
 
-    ._fm-cards img,
-    ._fm-cards {
-        width: 100px;
-    }
+}
 
+.screen3-container {
+    height: 200vh;
+    /* تقدر تعدله حسب المحتوى */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
 }

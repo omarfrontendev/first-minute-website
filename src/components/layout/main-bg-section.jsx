@@ -1,9 +1,9 @@
 import './layout.css';
 
-const MainBgSectionImg = ({ children }) => (
+const MainBgSectionImg = ({ children, type }) => (
     <>
-        <div className='w-100 position-relative overflow-hidden'>
-            <div className='_fm-overlay' />
+        <div className='position-relative overflow-hidden'>
+            <div className='_fm-overlay' style={{ backgroundAttachment: type }} />
             {children}
         </div>
     </>

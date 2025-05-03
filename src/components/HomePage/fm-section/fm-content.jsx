@@ -1,17 +1,80 @@
-import Card from '../../../assets/Rectangle.png';
-const FMContent = () => (
-    <div className="_fm-title-screen d-flex align-items-center justify-content-center">
-        <p className="_fm-text">
-            موعد الانطلاق ولحظة البداية والحسم، التوثّب لصنع التغيير وتدوين القيمة، الانتقال من نقطة الصفر إلى توهّج البدايات واللحظات الأولى، الدخول في نطاق الوقت والعبور نحو مساحات الإبداع، والكفاءة، والتأثير.
-        </p>
-        <div className="_fm-cards">
-            <img src={Card} alt="" style={{ transform: "translate(-50%, -50%)" }} />
-            <img src={Card} alt="" style={{ transform: "translate(-50%, -40%)" }} />
-            <img src={Card} alt="" style={{ transform: "translate(-50%, -30%)" }} />
-            <img src={Card} alt="" style={{ transform: "translate(-50%, -20%)" }} />
-            <img src={Card} alt="" style={{ transform: "translate(-50%, -10%)" }} />
+import { useRef } from 'react';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import gsap from 'gsap';
+
+import './fm.css';
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+const FMContent = () => {
+
+    const textRef = useRef(null);
+
+    useGSAP(() => {
+        if (textRef.current) {
+            const innerWords = "#text-fm-section .inner__word";
+
+            // ON ENTER
+            ScrollTrigger.create({
+                trigger: textRef.current,
+                start: "top 100%",
+                end: "bottom 50%",
+                toggleActions: "restart",
+                onEnter: () => {
+                    gsap.fromTo(
+                        innerWords,
+                        {
+                            y: 200,
+                            opacity: 0,
+                            duration: .6,
+                        },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: .6,
+                        }
+                    );
+                },
+            });
+
+            gsap.timeline({
+                scrollTrigger: {
+                    scrub: 1,
+                    pin: true,
+                    trigger: textRef.current,
+                    start: "50% 50%",
+                    endTrigger: ".scroller",
+                    end: "bottom 100%",
+                },
+            });
+        }
+
+        return () => {
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        };
+    });
+
+
+    const text = "موعد الانطلاق ولحظة البداية والحسم، التوثّب لصنع التغيير وتدوين القيمة، الانتقال من نقطة الصفر إلى توهّج البدايات واللحظات الأولى، الدخول في نطاق الوقت والعبور نحو مساحات الإبداع، والكفاءة، والتأثير.ول دقيقة ... عنوان التميز";
+
+    return (
+
+        <div id="text-fm-section" className="panel d-flex justify-content-center align-items-center">
+            <div className="_fm-title-screen d-flex align-items-center justify-content-center">
+                <p className="_fm-text" ref={textRef}>
+                    {text.split(" ")
+                        .map((word, i) => (
+                            <span key={i} className="word" style={{ display: "inline-block", overflow: "hidden" }}>
+                                <span className="inner__word" style={{ display: "inline-block" }}>{word}&nbsp;</span>
+                            </span>
+                        ))}
+                    {/* {text} */}
+                </p>
+            </div>
         </div>
-    </div>
-);
+    );
+}
 
 export default FMContent;
