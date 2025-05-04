@@ -54,6 +54,7 @@
     font-size: 14px;
     line-height: 20px;
     color: #1E1E1EBF;
+    width: 100%;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -134,6 +135,26 @@ input[type="number"] {
     max-width: 300px;
     margin-bottom: 0;
 }
+
+.option__label__box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.option__label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.option__label__box img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 
 /* @media(max-width: 1550px) {
     .contact-us-title {
@@ -252,11 +273,12 @@ input[type="number"] {
         max-width: 100%;
     }
 
-    .contact-us-form > div,
-    .contact-us-form > button {
+    .contact-us-form>div,
+    .contact-us-form>button {
         max-width: 90%;
     }
-    .contact-us-form > button {
+
+    .contact-us-form>button {
         width: 200px;
         /* margin-left:  auto;
         margin-right:  auto; */
@@ -267,7 +289,9 @@ input[type="number"] {
     .contact-us-form-box {
         padding: 18px 24px;
     }
-    .contact-us-form > div, .contact-us-form > button {
+
+    .contact-us-form>div,
+    .contact-us-form>button {
         max-width: 100%;
     }
 

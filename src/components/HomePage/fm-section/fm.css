@@ -88,11 +88,12 @@
 }
 
 .screen3-container {
-    height: 200vh;
+    /* height: 200vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; */
+    position: relative;
 }

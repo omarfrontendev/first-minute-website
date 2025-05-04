@@ -9,6 +9,7 @@ import SixthScreen from "./SixthScreen";
 import "./StickySection.css";
 import SeventhScreen from "./SeventhScreen";
 import EighthScreen from "./EighthScreen";
+import NinthScreen from "./NinthScreen";
 
 const StickySection = () => {
   const sectionRefs = useRef([]);
@@ -37,11 +38,11 @@ const StickySection = () => {
 
 
   const sections = [FirstScreen, SecondScreen, ThirdScreen,
-    FourthScreen, FifthScreen, SixthScreen, SeventhScreen, EighthScreen
+    FourthScreen, FifthScreen, SixthScreen, SeventhScreen, EighthScreen, NinthScreen
   ];
 
   return (
-    <div className="scroller" id="scroller">
+    <div className="scroller position-relative" id="scroller">
       <section className="full-height-section">
         {sections.map((Component, index) => (
           <div

@@ -4,6 +4,7 @@
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  overflow: hidden;
 }
 
 .full-height-section__item {

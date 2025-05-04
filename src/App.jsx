@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
 import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
 import Home from './pages/home';
 import FirstMinute from './pages/first-minute';
 import LoadingScreen from './components/common/LoadingScreen';
@@ -62,7 +60,6 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/first-minute' element={<FirstMinute />} />
       </Routes>
-      {/* <Footer /> */}
     </>
   );
 }

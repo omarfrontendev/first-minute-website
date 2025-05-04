@@ -53,7 +53,7 @@ const ThirdScreen = () => {
             end: "bottom 80%",
             toggleActions: "restart",
             onLeave: () => {
-                cards.forEach((card, index) => {
+                cards.forEach((card) => {
                     gsap.to(
                         card,
 
@@ -89,6 +89,7 @@ const ThirdScreen = () => {
             },
         });
 
+        // ON ENTER BACK
         ScrollTrigger.create({
             trigger: ".screen3-container",
             start: "top 10%",
@@ -108,7 +109,7 @@ const ThirdScreen = () => {
                             duration: 0.3,
                             ease: 'back.out(1.2)',
                             delay: index * 0.2,
-                            top: "50%", // تثبيت العناصر في وسط الشاشة
+                            top: "50%",
                             left: "50%",
                             xPercent: -50,
                             yPercent: -50 + index * 20,
@@ -124,11 +125,11 @@ const ThirdScreen = () => {
     });
 
     return (
-        <div className='screen3-container position-relative w-100 h-100'>
+        <div className='screen3-container w-100 h-100'>
             <div className="_fm-cards">
                 {[...Array(5)].map((_, index) => (
                     <img
-                        alt="Random"
+                        alt={`Random-${index + 1}`}
                         key={index}
                         className='screen_card block'
                     />

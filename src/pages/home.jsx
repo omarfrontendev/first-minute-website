@@ -6,8 +6,17 @@ import MainBgSectionImg from "../components/layout/main-bg-section";
 import Vector1 from '../assets/Vector-1.png';
 import Vector2 from '../assets/Vector.png';
 import StickySection from "../components/HomePage/fm-section/StickySection";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchHomeData } from "../redux/services/home.services";
 
 const Home = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchHomeData());
+    }, [dispatch]);
 
     return (
         <>
