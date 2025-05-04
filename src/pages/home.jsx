@@ -25,7 +25,7 @@ const Home = () => {
                     <HeroSection />
                 </div>
             </MainBgSectionImg>
-            <div className="position-relative overflow-hidden">
+            <div className="position-relative">
                 <div className='services-bg-image-1'>
                     <img src={Vector1} alt="" />
                 </div>
