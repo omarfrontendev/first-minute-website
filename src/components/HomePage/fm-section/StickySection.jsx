@@ -17,13 +17,13 @@ const StickySection = () => {
   const { hash } = useLocation();
 
   useEffect(() => {
-    if (hash) {
-      const targetSection = document.getElementById(hash);
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-      return; // تجاهل باقي الكود لو فيه hash
-    }
+    // if (hash) {
+    //   const targetSection = document.getElementById(hash);
+    //   if (targetSection) {
+    //     targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    //   }
+    //   return; // تجاهل باقي الكود لو فيه hash
+    // }
 
     const observers = [];
 
