@@ -11,6 +11,25 @@ const SixthScreen = () => {
     useGSAP(() => {
         const cards = gsap.utils.toArray(".screen_card");
 
+        ScrollTrigger.create({
+            trigger: ".sixth_screen",
+            start: "top 10%",
+            end: "bottom 50%",
+            toggleActions: "restart",
+            onEnterBack: () => {
+                gsap.to(cards[cards?.length - 2], {
+                    y: "-125%",
+                    duration: 0.5
+                })
+                gsap.to(cards[cards?.length - 2], {
+                    zIndex: 1,
+                    delay: .5,
+                    y: "0",
+                    duration: 0.5
+                });
+            },
+        });
+
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".sixth_screen",
@@ -21,8 +40,7 @@ const SixthScreen = () => {
         });
 
         tl.to(cards[cards?.length - 1], {
-            delay: 0.5,
-            y: "-100%",
+            y: "-125%",
             duration: 0.5
         }).to(cards[cards?.length - 1], {
             zIndex: 0,

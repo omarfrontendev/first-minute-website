@@ -1,17 +1,20 @@
 import React, { useEffect, useRef } from "react";
+import FirstScreen from "./FirstScreen";
+import SecondScreen from "./SecondScreen";
+import ThirdScreen from "./ThirdScreen";
+import FourthScreen from "./FourthScreen";
+import FifthScreen from "./FifthScreen";
+import SixthScreen from "./SixthScreen";
+
 import "./StickySection.css";
-import FMTitle from "../HomePage/fm-section/fm-title";
-import FMContent from "../HomePage/fm-section/fm-content";
-import ThirdScreen from "../HomePage/fm-section/ThirdScreen";
-import FourthScreen from "../HomePage/fm-section/FourthScreen";
-import FivthScreen from "../HomePage/fm-section/FivthScreen";
-import SixthScreen from "../HomePage/fm-section/SixthScreen";
+import SeventhScreen from "./SeventhScreen";
+import EighthScreen from "./EighthScreen";
 
 const StickySection = () => {
   const sectionRefs = useRef([]);
 
   useEffect(() => {
-    sectionRefs.current.forEach((section, index) => {
+    sectionRefs.current.forEach((section) => {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
@@ -19,7 +22,7 @@ const StickySection = () => {
           }
         },
         {
-          threshold: [0.1, 1],
+          threshold: [0.001, 1],
         }
       );
 
@@ -33,8 +36,8 @@ const StickySection = () => {
   }, []);
 
 
-  const sections = [FMTitle, FMContent, ThirdScreen,
-    FourthScreen, FivthScreen, SixthScreen
+  const sections = [FirstScreen, SecondScreen, ThirdScreen,
+    FourthScreen, FifthScreen, SixthScreen, SeventhScreen, EighthScreen
   ];
 
   return (

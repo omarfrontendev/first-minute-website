@@ -4,6 +4,7 @@ import ExpandedWord from "./ExpandedWord";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
+import { useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,7 +44,7 @@ const Standards = () => {
 
         masterTL.fromTo("._fm-standards-container ._fm-section-title", {
             y: 120,
-            opacity:0,
+            opacity: 0,
             stagger: .1,
             ease: 'back.out(1.2)',
             filter: "blur(6px)"
@@ -53,7 +54,7 @@ const Standards = () => {
                 opacity: 1,
                 filter: 'blur(0px)',
                 stagger: 0.1,
-            }   
+            }
         );
 
         masterTL.from('._fm-standards-container .standard-card', {
@@ -64,80 +65,36 @@ const Standards = () => {
             ease: 'back.out(.8)',
         });
 
-        // masterTL.from(".standard-card-icon", {
-        //     scale: 0.5,
-        //     opacity: 0,
-        //     filter: 'blur(14px)',
-        //     duration: 0.5,
-        //     ease: 'back.out(4)',
-        //     stagger: .1,
-        // }, ">-0.8");
-
-        // masterTL.from(".standard-card-title", {
-        //     opacity: 0,
-        //     y: 40,
-        //     filter: 'blur(14px)',
-        //     duration: 0.3,
-        //     ease: 'back.out(4)',
-        //     stagger: .1,
-        // }, ">-0.7");
-
-        // masterTL.from(".standard-card-text", {
-        //     opacity: 0,
-        //     y: 40,
-        //     filter: 'blur(14px)',
-        //     duration: 0.3,
-        //     ease: 'back.out(4)',
-        //     stagger: .1,
-        // }, ">-0.3");
-
-        // cards.forEach((card) => {
-
-        //     // const tl = gsap.timeline();
-
-        //     // tl.from(card, {
-        //     //     y: '10%',
-        //     //     opacity: 0,
-        //     //     filter: 'blur(4px)',
-        //     //     duration: 0.3,
-        //     //     ease: 'back.out(1.2)',
-        //     //     stagger: 0.1,
-        //     // });
-
-        //     // if (icon) {
-        //     //     tl.from(icon, {
-        //     //         scale: 0.5,
-        //     //         opacity: 0,
-        //     //         filter: 'blur(14px)',
-        //     //         duration: 0.3,
-        //     //         ease: 'back.out(4)',
-        //     //     });
-        //     // }
-
-        //     // if (title) {
-        //     //     tl.from(title, {
-        //     //         opacity: 0,
-        //     //         y: 40,
-        //     //         filter: 'blur(14px)',
-        //     //         duration: 0.3,
-        //     //         ease: 'back.out(4)',
-        //     //     });
-        //     // }
-
-        //     // if (text) {
-        //     //     tl.from(text, {
-        //     //         opacity: 0,
-        //     //         y: 40,
-        //     //         filter: 'blur(14px)',
-        //     //         duration: 0.3,
-        //     //         ease: 'back.out(4)',
-        //     //     });
-        //     // }
-
-        //     // masterTL.add(tl); // Add tl sequentially, no overlap
-        // });
-
     });
+
+    useEffect(() => {
+        const section = document.getElementById("standards");
+
+        let previousY = 0;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                const currentY = entry.boundingClientRect.y;
+
+                const isScrollingUp = currentY > previousY;
+
+                if (entry.isIntersecting && isScrollingUp) {
+                    section.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+
+                previousY = currentY;
+            },
+            {
+                threshold: 0.1,
+            }
+        );
+
+        if (section) observer.observe(section);
+
+        return () => {
+            if (section) observer.unobserve(section);
+        };
+    }, []);
 
     return (
         <section className='_fm-standards-container' id='standards'>

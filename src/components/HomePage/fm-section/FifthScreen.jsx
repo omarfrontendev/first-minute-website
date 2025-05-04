@@ -6,7 +6,7 @@ import './fm.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FivthScreen = () => {
+const FifthScreen = () => {
 
     useGSAP(() => {
         const cards = gsap.utils.toArray(".screen_card");
@@ -16,23 +16,14 @@ const FivthScreen = () => {
             start: "top 10%",
             end: "bottom 50%",
             toggleActions: "restart",
-            markers: true,
             onEnterBack: () => {
-                // gsap.to(
-                //     cards[cards?.length - 1],
-                //     {
-                //         scale: 1
-                //     }
-                // );
-
                 gsap.to(cards[cards?.length - 1], {
-                    delay: 0.5,
-                    y: "-100%",
+                    y: "-125%",
                     duration: 0.5
                 })
                 gsap.to(cards[cards?.length - 1], {
                     zIndex: 1,
-                    delay: 1,
+                    delay: .5,
                     y: "0",
                     duration: 0.5
                 });
@@ -73,4 +64,4 @@ const FivthScreen = () => {
     );
 };
 
-export default FivthScreen;
+export default FifthScreen;

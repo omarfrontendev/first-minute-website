@@ -72,7 +72,6 @@ const ThirdScreen = () => {
             end: "bottom 99%",
             toggleActions: "restart",
             onLeaveBack: () => {
-                console.log("leave back")
                 cards.forEach((card, index) => {
                     gsap.to(
                         card,

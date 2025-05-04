@@ -1,12 +1,4 @@
-/* html, body {
-  margin: 0;
-  padding: 0;
-  scroll-behavior: smooth; 
-} */
-
 .scroller {
-  /* overflow-y: scroll; */
-  /* height: 100vh; */
   background-image: url('/src/assets/test.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -14,11 +6,6 @@
   background-attachment: fixed;
 }
 
-/* .scroller::-webkit-scrollbar {
-  display: none;
-} */
-
 .full-height-section__item {
   height: 100vh;
-  /* scroll-snap-align: start; */
 }

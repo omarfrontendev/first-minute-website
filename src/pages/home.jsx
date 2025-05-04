@@ -5,13 +5,7 @@ import Standards from "../components/HomePage/standards";
 import MainBgSectionImg from "../components/layout/main-bg-section";
 import Vector1 from '../assets/Vector-1.png';
 import Vector2 from '../assets/Vector.png';
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import FMSection from "../components/HomePage/fm-section";
-import StickySection from "../components/StickySection";
-
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+import StickySection from "../components/HomePage/fm-section/StickySection";
 
 const Home = () => {
 

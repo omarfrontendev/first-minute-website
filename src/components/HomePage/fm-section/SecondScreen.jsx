@@ -8,7 +8,7 @@ import './fm.css';
 gsap.registerPlugin(ScrollTrigger);
 
 
-const FMContent = () => {
+const SecondScreen = () => {
 
     const textRef = useRef(null);
 
@@ -77,4 +77,4 @@ const FMContent = () => {
     );
 }
 
-export default FMContent;
+export default SecondScreen;

@@ -16,7 +16,6 @@ const FourthScreen = () => {
             end: "bottom 50%",
             toggleActions: "restart",
             onEnterBack: () => {
-                console.log("ENTER BACK (4)")
                 cards.forEach((card, index) => {
                     gsap.to(
                         card,
