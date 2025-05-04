@@ -5,16 +5,28 @@ import ThirdScreen from "./ThirdScreen";
 import FourthScreen from "./FourthScreen";
 import FifthScreen from "./FifthScreen";
 import SixthScreen from "./SixthScreen";
-
-import "./StickySection.css";
 import SeventhScreen from "./SeventhScreen";
 import EighthScreen from "./EighthScreen";
 import NinthScreen from "./NinthScreen";
+import { useLocation } from "react-router-dom";
+
+import "./StickySection.css";
 
 const StickySection = () => {
   const sectionRefs = useRef([]);
+  const { hash } = useLocation();
 
   useEffect(() => {
+    if (hash) {
+      const targetSection = document.getElementById(hash);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      return; // تجاهل باقي الكود لو فيه hash
+    }
+
+    const observers = [];
+
     sectionRefs.current.forEach((section) => {
       const observer = new IntersectionObserver(
         ([entry]) => {
@@ -27,14 +39,18 @@ const StickySection = () => {
         }
       );
 
-      if (section) observer.observe(section);
-
-      // Clean up
-      return () => {
-        if (section) observer.unobserve(section);
-      };
+      if (section) {
+        observer.observe(section);
+        observers.push(observer);
+      }
     });
-  }, []);
+
+    // Clean up
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, [hash]);
+
 
 
   const sections = [FirstScreen, SecondScreen, ThirdScreen,

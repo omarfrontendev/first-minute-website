@@ -5,9 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Input from '../../common/Input';
 import { useCountryCodes } from '../../../context/CountriesContext';
+import SelectDropdown from '../../common/SelectDropdown';
 
 import './contact-us.css';
-import SelectDropdown from '../../common/SelectDropdown';
 
 const options = [
     {
@@ -59,8 +59,9 @@ const schema = yup.object().shape({
 });
 
 const ContactUs = () => {
-    const sectionRef = useRef(null);
     const { countryCodes, isLoading } = useCountryCodes();
+    const sectionRef = useRef(null);
+
 
     const {
         register,
@@ -77,8 +78,6 @@ const ContactUs = () => {
         }
     });
 
-
-    console.log(watch());
 
     const onSubmit = async (data) => {
         console.log(data)
@@ -98,7 +97,10 @@ const ContactUs = () => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    section.scrollIntoView({ behavior: "smooth", block: "start" });
+                    // Scroll بعد وقت معين لما العنصر يبقى ظاهر
+                    setTimeout(() => {
+                        section?.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }, 500); // وقت التمرير بعد التقاطع
                 }
             },
             {
@@ -106,12 +108,15 @@ const ContactUs = () => {
             }
         );
 
-        if (section) observer.observe(section);
+        if (section) {
+            observer.observe(section);
+        }
 
         return () => {
             if (section) observer.unobserve(section);
         };
     }, []);
+
 
     return (
         <section className='_fm-contact-us main_bg_color' ref={sectionRef}>
