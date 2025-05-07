@@ -6,6 +6,7 @@ import FirstMinute from './pages/first-minute';
 import LoadingScreen from './components/common/LoadingScreen';
 
 import './styles/global.css';
+import Footer from './components/layout/Footer';
 
 function App() {
   const [progress, setProgress] = useState(null);
@@ -60,6 +61,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/first-minute' element={<FirstMinute />} />
       </Routes>
+      <Footer />
     </>
   );
 }
