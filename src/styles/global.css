@@ -90,8 +90,9 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1); */
-    transition: all 0.6s cubic-bezier(0.25, 1.5, 0.5, 1.25);
+    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+    /* width: 332px !important; */
+    /* transition: all 0.6s cubic-bezier(0.25, 1.5, 0.5, 1.25); */
 }
 
 /* .swiper-slide:hover>div, */

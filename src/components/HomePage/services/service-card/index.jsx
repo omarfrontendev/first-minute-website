@@ -59,12 +59,6 @@ const ServiceCard = ({ title, text, image, color, id }) => {
                 <h4 className="serviec-card-title">{title}</h4>
                 <div className="overflow-hidden">
                     <p className="service-card-text text-truncate-4">
-                        {/* {text.split(" ")
-                            .map((word, i) => (
-                                <span key={i} style={{ display: "inline-block", overflow: "hidden" }}>
-                                    <span id="service-inner-word" style={{ display: "inline-block" }}>{word}&nbsp;</span>
-                                </span>
-                            ))} */}
                         {text}
                     </p>
                 </div>

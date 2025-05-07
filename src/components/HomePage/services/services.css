@@ -30,6 +30,7 @@
     position: relative;
     position: relative;
     overflow: hidden;
+    /* width: 332px; */
 }
 
 .service-card-text,
@@ -171,76 +172,6 @@
 ._fm-services-container .swiper_button_prev:disabled {
     opacity: .4;
 }
-
-/* @media(max-width: 1550px) {
-
-    ._fm-services-container {
-        padding: 120px 0;
-    }
-
-    ._fm-service-card {
-        height: 440px;
-    }
-
-    .serviec-card-title {
-        font-size: 20px;
-        line-height: 28px;
-        margin-bottom: 8px;
-    }
-
-    .service-card-text {
-        font-size: 14px;
-        line-height: 20px;
-    }
-
-    .service-card-link {
-        padding: 11px;
-        border-radius: 50% 0 0 0%;
-    }
-
-    .service-arrow-icon {
-        width: 60px;
-        height: 60px;
-    }
-
-    .service-arrow-icon>svg {
-        width: 32px;
-    }
-
-    .card-bottom-curve {
-        bottom: -10px;
-        left: -30px;
-        width: 40px;
-        height: 40px;
-        z-index: 1;
-        border-radius: 0 0 28px 0;
-        border: 10px solid transparent;
-        border-right-color: rgba(255, 247, 219, 1);
-        border-bottom-color: rgba(255, 247, 219, 1);
-    }
-
-    .card-top-curve {
-        position: absolute;
-        top: 10px;
-        right: -10px;
-        width: 40px;
-        height: 40px;
-        z-index: 1;
-        border-radius: 0;
-        border: 10px solid rgba(255, 247, 219, 1);
-        border-left: 0;
-        border-top: 0;
-        border-radius: 0 0 32px 0;
-        transform: translateY(-100%);
-    }
-
-    ._fm-services-container .swiper_button_prev,
-    ._fm-services-container .swiper_button_next {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
-    }
-} */
 
 @media(max-width: 1199px) {
 

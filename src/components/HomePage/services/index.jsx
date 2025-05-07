@@ -3,63 +3,12 @@ import ServiceCard from './service-card';
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from 'swiper/modules';
+import gsap from 'gsap';
 
 import 'swiper/css/bundle';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './services.css';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-
-// const services = [
-//     {
-//         title: "كتابة المحتوى الإبداعي",
-//         text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-//         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-//     },
-//     {
-//         title: "كتابة المحتوى الإبداعي",
-//         text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-//         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-//     },
-//     {
-//         title: "كتابة المحتوى الإبداعي",
-//         text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-//         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-//     },
-//     {
-//         title: "كتابة المحتوى الإبداعي",
-//         text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-//         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-//     },
-//     {
-//         title: "كتابة المحتوى الإبداعي",
-//         text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-//         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-//     },
-//     {
-//         title: "كتابة المحتوى الإبداعي",
-//         text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-//         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-//     },
-//     {
-//         title: "كتابة المحتوى الإبداعي",
-//         text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-//         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-//     },
-//     {
-//         title: "كتابة المحتوى الإبداعي",
-//         text: "إبراز الهوية الرقمية بأسلوب مبتكر يجمع بين تصميم بصري متقن، محتوى جذاب، وتجربة مستخدم سلسة، مدعومة بتحليل مستمر لضمان التأثير والتفاعل المستدام",
-//         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSju1pUVVJ3ZwXSjVB4I_33eN3YNghWxoDcw&s"
-
-//     },
-// ];
 
 const ServicesSection = ({ services }) => {
 
@@ -85,8 +34,8 @@ const ServicesSection = ({ services }) => {
         if (!rect) return;
 
 
-        const slideWidth = 363;
-        const spaceBetween = 0;
+        const slideWidth = 332;
+        const spaceBetween = 16;
         const sidebarWidth = window.innerWidth - rect.right;
 
         const availableWidth = window.innerWidth - sidebarWidth;
@@ -94,8 +43,9 @@ const ServicesSection = ({ services }) => {
 
         const count = availableWidth / totalSlideWidth;
 
-
-        if (window.innerWidth >= 460) {
+        if (window.innerWidth > 1550) {
+            setSlidesPerView(3.5);
+        } else if (window.innerWidth >= 460) {
             setSlidesPerView(count > 0 ? count : 1);
         } else {
             setSlidesPerView(1);
@@ -109,7 +59,6 @@ const ServicesSection = ({ services }) => {
             scale: 1
         })
     };
-
 
     useEffect(() => {
         calculateSlidesPerView();
@@ -135,6 +84,7 @@ const ServicesSection = ({ services }) => {
                         nextEl: ".swiper_button_next",
                         prevEl: ".swiper_button_prev"
                     }}
+                    // 1550
                     spaceBetween={16}
                     slidesPerView={slidesPerView}
                     modules={[Navigation]}
