@@ -4,19 +4,18 @@ import SecondScreen from "./SecondScreen";
 import ThirdScreen from "./ThirdScreen";
 import FourthScreen from "./FourthScreen";
 import FifthScreen from "./FifthScreen";
-import SixthScreen from "./SixthScreen";
-import SeventhScreen from "./SeventhScreen";
-import EighthScreen from "./EighthScreen";
-import NinthScreen from "./NinthScreen";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import gsap from "gsap";
 
 import "./StickySection.css";
+import { useSelector } from "react-redux";
+import DynamicScreen from "./DynamicScreen";
 
 gsap.registerPlugin(ScrollToPlugin);
 
 const StickySection = () => {
   const sectionRefs = useRef([]);
+  const { data: { section_4 } } = useSelector(state => state.home)
 
   useEffect(() => {
     let direction = null;
@@ -94,23 +93,28 @@ const StickySection = () => {
   //   };
   // }, []);
 
-
-  const sections = [FirstScreen, SecondScreen, ThirdScreen,
-    FourthScreen, FifthScreen,
-    //  SixthScreen, SeventhScreen, EighthScreen, NinthScreen
-  ];
+  const sections = [
+    { component: FirstScreen },
+    { component: SecondScreen },
+    { component: ThirdScreen },
+    { component: FourthScreen },
+    { component: FifthScreen },
+    ...section_4.images.slice(0, section_4.images.length - 1).map((_, i) => ({
+      component: DynamicScreen,
+      props: { imgIndex: i }
+    }))];
 
   return (
     <div className="scroller position-relative" id="scroller">
       <section className="full-height-section">
-        {sections.map((Component, index) => (
+        {sections.map(({ component: Component, props }, index) => (
           <div
             key={index}
             ref={(el) => (sectionRefs.current[index] = el)}
             className="full-height-section__item"
           >
             <div className="d-flex align-items-center justify-content-center w-100 h-100">
-              <Component />
+              <Component key={index} {...props} />
             </div>
           </div>
         ))}

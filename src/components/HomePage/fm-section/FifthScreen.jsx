@@ -26,6 +26,30 @@ const FifthScreen = () => {
             },
         });
 
+        ScrollTrigger.create({
+            trigger: ".fifth_screen",
+            start: "top 10%",
+            end: "bottom 50%",
+            toggleActions: "restart",
+            onEnterBack: () => {
+                const targetCard = cards?.[cards.length - 1];
+                if (!targetCard) return;
+
+                gsap.timeline()
+                    .to(targetCard, {
+                        y: "-125%",
+                        duration: 0.5
+                    })
+                    .set(targetCard, {
+                        zIndex: 1
+                    })
+                    .to(targetCard, {
+                        y: "0",
+                        duration: 0.5,
+                    });
+            }
+        });
+
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".fifth_screen",
