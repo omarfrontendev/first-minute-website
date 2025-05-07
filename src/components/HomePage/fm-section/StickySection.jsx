@@ -66,7 +66,7 @@ const StickySection = () => {
       const touchEndY = e.changedTouches[0].clientY;
       const deltaY = touchStartY - touchEndY;
 
-      if (Math.abs(deltaY) < 50) return; // تجاهل السحبات الصغيرة
+      // if (Math.abs(deltaY) < 50) return; // تجاهل السحبات الصغيرة
 
       if (deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
         // سحب لتحت
