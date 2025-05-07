@@ -18,34 +18,17 @@ const StickySection = () => {
   const { data: { section_4 } } = useSelector(state => state.home);
 
   useEffect(() => {
-    // if (window.innerWidth <= 768) return;
-
     let currentIndex = 0;
     let isScrolling = false;
+    let touchStartY = 0;
 
     const scrollerEl = document.getElementById("scroller");
 
-    const onWheel = (e) => {
-      if (isScrolling) return;
-
-      const scrollerRect = scrollerEl.getBoundingClientRect();
-      const isInView =
-        scrollerRect.top <= 0 && scrollerRect.bottom >= window.innerHeight;
-
-      if (!isInView) return;
-
+    const scrollToSection = (index) => {
       isScrolling = true;
-
-      // تحديد الاتجاه
-      if (e.deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
-        currentIndex++;
-      } else if (e.deltaY < 0 && currentIndex > 0) {
-        currentIndex--;
-      }
-
       gsap.to(window, {
         duration: 0.5,
-        scrollTo: sectionRefs.current[currentIndex],
+        scrollTo: sectionRefs.current[index],
         ease: "power2.out",
         onComplete: () => {
           isScrolling = false;
@@ -53,13 +36,61 @@ const StickySection = () => {
       });
     };
 
+    const isInView = () => {
+      const rect = scrollerEl.getBoundingClientRect();
+      return rect.top <= 0 && rect.bottom >= window.innerHeight;
+    };
+
+    const onWheel = (e) => {
+      if (isScrolling || !isInView()) return;
+
+      if (e.deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
+        currentIndex++;
+      } else if (e.deltaY < 0 && currentIndex > 0) {
+        currentIndex--;
+      } else {
+        return;
+      }
+
+      scrollToSection(currentIndex);
+      e.preventDefault();
+    };
+
+    const onTouchStart = (e) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const onTouchEnd = (e) => {
+      if (isScrolling || !isInView()) return;
+
+      const touchEndY = e.changedTouches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
+
+      if (Math.abs(deltaY) < 50) return; // تجاهل السحبات الصغيرة
+
+      if (deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
+        // سحب لتحت
+        currentIndex++;
+      } else if (deltaY < 0 && currentIndex > 0) {
+        // سحب لفوق
+        currentIndex--;
+      } else {
+        return;
+      }
+
+      scrollToSection(currentIndex);
+    };
+
     window.addEventListener("wheel", onWheel, { passive: false });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
 
     return () => {
       window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchend", onTouchEnd);
     };
   }, []);
-
 
 
   const sections = [
