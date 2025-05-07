@@ -45,11 +45,10 @@ const SecondScreen = () => {
                 scrollTrigger: {
                     scrub: 1,
                     pin: true,
-                    // pinSpacing: false,
                     trigger: textRef.current,
                     start: "50% 50%",
                     endTrigger: ".scroller",
-                    end: "100% 50%",
+                    end: "100% 90%",
                 },
             });
         }

@@ -65,7 +65,7 @@ const ThirdScreen = () => {
                 trigger: "._fm-cards",
                 start: "50% 50%",
                 endTrigger: ".scroller",
-                end: "100% 50%",
+                end: "100% 90%",
             },
         });
 
