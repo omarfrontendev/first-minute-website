@@ -109,7 +109,7 @@ const FirstScreen = () => {
 
     return (
         <div id="first_screen" className="panel d-flex justify-content-center align-items-center">
-            {/* <div className="_fm-title-screen d-flex align-items-center justify-content-center h-100">
+            <div className="_fm-title-screen d-flex align-items-center justify-content-center h-100">
                 <h2 className="_fm-section-title fm_title text-center" ref={titleRef}>
                     {section_2.split(" ")
                         .map((word, i) => (
@@ -118,10 +118,7 @@ const FirstScreen = () => {
                             </span>
                         ))}
                 </h2>
-            </div> */}
-            <h1>
-                SCREEN (1)
-            </h1>
+            </div>
         </div>
 
     );

@@ -54,7 +54,7 @@ function App() {
 
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path='/' element={<Home progress={progress} />} />
         <Route path='/first-minute' element={<FirstMinute />} />
