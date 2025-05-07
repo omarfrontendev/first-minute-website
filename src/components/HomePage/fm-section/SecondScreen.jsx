@@ -20,9 +20,9 @@ const SecondScreen = () => {
 
             // ON ENTER
             ScrollTrigger.create({
-                trigger: textRef.current,
-                start: "top 100%",
-                end: "bottom 50%",
+                trigger: ".second_screen",
+                start: "top 80%",
+                end: "bottom 100%",
                 toggleActions: "restart",
                 onEnter: () => {
                     gsap.fromTo(
@@ -60,16 +60,18 @@ const SecondScreen = () => {
 
     return (
 
-        <div id="text-fm-section" className="panel d-flex justify-content-center align-items-center">
+        <div id="text-fm-section" className="second_screen d-flex justify-content-center align-items-center">
             <div className="_fm-title-screen d-flex align-items-center justify-content-center">
-                <p className="_fm-text" ref={textRef}>
-                    {section_3.split(" ")
-                        .map((word, i) => (
-                            <span key={i} className="word" style={{ display: "inline-block", overflow: "hidden" }}>
-                                <span className="inner__word" style={{ display: "inline-block" }}>{word}&nbsp;</span>
-                            </span>
-                        ))}
-                </p>
+                <div ref={textRef} style={{ zIndex: 5 }}>
+                    <p className="_fm-text">
+                        {section_3.split(" ")
+                            .map((word, i) => (
+                                <span key={i} className="word" style={{ display: "inline-block", overflow: "hidden" }}>
+                                    <span className="inner__word" style={{ display: "inline-block" }}>{word}&nbsp;</span>
+                                </span>
+                            ))}
+                    </p>
+                </div>
             </div>
         </div>
     );

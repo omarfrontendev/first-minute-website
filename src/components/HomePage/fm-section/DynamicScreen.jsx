@@ -10,7 +10,7 @@ const DynamicScreen = ({ imgIndex, lastScreen }) => {
             trigger: `#img-${imgIndex + 1}`,
             start: "top 10%",
             end: "bottom 50%",
-            toggleActions: "restart none none none", // restart onEnter بس
+            toggleActions: "restart none none none",
             onEnterBack: () => {
                 const targetCard = cards?.[cards.length - (imgIndex + 2)];
                 if (!targetCard) return;

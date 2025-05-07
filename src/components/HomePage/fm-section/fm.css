@@ -12,8 +12,7 @@
     color: #1E1E1E;
     text-align: center;
     max-width: 1140px;
-    z-index: 1;
-    z-index: 3;
+    z-index: 10;
 }
 
 ._fm-cards {
@@ -64,20 +63,14 @@
 
 @media(max-width: 574px) {
     ._fm-text {
-        font-size: 18px;
+        font-size: 22px;
         line-height: normal;
-        max-width: 322px;
+        max-width: 100%;
+        padding: 0 18px;
     }
 
-}
-
-.screen3-container {
-    /* height: 200vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden; */
-    position: relative;
+    ._fm-cards .screen_card {
+        width: 150px;
+        height: 200px;
+    }
 }

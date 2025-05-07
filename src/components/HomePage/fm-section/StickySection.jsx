@@ -2,12 +2,11 @@ import React, { useEffect, useRef } from "react";
 import FirstScreen from "./FirstScreen";
 import SecondScreen from "./SecondScreen";
 import ThirdScreen from "./ThirdScreen";
-import FourthScreen from "./FourthScreen";
-import FifthScreen from "./FifthScreen";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import gsap from "gsap";
 import { useSelector } from "react-redux";
 import DynamicScreen from "./DynamicScreen";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "./StickySection.css";
 
@@ -18,6 +17,35 @@ const StickySection = () => {
   const { data: { section_4 } } = useSelector(state => state.home);
 
   useEffect(() => {
+
+    ScrollTrigger.create({
+      trigger: "#scroller",
+      start: "top 100%",
+      end: "bottom 20%",
+      toggleActions: "restart",
+      onEnter: () => {
+        gsap.to(window, {
+          duration: 0.5,
+          scrollTo: sectionRefs.current[0],
+          ease: "power2.out"
+        });
+      }
+    });
+
+    ScrollTrigger.create({
+      trigger: "#scroller",
+      start: "top 100%",
+      end: "bottom 20%",
+      toggleActions: "restart",
+      onEnterBack: () => {
+        gsap.to(window, {
+          duration: 0.5,
+          scrollTo: sectionRefs.current[sectionRefs.current?.length - 1],
+          ease: "power2.out"
+        });
+      }
+    });
+
     let currentIndex = 0;
     let isScrolling = false;
     let touchStartY = 0;
@@ -67,7 +95,6 @@ const StickySection = () => {
       const deltaY = touchStartY - touchEndY;
 
       // if (Math.abs(deltaY) < 50) return; // تجاهل السحبات الصغيرة
-
       if (deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
         // سحب لتحت
         currentIndex++;
@@ -92,13 +119,10 @@ const StickySection = () => {
     };
   }, []);
 
-
   const sections = [
     { component: FirstScreen },
     { component: SecondScreen },
     { component: ThirdScreen },
-    { component: FourthScreen },
-    { component: FifthScreen },
     ...section_4.images.slice(0, section_4.images.length - 1).map((_, i) => ({
       component: DynamicScreen,
       props: {

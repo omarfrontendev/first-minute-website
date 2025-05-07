@@ -1,0 +1,9 @@
+@media(max-width: 575px) {
+    .fm__footer_container ._fm-link {
+        font-size: 12px;
+    }
+
+    .fm__footer_container ._fm-logo {
+        width: 114px;
+    }
+}

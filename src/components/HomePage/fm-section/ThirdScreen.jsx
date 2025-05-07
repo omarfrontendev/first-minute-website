@@ -13,26 +13,62 @@ const ThirdScreen = () => {
 
     useGSAP(() => {
         const cards = gsap.utils.toArray(".screen_card");
+        const yOffsets = cards.map((_, index) => -50 + index * 15);
 
         // ON ENTER
         ScrollTrigger.create({
             trigger: ".third_screen",
-            start: "top 0%",
-            end: "bottom 100%",
+            start: "top 10%",
+            end: "bottom 80%",
             toggleActions: "restart",
             onEnter: () => {
-                cards.forEach((card, index) => {
-                    gsap.to(
-                        card,
-                        {
-                            duration: 0.3,
-                            ease: 'back.out(1.2)',
-                            delay: index * 0.2,
-                            top: "50%",                            // transform: "translate(-50%, -50%)",
-                            xPercent: -50,
-                            yPercent: -50 + index * 15,
-                        }
-                    );
+                const tl = gsap.timeline();
+                // gsap.set(cards, { rotateZ: 0, top: "120%", xPercent: -50 });
+                tl.to(cards, {
+                    duration: 0.3,
+                    ease: 'back.out(1.2)',
+                    top: "50%",
+                    yPercent: (i) => yOffsets[i],
+                    stagger: {
+                        each: 0.3,
+                    },
+                })
+
+                tl.to(cards, {
+                    duration: 0.3,
+                    ease: 'back.out(1.2)',
+                    top: "50%",
+                    yPercent: -50,
+                    stagger: {
+                        each: 0.3,
+                    },
+                })
+                tl.to(cards, {
+                    rotateZ: () => gsap.utils.random(-30, 30),
+                    duration: 0.3,
+                    ease: 'back.out(1.2)',
+                });
+            },
+        });
+
+        // onEterBack
+        ScrollTrigger.create({
+            trigger: ".third_screen",
+            start: "top 0%",
+            end: "bottom 30%",
+            toggleActions: "restart",
+            onEnterBack: () => {
+                const tl = gsap.timeline();
+                const targetCard = cards?.[cards.length - 1];
+
+                tl.to(targetCard, {
+                    y: "-125%",
+                    duration: 0.5
+                }).set(targetCard, {
+                    zIndex: 1
+                }).to(targetCard, {
+                    y: "0",
+                    duration: 0.5,
                 });
             },
         });
@@ -40,20 +76,27 @@ const ThirdScreen = () => {
         // onLeaveBack
         ScrollTrigger.create({
             trigger: ".third_screen",
-            start: "top 50%",
+            start: "top 20%",
             end: "bottom 100%",
             toggleActions: "restart",
             onLeaveBack: () => {
-                cards.forEach((card) => {
-                    gsap.to(
-                        card,
+                const tl = gsap.timeline();
 
-                        {
-                            yPercent: -50,
-                            top: "120%"
-                        }
-                    );
+                tl.to(cards, {
+                    rotateZ: 0,
+                    duration: 0.3,
+                    ease: 'back.out(1.2)',
                 });
+
+                tl.to(cards, {
+                    duration: 0.3,
+                    ease: 'back.out(1.2)',
+                    top: "120%",
+                    xPercent: -50,
+                    stagger: {
+                        each: 0.3,
+                    },
+                })
             },
         });
 
