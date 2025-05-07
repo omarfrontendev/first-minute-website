@@ -60,7 +60,7 @@ const FifthScreen = () => {
         });
 
         cards.forEach((card) => {
-            const randomRotate = gsap.utils.random(-20, 40);
+            const randomRotate = gsap.utils.random(-30, 30);
             tl.to(card, {
                 rotateZ: randomRotate,
                 ease: 'back.out(1.2)',

@@ -24,6 +24,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^6.30.0",
     "react-select": "^5.10.1",
+    "react-toastify": "^11.0.5",
     "smooth-scrollbar": "^8.8.4",
     "split-type": "^0.3.4",
     "swiper": "^11.2.6",

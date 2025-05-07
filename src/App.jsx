@@ -59,7 +59,7 @@ function App() {
         <Route path='/' element={<Home progress={progress} />} />
         <Route path='/first-minute' element={<FirstMinute />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

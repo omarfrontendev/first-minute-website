@@ -49,7 +49,7 @@ const Home = ({ progress }) => {
                         </div>
                     </div>
                     <StickySection />
-                    <ContactUs />
+                    <ContactUs services={services} />
                 </>
             )}
         </>

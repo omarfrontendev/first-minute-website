@@ -106,7 +106,6 @@ const LoadingScreen = ({ progress }) => {
         startAnimation && onStartAnimation();
     }, [startAnimation])
 
-
     useEffect(() => {
         if (progress !== null && progressNumRef.current) {
             const current = parseInt(progressNumRef.current.innerText, 10) || 0;

@@ -26,6 +26,8 @@ const ServiceCard = ({ title, text, image, color, id }) => {
         }
     }, []);
 
+    // 01152477609
+
     useGSAP(() => {
         if (window.innerWidth > 575) {
             if (linkRef.current && cardRef.current) {
@@ -38,7 +40,8 @@ const ServiceCard = ({ title, text, image, color, id }) => {
                 gsap.to([cardRef.current], {
                     height: hovered ? cardSize.height * 1.18 : cardSize.height,
                     paddingTop: hovered ? "46px" : "32px",
-                    duration: 0.4,
+                    duration: 0.6,
+                    ease: "elastic.out(2, 1.8)"
                 });
             }
         }

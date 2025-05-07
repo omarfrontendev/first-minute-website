@@ -1,37 +1,16 @@
 import { useEffect, useRef } from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import Input from '../../common/Input';
 import { useCountryCodes } from '../../../context/CountriesContext';
 import SelectDropdown from '../../common/SelectDropdown';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSettingsData } from '../../../redux/services/settings.services';
+import * as yup from "yup";
+import { toast } from 'react-toastify';
 import api from '../../../api';
 
 import './contact-us.css';
-
-const options = [
-    {
-        value: '1',
-        label: 'Service 1',
-        img: "country.flag",
-        code: "countryCode",
-    },
-    {
-        value: '2',
-        label: 'Service 2',
-        img: "country.flag",
-        code: "countryCode",
-    },
-    {
-        value: '3',
-        label: 'Service 3',
-        img: "country.flag",
-        code: "countryCode",
-    }
-]
-
 
 const schema = yup.object().shape({
     name: yup
@@ -42,6 +21,7 @@ const schema = yup.object().shape({
         .string()
         .required("رقم الهاتف مطلوب")
         .min(7, "رقم الهاتف يجب أن يحتوي على 7 أرقام على الأقل")
+        .max(15, "رقم الهاتف يجب ألا يزيد عن 15 رقمًا")
         .matches(
             /^(?:\(?\d{1,4}\)?[-\s]?)?\d{1,4}[-\s]?\d{1,4}[-\s]?\d{1,4}$/,
             "رقم الهاتف غير صحيح"),
@@ -53,15 +33,16 @@ const schema = yup.object().shape({
         .matches(
             /^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/,
             "البريد الإلكتروني غير صحيح"),
-    // message: yup.
-    //     string()
-    //     .required("الرسالة مطلوب")
-    //     .min(10, "يجب الا تقل الرسالة عن 10 أحرف"),
+    message: yup.
+        string()
+        .required("الرسالة مطلوب")
+        .min(10, "يجب الا تقل الرسالة عن 10 أحرف"),
     service_id: yup
         .string()
+        .required("عليك اختيار الخدمة اولا!")
 });
 
-const ContactUs = () => {
+const ContactUs = ({ services }) => {
     const { status, data: { contact_us_form_title, who_are_we_section, our_vision_section } } = useSelector(state => state.settings);
     const dispatch = useDispatch();
     const { countryCodes, isLoading } = useCountryCodes();
@@ -76,19 +57,24 @@ const ContactUs = () => {
         handleSubmit,
         watch,
         control,
+        reset,
         formState: { errors, isSubmitting },
     } = useForm({
         mode: "all",
         resolver: yupResolver(schema),
         defaultValues: {
             code: "+20",
-            // service_id: "1"
         }
     });
 
     const onSubmit = async (data) => {
         try {
-            await api.post(`contact-or-order-form`, data);
+            await api.post(`contact-or-order-form`, {
+                ...data,
+                phone: data.code + data.phone
+            });
+            toast.success("تم ارسال رسالتك بنجاح");
+            reset();
         } catch (err) {
             console.log(err)
         }
@@ -131,7 +117,12 @@ const ContactUs = () => {
                         <Input dir="ltr" register={register} name="phone" type='number' error={errors?.phone?.message} placeholder="500080009" label="رقم الجوال" />
                     </div>
                     <SelectDropdown
-                        options={options}
+                        options={services.map(service => {
+                            return {
+                                label: service.service_name,
+                                value: service.id,
+                            }
+                        })}
                         label="الخدمة"
                         placeholder="اختر الخدمة"
                         control={control}
