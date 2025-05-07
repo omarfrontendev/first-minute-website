@@ -19,48 +19,50 @@ const StickySection = () => {
 
   useEffect(() => {
     if (window.innerWidth <= 768) return;
-  
-    let currentIndex = 0;
+
+    let currentIndex = -1;
     let isScrolling = false;
-  
-    const scrollerEl = document.getElementById("scroller");
-  
-    const onWheel = (e) => {
+
+    const onScroll = () => {
       if (isScrolling) return;
-  
-      const scrollerRect = scrollerEl.getBoundingClientRect();
-      const isInView =
-        scrollerRect.top <= 0 && scrollerRect.bottom >= window.innerHeight;
-  
-      if (!isInView) return;
-  
-      isScrolling = true;
-  
-      // تحديد الاتجاه
-      if (e.deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
-        currentIndex++;
-      } else if (e.deltaY < 0 && currentIndex > 0) {
-        currentIndex--;
-      }
-  
-      gsap.to(window, {
-        duration: 0.5,
-        scrollTo: sectionRefs.current[currentIndex],
-        ease: "power2.out",
-        onComplete: () => {
-          isScrolling = false;
-        },
+
+      const windowCenter = window.innerHeight / 2;
+      let closestIndex = -1;
+      let closestDistance = Infinity;
+
+      sectionRefs.current.forEach((section, index) => {
+        if (!section) return;
+        const rect = section.getBoundingClientRect();
+        const sectionCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(sectionCenter - windowCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
       });
+
+      if (closestIndex !== -1 && closestIndex !== currentIndex) {
+        currentIndex = closestIndex;
+        isScrolling = true;
+
+        gsap.to(window, {
+          duration: 0.5,
+          scrollTo: sectionRefs.current[closestIndex],
+          ease: "power2.out",
+          onComplete: () => {
+            isScrolling = false;
+          },
+        });
+      }
     };
-  
-    window.addEventListener("wheel", onWheel, { passive: false });
-  
+
+    window.addEventListener("scroll", onScroll);
+
     return () => {
-      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
-  
-
 
   const sections = [
     { component: FirstScreen },
