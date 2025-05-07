@@ -66,7 +66,8 @@ const StickySection = () => {
     ...section_4.images.slice(0, section_4.images.length - 1).map((_, i) => ({
       component: DynamicScreen,
       props: { imgIndex: i, lastScreen: section_4.images.length - i === 2 }
-    }))];
+    }))
+  ];
 
   return (
     <div className="scroller position-relative" id="scroller">

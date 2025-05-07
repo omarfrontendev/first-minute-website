@@ -28,11 +28,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
-    width: 150px;
-    height: 200px;
-    /* width: 215px;
-    height: 334px; */
-    border-radius: 4px;
+    /* width: 150px;
+    height: 200px; */
+    width: 215px;
+    height: 334px;
+    border-radius: 34px;
     display: block;
 }
 

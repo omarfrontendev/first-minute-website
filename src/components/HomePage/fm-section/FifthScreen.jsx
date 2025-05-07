@@ -13,13 +13,14 @@ const FifthScreen = () => {
 
         ScrollTrigger.create({
             trigger: ".fifth_screen",
-            start: "top 0%",
+            start: "top 20%",
             end: "bottom 100%",
             toggleActions: "restart",
             onLeaveBack: () => {
                 cards.forEach((card) => {
                     gsap.to(card, {
                         rotateZ: 0,
+                        duration: 0.3,
                         ease: 'back.out(1.2)',
                     }, "<");
                 });

@@ -31,7 +31,7 @@ const ThirdScreen = () => {
                             delay: index * 0.2,
                             top: "50%",                            // transform: "translate(-50%, -50%)",
                             xPercent: -50,
-                            yPercent: -50 + index * 20,
+                            yPercent: -50 + index * 15,
                         }
                     );
                 });

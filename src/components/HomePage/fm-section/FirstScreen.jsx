@@ -16,10 +16,10 @@ const FirstScreen = () => {
         if (titleRef.current) {
             const innerWords = "#first_screen .inner-word";
 
-            // // ON Enter
+            // ON Enter
             ScrollTrigger.create({
                 trigger: ".fm_title",
-                start: "top 80%",
+                start: "top 100%",
                 end: "bottom 20%",
                 toggleActions: "restart",
                 onEnter: () => {
@@ -59,13 +59,14 @@ const FirstScreen = () => {
             ScrollTrigger.create({
                 trigger: ".fm_title",
                 start: "top 0%",
-                end: "bottom 50%",
+                end: "bottom 30%",
                 toggleActions: "restart",
                 onEnterBack: () => {
                     gsap.fromTo(innerWords, {
                         y: -80,
                         opacity: 0
                     }, {
+                        delay: .2,
                         y: 0,
                         opacity: 1,
                         stagger: 0.1,

@@ -9,10 +9,9 @@ gsap.registerPlugin(ScrollTrigger);
 const FourthScreen = () => {
 
     useGSAP(() => {
-        // ON ENTER Back
         ScrollTrigger.create({
             trigger: ".fourth_screen",
-            start: "top 0%",
+            start: "top 10%",
             end: "bottom 100%",
             toggleActions: "restart",
             onLeaveBack: () => {
@@ -24,7 +23,7 @@ const FourthScreen = () => {
                             ease: 'back.out(1.2)',
                             delay: index * 0.2,
                             xPercent: -50,
-                            yPercent: -50 + index * 20,
+                            yPercent: -50 + index * 15,
                         }
                     );
                 });
@@ -37,7 +36,7 @@ const FourthScreen = () => {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".fourth_screen",
-                start: "top 0%",
+                start: "top 10%",
                 end: "bottom 100%",
                 toggleActions: "restart",
             },

@@ -26,8 +26,6 @@ const ServiceCard = ({ title, text, image, color, id }) => {
         }
     }, []);
 
-    // 01152477609
-
     useGSAP(() => {
         if (window.innerWidth > 575) {
             if (linkRef.current && cardRef.current) {
