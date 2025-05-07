@@ -3,9 +3,17 @@
     z-index: 1;
     position: relative;
 }
+
+.standards-list {
+    gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
 .standard-card-box {
     flex: 1;
 }
+
 .standard-card {
     border-radius: 24px;
     color: #FFF;
@@ -48,10 +56,17 @@
     top: 0;
     left: 0;
     background-color: rgba(255, 247, 219, 1);
+    width: 184px;
+    height: 184px;
 }
 
 .standard-card-icon {
-    transform: translate(39px, 28px);
+    width: 184px;
+    object-fit: contain;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translate(30%, 30%);
 }
 
 .card-top-right-curve {
@@ -82,43 +97,6 @@
     border-bottom: 0;
 }
 
-/* @media(max-width: 1550px) {
-    .standard-card {
-        font-size: 20px;
-        margin-bottom: 8px;
-        height: 400px;
-    }
-
-    .standard-card-title {
-        font-weight: 800;
-        font-size: 22px;
-        margin-bottom: 8px;
-    }
-
-    .standard-card-content {
-        padding: 20px 20px 26px;
-    }
-
-    .standard-card-text {
-        max-width: 350px;
-    }
-} */
-
-/* @media(max-width: 1150px) {
-    .standard-card {
-        height: 350px;
-    }
-
-    .standard-card-icon-box img {
-        width: 120px;
-    }
-
-    .standard-card-content {
-        padding: 14px 18px 24px 12px;
-    }
-} */
-
-
 @media(max-width: 1199px) {
     ._fm-standards-container {
         padding: 0 0 44px;
@@ -128,22 +106,8 @@
         height: 335px;
     }
 
-    .standard-card-content {
-        /* padding: 24px 16px 32px; */
-    }
-
-    /* .standard-card-title {
-        font-size: 20px;
-        line-height: 30px;
-        margin-bottom: 12px;
-    } */
-    /* 
-    .standard-card-text {
-        font-size: 12px;
-    } */
-
-    .standard-card-icon-box img {
-        width: 130px;
+    .standard-card-icon-box {
+        height: 135px;
     }
 }
 
@@ -155,6 +119,7 @@
     .standard-card-box {
         flex-grow: 0;
     }
+
     .standard-card-box {
         flex-basis: calc(50% - 8px);
     }
@@ -184,27 +149,18 @@
     }
 
     .standards-list {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
 
     .standard-card {
-        /* height: auto; */
         flex-basis: 100%;
         flex-grow: 0;
-        /* width: 443px;
-        height: 463px; */
         max-width: 100%;
     }
 
     .standard-card-content {
-        /* height: 275px; */
         justify-content: flex-end;
         display: flex;
         flex-direction: column;
     }
-
-
-    /* .standard-card-icon-box img {
-        width: 100px;
-    } */
 }

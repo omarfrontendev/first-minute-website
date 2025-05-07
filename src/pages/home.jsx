@@ -6,19 +6,26 @@ import MainBgSectionImg from "../components/layout/main-bg-section";
 import Vector1 from '../assets/Vector-1.png';
 import Vector2 from '../assets/Vector.png';
 import StickySection from "../components/HomePage/fm-section/StickySection";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchHomeData } from "../redux/services/home.services";
+import { fetchServicesData } from "../redux/services/services.services";
+import { fetchStandardsData } from "../redux/services/standards.services";
 
 const Home = () => {
 
     const dispatch = useDispatch();
+    const { status } = useSelector(state => state.home);
+    const { status: sevicesStatus, data: services } = useSelector(state => state.services);
+    const { status: standardsStatus, data: { our_standards: standards } } = useSelector(state => state.standards);
 
     useEffect(() => {
         dispatch(fetchHomeData());
+        dispatch(fetchServicesData());
+        dispatch(fetchStandardsData());
     }, [dispatch]);
 
-    return (
+    if ([status, sevicesStatus, standardsStatus].every(s => s === "succeeded")) return (
         <>
             <MainBgSectionImg>
                 <div className="_fm-container">
@@ -32,14 +39,13 @@ const Home = () => {
                 <div className='services-bg-image-2'>
                     <img src={Vector2} alt="" />
                 </div>
-                <ServicesSection />
+                <ServicesSection services={services} />
                 <div className="_fm-container">
-                    <Standards />
+                    <Standards standards={standards} />
                 </div>
             </div>
             <StickySection />
             <ContactUs />
-            {/* <div style={{ height: "100vh" }}></div> */}
         </>
     );
 }

@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { useSelector } from "react-redux";
 
 import './fm.css';
 
@@ -9,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const FirstScreen = () => {
     const titleRef = useRef(null);
+    const { data: {section_2} } = useSelector(state => state.home);
 
     useGSAP(() => {
         if (titleRef.current) {
@@ -16,8 +18,8 @@ const FirstScreen = () => {
 
             // // ON Enter
             ScrollTrigger.create({
-                trigger: "#first_screen",
-                start: "top 80%", // أول ما يوصل 20% من الشاشة
+                trigger: ".fm_title",
+                start: "top 80%",
                 end: "bottom 20%",
                 toggleActions: "restart",
                 onEnter: () => {
@@ -25,35 +27,28 @@ const FirstScreen = () => {
                         y: 80,
                         opacity: 0,
                         stagger: 0.1,
-                        ease: 'back.out(1.2)',
                     }, {
                         delay: .2,
                         y: 0,
                         opacity: 1,
                         stagger: 0.1,
-                        ease: 'back.out(1.2)',
+                        duration: 0.3,
                     });
                 }
             });
 
-
             // ON Leave
             ScrollTrigger.create({
-                trigger: "#first_screen",
-                start: "top -10%",
+                trigger: ".fm_title",
+                start: "top 0%",
                 end: "bottom 100%",
                 toggleActions: "restart",
                 onLeave: () => {
-                    gsap.fromTo(innerWords, {
-                        y: 0,
-                        opacity: 1,
-                        stagger: 0.1,
-                        ease: 'back.out(1.2)',
-                    }, {
+                    gsap.to(innerWords, {
+                        delay: .5,
                         y: -80,
                         opacity: 0,
                         stagger: 0.1,
-                        ease: 'back.out(1.2)',
                         duration: 0.3,
                     });
                 }
@@ -62,9 +57,9 @@ const FirstScreen = () => {
 
             // ON Enter Back
             ScrollTrigger.create({
-                trigger: "#first_screen",
-                start: "top bottom",
-                end: "bottom 80%",
+                trigger: ".fm_title",
+                start: "top 0%",
+                end: "bottom 50%",
                 toggleActions: "restart",
                 onEnterBack: () => {
                     gsap.fromTo(innerWords, {
@@ -82,27 +77,27 @@ const FirstScreen = () => {
 
 
             // ON Leave Back
-            ScrollTrigger.create({
-                trigger: "#first_screen",
-                start: "top 20%",
-                end: "bottom bottom",
-                toggleActions: "restart",
-                onLeaveBack: () => {
-                    gsap.fromTo(innerWords, {
-                        y: 0,
-                        opacity: 1,
-                        stagger: 0.1,
-                        ease: 'back.out(1.2)',
-                        duration: 0.3,
-                    }, {
-                        y: 80,
-                        opacity: 0,
-                        stagger: 0.1,
-                        ease: 'back.out(1.2)',
-                        duration: 0.3,
-                    });
-                }
-            });
+            // ScrollTrigger.create({
+            //     trigger: ".fm_title",
+            //     start: "top 20%",
+            //     end: "bottom bottom",
+            //     toggleActions: "restart",
+            //     onLeaveBack: () => {
+            //         gsap.fromTo(innerWords, {
+            //             y: 0,
+            //             opacity: 1,
+            //             stagger: 0.1,
+            //             ease: 'back.out(1.2)',
+            //             duration: 0.3,
+            //         }, {
+            //             y: 80,
+            //             opacity: 0,
+            //             stagger: 0.1,
+            //             ease: 'back.out(1.2)',
+            //             duration: 0.3,
+            //         });
+            //     }
+            // });
 
         }
 
@@ -116,11 +111,11 @@ const FirstScreen = () => {
     return (
         <div id="first_screen" className="panel d-flex justify-content-center align-items-center">
             <div className="_fm-title-screen d-flex align-items-center justify-content-center h-100">
-                <h2 className="_fm-section-title text-center" ref={titleRef}>
-                    {title.split(" ")
+                <h2 className="_fm-section-title fm_title text-center" ref={titleRef}>
+                    {section_2.split(" ")
                         .map((word, i) => (
                             <span key={i} className="word" style={{ display: "inline-block", overflow: "hidden" }}>
-                                <span className="inner-word" style={{ display: "inline-block", opacity: 1 }}>{word}&nbsp;</span>
+                                <span className="inner-word" style={{ display: "inline-block" }}>{word}&nbsp;</span>
                             </span>
                         ))}
                 </h2>

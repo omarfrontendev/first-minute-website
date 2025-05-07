@@ -8,30 +8,39 @@ import SixthScreen from "./SixthScreen";
 import SeventhScreen from "./SeventhScreen";
 import EighthScreen from "./EighthScreen";
 import NinthScreen from "./NinthScreen";
-import { useLocation } from "react-router-dom";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import gsap from "gsap";
 
 import "./StickySection.css";
 
+gsap.registerPlugin(ScrollToPlugin);
+
 const StickySection = () => {
   const sectionRefs = useRef([]);
-  const { hash } = useLocation();
 
   useEffect(() => {
-    // if (hash) {
-    //   const targetSection = document.getElementById(hash);
-    //   if (targetSection) {
-    //     targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    //   }
-    //   return; // تجاهل باقي الكود لو فيه hash
-    // }
+    let direction = null;
+    let lastScrollTop = window.scrollY;
 
-    const observers = [];
+    const onScroll = () => {
+      const st = window.scrollY;
+      direction = st > lastScrollTop ? "down" : "up";
+      lastScrollTop = st <= 0 ? 0 : st;
+    };
 
-    sectionRefs.current.forEach((section) => {
+    window.addEventListener("scroll", onScroll);
+
+    const observers = sectionRefs.current.map((section, index) => {
+      if (!section) return null;
+
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            section.scrollIntoView({ behavior: "smooth", block: "start" });
+            gsap.to(window, {
+              duration: 0.5,
+              scrollTo: section,
+              ease: "none",
+            });
           }
         },
         {
@@ -39,22 +48,56 @@ const StickySection = () => {
         }
       );
 
-      if (section) {
-        observer.observe(section);
-        observers.push(observer);
-      }
+      observer.observe(section);
+      return observer;
     });
 
-    // Clean up
     return () => {
-      observers.forEach((observer) => observer.disconnect());
+      window.removeEventListener("scroll", onScroll);
+      observers.forEach((observer) => observer?.disconnect());
     };
-  }, [hash]);
+  }, []);
 
+
+  // const preventDefault = (e) => e.preventDefault();
+
+  // useEffect(() => {
+  //   const disableScroll = () => {
+  //     window.addEventListener('wheel', preventDefault, { passive: false });
+  //   };
+
+  //   const enableScroll = () => {
+  //     window.removeEventListener('wheel', preventDefault);
+  //   };
+
+  //   sectionRefs.current.forEach((section) => {
+  //     const observer = new IntersectionObserver(
+  //       ([entry]) => {
+  //         if (entry.isIntersecting) {
+  //           disableScroll();
+  //           gsap.to(window, {
+  //             duration: 0.5,
+  //             scrollTo: section,
+  //             onComplete: enableScroll,
+  //             ease: "none",
+  //           });
+  //         }
+  //       },
+  //       { threshold: [0.001, 1] }
+  //     );
+
+  //     observer.observe(section);
+  //   });
+
+  //   return () => {
+  //     enableScroll();
+  //   };
+  // }, []);
 
 
   const sections = [FirstScreen, SecondScreen, ThirdScreen,
-    FourthScreen, FifthScreen, SixthScreen, SeventhScreen, EighthScreen, NinthScreen
+    FourthScreen, FifthScreen,
+    //  SixthScreen, SeventhScreen, EighthScreen, NinthScreen
   ];
 
   return (

@@ -54,8 +54,8 @@ function App() {
 
   return (
     <>
-      <LoadingScreen progress={progress} />
-      <Header />
+      {/* <LoadingScreen progress={progress} /> */}
+      {/* <Header /> */}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/first-minute' element={<FirstMinute />} />

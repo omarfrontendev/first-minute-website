@@ -1,9 +1,13 @@
+import { useSelector } from 'react-redux';
 import ScrollDown from '../../common/ScrollDown';
 
 import './hero.css'
 
 const HeroSection = () => {
-    const text = "هنا، حيث تصبح البداية حكاية، والإبداع توقيعاً لكل لحظة"
+
+    const { data: { section_1 } } = useSelector(state => state.home);
+
+    // const text = "هنا، حيث تصبح البداية حكاية، والإبداع توقيعاً لكل لحظة"
 
     return (
         <div className="_fm-hero-section d-flex align-items-center justify-content-center position-relative ">
@@ -14,7 +18,7 @@ const HeroSection = () => {
                         fontKerning: "none"
                     }}
                 >
-                    {text.split(" ")
+                    {section_1?.split(" ")
                         .map((word, i) => (
                             <span key={i} className="word" style={{ display: "inline-block", overflow: "hidden" }}>
                                 <span className="inner-word" id={`innwe-word-${i}`} style={{ display: "inline-block" }}>{word}&nbsp;</span>

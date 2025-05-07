@@ -5,6 +5,7 @@ import { TextPlugin } from "gsap/TextPlugin";
 import gsap from 'gsap';
 
 import './loading.css';
+import { useSelector } from 'react-redux';
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -98,6 +99,7 @@ const onStartAnimation = () => {
 
 const LoadingScreen = ({ progress }) => {
     const [startAnimation, setStartAnimation] = useState(false);
+    const { status } = useSelector(state => state.home);
     const progressNumRef = useRef();
 
     useEffect(() => {
@@ -116,7 +118,7 @@ const LoadingScreen = ({ progress }) => {
                 snap: { innerText: 1 },
                 onUpdate: () => {
                     progressNumRef.current.innerText = `${Math.round(progressNumRef.current.innerText)}%`;
-                    if (progressNumRef.current.innerText === "100%") {
+                    if (progressNumRef.current.innerText === "100%" && status === "succeeded") {
                         setTimeout(() => {
                             setStartAnimation(true)
                         }, 1000);
@@ -124,7 +126,7 @@ const LoadingScreen = ({ progress }) => {
                 }
             });
         }
-    }, [progress]);
+    }, [progress, status]);
 
     return (
         <div className='overflow-hidden position-fixed h-100 w-100' style={{ zIndex: 10000000, pointerEvents: "none" }}>

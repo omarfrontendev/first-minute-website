@@ -1,5 +1,8 @@
 ._fm-title-screen {
     position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh
 }
 
 ._fm-text {
@@ -21,35 +24,14 @@
 
 ._fm-cards .screen_card {
     position: absolute;
-    top: 50%;
+    top: 120%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1;
     width: 150px;
     height: 200px;
     border-radius: 4px;
-    background-color: aquamarine;
     display: block;
-    z-index: 1;
-}
-
-.screen_card:nth-child(1) {
-    background-color: #FF6384;
-}
-
-.screen_card:nth-child(2) {
-    background-color: #36A2EB;
-}
-
-.screen_card:nth-child(3) {
-    background-color: #FFCE56;
-}
-
-.screen_card:nth-child(4) {
-    background-color: #4BC0C0;
-}
-
-.screen_card:nth-child(5) {
-    background-color: #9966FF;
 }
 
 #text-fm-section .inner__word {

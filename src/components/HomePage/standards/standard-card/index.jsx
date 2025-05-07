@@ -2,7 +2,7 @@ import '../standards.css';
 import Overlay from '../../../../assets/Rectangle_10.png';
 import { useRef, useState } from 'react';
 
-const StandardCard = ({ text, title, icon, backgroundColor, cover }) => {
+const StandardCard = ({ text, title, icon, backgroundColor}) => {
 
     const [transformStyle, setTransformStyle] = useState();
     const cardRef = useRef();
@@ -35,7 +35,7 @@ const StandardCard = ({ text, title, icon, backgroundColor, cover }) => {
                 <img className='standard-card-overlay' src={Overlay} alt="..." />
                 <div className='standard-card-content'>
                     <h4 className="standard-card-title">{title}</h4>
-                    <p className="standard-card-text">{text}</p>
+                    <p className="standard-card-text text-truncate-2 w-100">{text}</p>
                 </div>
                 <div className="standard-card-icon-box">
                     <img className="standard-card-icon" src={icon} alt="" />

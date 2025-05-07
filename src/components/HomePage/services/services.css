@@ -32,15 +32,21 @@
     overflow: hidden;
 }
 
+.service-card-text,
 #service-inner-word {
     opacity: 0;
     transform: translateY(100%);
     transition: .4s ease-in;
     filter: blur(3px);
     overflow: auto;
+    /* margin-bottom: -3px; */
+}
+
+#service-inner-word {
     margin-bottom: -3px;
 }
 
+._fm-service-card:hover .service-card-text,
 ._fm-service-card:hover #service-inner-word {
     filter: blur(0px);
     opacity: 1;

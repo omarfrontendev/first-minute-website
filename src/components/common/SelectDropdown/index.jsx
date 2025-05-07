@@ -3,7 +3,7 @@ import './selectDropdown.css';
 import { Controller } from "react-hook-form";
 
 const SelectDropdown = ({ options, name, label, error, placeholder, control, value, formatOptionLabel, isLoading }) => {
-
+    const isCode = name === "code";
     return (
         <div className='select__container w-100 position-relative'>
             <label className="label" htmlFor={name}>{label}</label>
@@ -20,7 +20,8 @@ const SelectDropdown = ({ options, name, label, error, placeholder, control, val
                         placeholder={placeholder}
                         options={options}
                         onChange={e => field.onChange(e.value)}
-                        classNamePrefix="my-select"
+                        classNamePrefix={`my-select`}
+                        className={isCode ? "my-select--ltr" : ""}
                         classNames={{
                             control: ({ isFocused }) => `my-control ${isFocused ? "focused" : ""}`,
                             option: ({ isFocused, isSelected }) =>

@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
+import { useSelector } from 'react-redux';
 
 import './fm.css';
 
@@ -11,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 const SecondScreen = () => {
 
     const textRef = useRef(null);
+    const { data: { section_3 } } = useSelector(state => state.home);
 
     useGSAP(() => {
         if (textRef.current) {
@@ -43,10 +45,11 @@ const SecondScreen = () => {
                 scrollTrigger: {
                     scrub: 1,
                     pin: true,
+                    // pinSpacing: false,
                     trigger: textRef.current,
                     start: "50% 50%",
                     endTrigger: ".scroller",
-                    end: "bottom 100%",
+                    end: "100% 50%",
                 },
             });
         }
@@ -56,7 +59,6 @@ const SecondScreen = () => {
         };
     });
 
-
     const text = "موعد الانطلاق ولحظة البداية والحسم، التوثّب لصنع التغيير وتدوين القيمة، الانتقال من نقطة الصفر إلى توهّج البدايات واللحظات الأولى، الدخول في نطاق الوقت والعبور نحو مساحات الإبداع، والكفاءة، والتأثير.ول دقيقة ... عنوان التميز";
 
     return (
@@ -64,13 +66,12 @@ const SecondScreen = () => {
         <div id="text-fm-section" className="panel d-flex justify-content-center align-items-center">
             <div className="_fm-title-screen d-flex align-items-center justify-content-center">
                 <p className="_fm-text" ref={textRef}>
-                    {text.split(" ")
+                    {section_3.split(" ")
                         .map((word, i) => (
                             <span key={i} className="word" style={{ display: "inline-block", overflow: "hidden" }}>
                                 <span className="inner__word" style={{ display: "inline-block" }}>{word}&nbsp;</span>
                             </span>
                         ))}
-                    {/* {text} */}
                 </p>
             </div>
         </div>

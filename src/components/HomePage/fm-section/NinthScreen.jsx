@@ -26,84 +26,84 @@ const NinthScreen = () => {
         return 0;
     }
 
-    useGSAP(() => {
-        const cards = gsap.utils.toArray(".screen_card");
+    // useGSAP(() => {
+    //     const cards = gsap.utils.toArray(".screen_card");
 
-        // ON ENTER
-        ScrollTrigger.create({
-            trigger: ".nine_screen",
-            start: "top 90%",
-            end: "bottom 80%",
-            onEnter: () => {
-                const tl = gsap.timeline();
+    //     // ON ENTER
+    //     ScrollTrigger.create({
+    //         trigger: ".nine_screen",
+    //         start: "top 90%",
+    //         end: "bottom 80%",
+    //         onEnter: () => {
+    //             const tl = gsap.timeline();
 
-                tl.to(cards[cards?.length - 4], {
-                    y: "-125%",
-                    duration: 0.5,
-                }).to(cards[cards?.length - 4], {
-                    zIndex: 0,
-                    y: "0",
-                    duration: 0.5,
-                }).to(".screen3-container", {
-                    position: "absolute",
-                    bottom: "0",
-                    top: "auto",
-                    left: "0",
-                });
+    //             tl.to(cards[cards?.length - 4], {
+    //                 y: "-125%",
+    //                 duration: 0.5,
+    //             }).to(cards[cards?.length - 4], {
+    //                 zIndex: 0,
+    //                 y: "0",
+    //                 duration: 0.5,
+    //             }).to(".screen3-container", {
+    //                 position: "absolute",
+    //                 bottom: "0",
+    //                 top: "auto",
+    //                 left: "0",
+    //             });
 
-                cards.forEach((card) => {
-                    const currentRotation = getCurrentRotation(card);
+    //             cards.forEach((card) => {
+    //                 const currentRotation = getCurrentRotation(card);
 
-                    tl.to(
-                        card,
-                        {
-                            position: "absolute",
-                            top: "auto",
-                            bottom: "0",
-                            transform: `translate(-50%, calc(-50vh + 50%)) rotate(${currentRotation}deg)`,
-                        },
-                        "<"
-                    );
-                });
-            },
-        });
+    //                 tl.to(
+    //                     card,
+    //                     {
+    //                         position: "absolute",
+    //                         top: "auto",
+    //                         bottom: "0",
+    //                         transform: `translate(-50%, calc(-50vh + 50%)) rotate(${currentRotation}deg)`,
+    //                     },
+    //                     "<"
+    //                 );
+    //             });
+    //         },
+    //     });
 
-        // ON LEAVE BACK
-        ScrollTrigger.create({
-            trigger: ".nine_screen",
-            start: "top 1%",
-            end: "bottom 99%",
-            toggleActions: "restart",
-            onLeaveBack: () => {
-                const tl = gsap.timeline();
+    //     // ON LEAVE BACK
+    //     ScrollTrigger.create({
+    //         trigger: ".nine_screen",
+    //         start: "top 1%",
+    //         end: "bottom 99%",
+    //         toggleActions: "restart",
+    //         onLeaveBack: () => {
+    //             const tl = gsap.timeline();
 
-                tl.to(".screen3-container", {
-                    position: "relative",
-                })
+    //             tl.to(".screen3-container", {
+    //                 position: "relative",
+    //             })
     
-                cards.forEach((card) => {
-                    // const currentRotation = getCurrentRotation(card);
-                    const randomRotate = gsap.utils.random(-40, 40);
+    //             cards.forEach((card) => {
+    //                 // const currentRotation = getCurrentRotation(card);
+    //                 const randomRotate = gsap.utils.random(-40, 40);
 
-                    tl.to(
-                        card,
-                        {
-                            rotateZ: randomRotate,
-                            position: "fixed",
-                            top: "50%",
-                            bottom: "auto",
-                            transform: `translate(-50%, -50%)`,
-                        },
-                        "<"
-                    );
-                });
-            },
-        });
+    //                 tl.to(
+    //                     card,
+    //                     {
+    //                         rotateZ: randomRotate,
+    //                         position: "fixed",
+    //                         top: "50%",
+    //                         bottom: "auto",
+    //                         transform: `translate(-50%, -50%)`,
+    //                     },
+    //                     "<"
+    //                 );
+    //             });
+    //         },
+    //     });
 
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
-    });
+    //     return () => {
+    //         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    //     };
+    // });
 
 
     return (

@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchHomeData } from "../services/home.services";
+import { fetchSettingsData } from "../services/settings.services";
 
-const homeSlice = createSlice({
-  name: "home",
+const settingsSlice = createSlice({
+  name: "settings",
   initialState: {
     data: {},
     status: "idle",
@@ -11,19 +11,19 @@ const homeSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchHomeData.pending, (state) => {
+      .addCase(fetchSettingsData.pending, (state) => {
         state.data = {};
         state.status = "loading";
       })
-      .addCase(fetchHomeData.fulfilled, (state, action) => {
+      .addCase(fetchSettingsData.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = action.payload;
       })
-      .addCase(fetchHomeData.rejected, (state, action) => {
+      .addCase(fetchSettingsData.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });
   },
 });
 
-export default homeSlice.reducer;
+export default settingsSlice.reducer;

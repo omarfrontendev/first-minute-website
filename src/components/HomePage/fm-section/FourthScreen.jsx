@@ -11,18 +11,20 @@ const FourthScreen = () => {
     useGSAP(() => {
         // ON ENTER Back
         ScrollTrigger.create({
-            trigger: ".forth_screen",
-            start: "top 10%",
-            end: "bottom 50%",
+            trigger: ".fourth_screen",
+            start: "top 0%",
+            end: "bottom 100%",
             toggleActions: "restart",
-            onEnterBack: () => {
+            onLeaveBack: () => {
                 cards.forEach((card, index) => {
                     gsap.to(
                         card,
                         {
                             duration: 0.3,
                             ease: 'back.out(1.2)',
-                            rotateZ: 0,
+                            delay: index * 0.2,
+                            xPercent: -50,
+                            yPercent: -50 + index * 20,
                         }
                     );
                 });
@@ -34,17 +36,14 @@ const FourthScreen = () => {
 
         const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: ".forth_screen",
-                start: "top 90%",
-                end: "bottom 80%",
+                trigger: ".fourth_screen",
+                start: "top 0%",
+                end: "bottom 100%",
                 toggleActions: "restart",
             },
         });
 
         tl.to(cards, {
-            top: "50%",
-            left: "50%",
-            xPercent: -50,
             yPercent: -50,
             stagger: 0.2,
             duration: 0.3,
@@ -58,7 +57,7 @@ const FourthScreen = () => {
 
 
     return (
-        <div className='forth_screen w-100 h-100'>
+        <div className='fourth_screen w-100 h-100'>
         </div>
     );
 };

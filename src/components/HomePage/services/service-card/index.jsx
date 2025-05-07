@@ -6,7 +6,7 @@ import { TextPlugin } from "gsap/TextPlugin";
 
 // gsap.registerPlugin(TextPlugin);
 
-const ServiceCard = ({ title, text, image, color }) => {
+const ServiceCard = ({ title, text, image, color, id }) => {
     const [hovered, setHovered] = useState(false);
     const [cardSize, setCardSize] = useState({ width: 0, height: 0 });
     const [linkSize, setLinkSize] = useState({ width: 0, height: 0 });
@@ -43,7 +43,7 @@ const ServiceCard = ({ title, text, image, color }) => {
             }
         }
     }, { dependencies: [hovered, cardSize, linkSize] });
-    
+
 
     return (
         <div
@@ -57,14 +57,14 @@ const ServiceCard = ({ title, text, image, color }) => {
             <div className="service-card-content">
                 <h4 className="serviec-card-title">{title}</h4>
                 <div className="overflow-hidden">
-                    <p className="service-card-text">
-                        {text.split(" ")
+                    <p className="service-card-text text-truncate-4">
+                        {/* {text.split(" ")
                             .map((word, i) => (
                                 <span key={i} style={{ display: "inline-block", overflow: "hidden" }}>
                                     <span id="service-inner-word" style={{ display: "inline-block" }}>{word}&nbsp;</span>
                                 </span>
-                            ))}
-                        {/* {text} */}
+                            ))} */}
+                        {text}
                     </p>
                 </div>
             </div>
