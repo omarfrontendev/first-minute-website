@@ -18,31 +18,31 @@ const StickySection = () => {
   const { data: { section_4 } } = useSelector(state => state.home);
 
   useEffect(() => {
-    if (window.innerWidth <= 768) return;
-  
+    // if (window.innerWidth <= 768) return;
+
     let currentIndex = 0;
     let isScrolling = false;
-  
+
     const scrollerEl = document.getElementById("scroller");
-  
+
     const onWheel = (e) => {
       if (isScrolling) return;
-  
+
       const scrollerRect = scrollerEl.getBoundingClientRect();
       const isInView =
         scrollerRect.top <= 0 && scrollerRect.bottom >= window.innerHeight;
-  
+
       if (!isInView) return;
-  
+
       isScrolling = true;
-  
+
       // تحديد الاتجاه
       if (e.deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
         currentIndex++;
       } else if (e.deltaY < 0 && currentIndex > 0) {
         currentIndex--;
       }
-  
+
       gsap.to(window, {
         duration: 0.5,
         scrollTo: sectionRefs.current[currentIndex],
@@ -52,14 +52,14 @@ const StickySection = () => {
         },
       });
     };
-  
+
     window.addEventListener("wheel", onWheel, { passive: false });
-  
+
     return () => {
       window.removeEventListener("wheel", onWheel);
     };
   }, []);
-  
+
 
 
   const sections = [
