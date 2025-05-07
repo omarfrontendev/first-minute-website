@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { LogoFav } from '../../../icons';
+import { LogoFav } from '../../icons';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from "gsap/TextPlugin";
 import gsap from 'gsap';
+import { useSelector } from 'react-redux';
 
 import './loading.css';
-import { useSelector } from 'react-redux';
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -129,7 +129,7 @@ const LoadingScreen = ({ progress }) => {
     }, [progress, status]);
 
     return (
-        <div className='overflow-hidden position-fixed h-100 w-100' style={{ zIndex: 10000000, pointerEvents: "none" }}>
+        <div className='overflow-hidden position-fixed h-100 w-100' style={{ zIndex: 10000000, pointerEvents: "none", top: 0 }}>
             <div className='loading-logo'>
                 <LogoFav />
             </div>

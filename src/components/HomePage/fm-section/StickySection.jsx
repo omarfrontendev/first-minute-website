@@ -6,10 +6,10 @@ import FourthScreen from "./FourthScreen";
 import FifthScreen from "./FifthScreen";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import gsap from "gsap";
-
-import "./StickySection.css";
 import { useSelector } from "react-redux";
 import DynamicScreen from "./DynamicScreen";
+
+import "./StickySection.css";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -57,42 +57,6 @@ const StickySection = () => {
     };
   }, []);
 
-
-  // const preventDefault = (e) => e.preventDefault();
-
-  // useEffect(() => {
-  //   const disableScroll = () => {
-  //     window.addEventListener('wheel', preventDefault, { passive: false });
-  //   };
-
-  //   const enableScroll = () => {
-  //     window.removeEventListener('wheel', preventDefault);
-  //   };
-
-  //   sectionRefs.current.forEach((section) => {
-  //     const observer = new IntersectionObserver(
-  //       ([entry]) => {
-  //         if (entry.isIntersecting) {
-  //           disableScroll();
-  //           gsap.to(window, {
-  //             duration: 0.5,
-  //             scrollTo: section,
-  //             onComplete: enableScroll,
-  //             ease: "none",
-  //           });
-  //         }
-  //       },
-  //       { threshold: [0.001, 1] }
-  //     );
-
-  //     observer.observe(section);
-  //   });
-
-  //   return () => {
-  //     enableScroll();
-  //   };
-  // }, []);
-
   const sections = [
     { component: FirstScreen },
     { component: SecondScreen },
@@ -101,7 +65,7 @@ const StickySection = () => {
     { component: FifthScreen },
     ...section_4.images.slice(0, section_4.images.length - 1).map((_, i) => ({
       component: DynamicScreen,
-      props: { imgIndex: i }
+      props: { imgIndex: i, lastScreen: section_4.images.length - i === 2 }
     }))];
 
   return (

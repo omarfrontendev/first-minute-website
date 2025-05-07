@@ -2,7 +2,8 @@ import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
-const DynamicScreen = ({ imgIndex }) => {
+const DynamicScreen = ({ imgIndex, lastScreen }) => {
+
 
     useGSAP(() => {
         const cards = gsap.utils.toArray(".screen_card");
@@ -15,7 +16,7 @@ const DynamicScreen = ({ imgIndex }) => {
                 const targetCard = cards?.[cards.length - (imgIndex + 2)];
                 if (!targetCard) return;
 
-                gsap.timeline()
+                !lastScreen && gsap.timeline()
                     .to(targetCard, {
                         y: "-125%",
                         duration: 0.5

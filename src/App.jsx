@@ -3,10 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Home from './pages/home';
 import FirstMinute from './pages/first-minute';
-import LoadingScreen from './components/common/LoadingScreen';
+import Footer from './components/layout/Footer';
 
 import './styles/global.css';
-import Footer from './components/layout/Footer';
 
 function App() {
   const [progress, setProgress] = useState(null);
@@ -55,10 +54,9 @@ function App() {
 
   return (
     <>
-      <LoadingScreen progress={progress} />
       <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home progress={progress} />} />
         <Route path='/first-minute' element={<FirstMinute />} />
       </Routes>
       <Footer />

@@ -11,8 +11,9 @@ import { useEffect } from "react";
 import { fetchHomeData } from "../redux/services/home.services";
 import { fetchServicesData } from "../redux/services/services.services";
 import { fetchStandardsData } from "../redux/services/standards.services";
+import LoadingScreen from "../components/LoadingScreen";
 
-const Home = () => {
+const Home = ({ progress }) => {
 
     const dispatch = useDispatch();
     const { status } = useSelector(state => state.home);
@@ -25,29 +26,34 @@ const Home = () => {
         dispatch(fetchStandardsData());
     }, [dispatch]);
 
-    if ([status, sevicesStatus, standardsStatus].every(s => s === "succeeded")) return (
+    return (
         <>
-            <MainBgSectionImg>
-                <div className="_fm-container">
-                    <HeroSection />
-                </div>
-            </MainBgSectionImg>
-            <div className="position-relative overflow-hidden">
-                <div className='services-bg-image-1'>
-                    <img src={Vector1} alt="" />
-                </div>
-                <div className='services-bg-image-2'>
-                    <img src={Vector2} alt="" />
-                </div>
-                <ServicesSection services={services} />
-                <div className="_fm-container">
-                    <Standards standards={standards} />
-                </div>
-            </div>
-            <StickySection />
-            <ContactUs />
+            <LoadingScreen progress={progress} />
+            {[status, sevicesStatus, standardsStatus].every(s => s === "succeeded") && (
+                <>
+                    <MainBgSectionImg>
+                        <div className="_fm-container">
+                            <HeroSection />
+                        </div>
+                    </MainBgSectionImg>
+                    <div className="position-relative overflow-hidden">
+                        <div className='services-bg-image-1'>
+                            <img src={Vector1} alt="" />
+                        </div>
+                        <div className='services-bg-image-2'>
+                            <img src={Vector2} alt="" />
+                        </div>
+                        <ServicesSection services={services} />
+                        <div className="_fm-container">
+                            <Standards standards={standards} />
+                        </div>
+                    </div>
+                    <StickySection />
+                    <ContactUs />
+                </>
+            )}
         </>
-    );
+    )
 }
 
 export default Home;

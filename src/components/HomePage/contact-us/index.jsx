@@ -7,9 +7,9 @@ import { useCountryCodes } from '../../../context/CountriesContext';
 import SelectDropdown from '../../common/SelectDropdown';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSettingsData } from '../../../redux/services/settings.services';
+import api from '../../../api';
 
 import './contact-us.css';
-import api from '../../../api';
 
 const options = [
     {
@@ -88,40 +88,11 @@ const ContactUs = () => {
 
     const onSubmit = async (data) => {
         try {
-
-            const response = await api.post(`contact-or-order-form`, data);
-            console.log(response);
-
+            await api.post(`contact-or-order-form`, data);
         } catch (err) {
             console.log(err)
         }
     };
-
-    // useEffect(() => {
-    //     const section = sectionRef.current;
-
-    //     const observer = new IntersectionObserver(
-    //         ([entry]) => {
-    //             if (entry.isIntersecting) {
-    //                 // Scroll بعد وقت معين لما العنصر يبقى ظاهر
-    //                 setTimeout(() => {
-    //                     section?.scrollIntoView({ behavior: "smooth", block: "start" });
-    //                 }, 500); // وقت التمرير بعد التقاطع
-    //             }
-    //         },
-    //         {
-    //             threshold: [0.001],
-    //         }
-    //     );
-
-    //     if (section) {
-    //         observer.observe(section);
-    //     }
-
-    //     return () => {
-    //         if (section) observer.unobserve(section);
-    //     };
-    // }, []);
 
     if (status === "succeeded") return (
         <section className='_fm-contact-us main_bg_color' ref={sectionRef}>
