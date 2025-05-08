@@ -16,43 +16,44 @@ const SecondScreen = () => {
         const innerWords = ".text-fm-section .inner-word";
 
         // ON ENTER
-        ScrollTrigger.create({
-            trigger: "#second_screen",
-            start: "top 80%",
-            end: "bottom 100%",
-            scroller: "#scroller",
-            toggleActions: "restart",
-            onEnter: () => {
-                gsap.fromTo(
-                    innerWords,
-                    {
-                        y: 200,
-                        opacity: 0,
-                        duration: .6,
-                    },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        duration: .6,
-                    }
-                );
-            },
-        });
-
-        // gsap.timeline({
-        //     scrollTrigger: {
-        //         trigger: "#second_screen",
-        //         endTrigger: "#img-5",
-        //         start: "top top",
-        //         end: "bottom bottom", // لحظة خروج img-5 من الشاشة
-        //         scroller: "#scroller",
-        //         pin: true,
-        //         pinSpacing: false,
-        //         scrub: 1,
-        //         pinType: "transform",
-        //         markers: true,
-        //     }
+        // ScrollTrigger.create({
+        //     trigger: "#second_screen",
+        //     start: "top 80%",
+        //     end: "bottom 100%",
+        //     scroller: "#scroller",
+        //     toggleActions: "restart",
+        //     onEnter: () => {
+        //         gsap.fromTo(
+        //             innerWords,
+        //             {
+        //                 y: 200,
+        //                 opacity: 0,
+        //                 duration: .6,
+        //             },
+        //             {
+        //                 y: 0,
+        //                 opacity: 1,
+        //                 duration: .6,
+        //             }
+        //         );
+        //     },
         // });
+
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#second_screen",
+                endTrigger: "#img-5",
+                start: "top top",
+                // end: "bottom bottom", // لحظة خروج img-5 من الشاشة
+                end: "+=300%", // هنا هينتهي الـ pin بعد ما تمشي 3 سكرينات
+                scroller: "#scroller",
+                pin: true,
+                pinSpacing: false,
+                scrub: 1,
+                pinType: "transform",
+                markers: true,
+            }
+        });
 
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
