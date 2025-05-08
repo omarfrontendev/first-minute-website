@@ -136,7 +136,6 @@ const StickySection = () => {
   return (
     <section className="scroller position-relative" id="scroller">
         {screens.map(({ component: Component, props }, index) => (
-            // <div key={index} className="screen d-flex align-items-center justify-content-center w-100">
             <div key={index} className="screen w-100">
               <Component {...props} />
             </div>

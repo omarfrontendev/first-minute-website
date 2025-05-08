@@ -12,6 +12,10 @@
   overflow-x: hidden;
   scroll-snap-type: y mandatory; /* لو لسه بتستخدمه */
   position: relative; /* مهم لـ pin */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none; /* يمنع الباونسينغ في iOS */
+  will-change: transform; /* تحسين البيرفورمانس */
 }
 
 .screen {
