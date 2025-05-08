@@ -39,32 +39,20 @@ const SecondScreen = () => {
             },
         });
 
-        gsap.timeline({
-            // scrollTrigger: {
-            //     trigger: "#second_screen",
-            //     endTrigger: "#img-5",
-            //     scroller: "#scroller",
-            //     start: "50% 50%",
-            //     markers: true,
-            //     end: "bottom bottom",
-            //     pin: true,
-            //     pinSpacing: false,
-            //     scrub: 1,
-            //     pinType: "transform", // ✅ أضف السطر ده
-            // },
-            scrollTrigger: {
-                trigger: "#second_screen",
-                endTrigger: "#img-5",
-                start: "top top",
-                end: "bottom bottom", // لحظة خروج img-5 من الشاشة
-                scroller: "#scroller",
-                pin: true,
-                pinSpacing: false,
-                scrub: 1,
-                pinType: "transform",
-                markers: true,
-            }
-        });
+        // gsap.timeline({
+        //     scrollTrigger: {
+        //         trigger: "#second_screen",
+        //         endTrigger: "#img-5",
+        //         start: "top top",
+        //         end: "bottom bottom", // لحظة خروج img-5 من الشاشة
+        //         scroller: "#scroller",
+        //         pin: true,
+        //         pinSpacing: false,
+        //         scrub: 1,
+        //         pinType: "transform",
+        //         markers: true,
+        //     }
+        // });
 
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
