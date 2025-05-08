@@ -19,6 +19,7 @@ const FirstScreen = () => {
             // ON Enter
             ScrollTrigger.create({
                 trigger: "#first_screen",
+                scroller: "#scroller",
                 start: "top 80%",
                 end: "bottom 100%",
                 toggleActions: "restart",
@@ -28,7 +29,6 @@ const FirstScreen = () => {
                         opacity: 0,
                         stagger: 0.1,
                     }, {
-                        delay: .2,
                         y: 0,
                         opacity: 1,
                         stagger: 0.1,
@@ -40,12 +40,12 @@ const FirstScreen = () => {
             // ON Leave
             ScrollTrigger.create({
                 trigger: ".fm_title",
+                scroller: "#scroller",
                 start: "top 0%",
                 end: "bottom 100%",
                 toggleActions: "restart",
                 onLeave: () => {
                     gsap.to(innerWords, {
-                        delay: .5,
                         y: -80,
                         opacity: 0,
                         stagger: 0.1,
@@ -58,6 +58,7 @@ const FirstScreen = () => {
             // ON Enter Back
             ScrollTrigger.create({
                 trigger: ".fm_title",
+                scroller: "#scroller",
                 start: "top 0%",
                 end: "bottom 30%",
                 toggleActions: "restart",

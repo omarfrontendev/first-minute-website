@@ -13,7 +13,7 @@ const ThirdScreen = () => {
 
     useGSAP(() => {
         const cards = gsap.utils.toArray(".screen_card");
-        const yOffsets = cards.map((_, index) => -50 + index * 15);
+        // const yOffsets = cards.map((_, index) => -50 + index * 15);
 
         // ON ENTER
         ScrollTrigger.create({
@@ -21,26 +21,16 @@ const ThirdScreen = () => {
             start: "top 10%",
             end: "bottom 80%",
             toggleActions: "restart",
+            scroller: "#scroller",
             onEnter: () => {
                 const tl = gsap.timeline();
-                // gsap.set(cards, { rotateZ: 0, top: "120%", xPercent: -50 });
                 tl.to(cards, {
                     duration: 0.3,
-                    ease: 'back.out(1.2)',
+                    ease: 'linear',
                     top: "50%",
-                    yPercent: (i) => yOffsets[i],
+                    transform: "translate(-50%, -50%)",
                     stagger: {
-                        each: 0.3,
-                    },
-                })
-
-                tl.to(cards, {
-                    duration: 0.3,
-                    ease: 'back.out(1.2)',
-                    top: "50%",
-                    yPercent: -50,
-                    stagger: {
-                        each: 0.3,
+                        each: 0.1,
                     },
                 })
                 tl.to(cards, {
@@ -49,65 +39,68 @@ const ThirdScreen = () => {
                     ease: 'back.out(1.2)',
                 });
             },
-        });
-
-        // onEterBack
-        ScrollTrigger.create({
-            trigger: ".third_screen",
-            start: "top 0%",
-            end: "bottom 30%",
-            toggleActions: "restart",
-            onEnterBack: () => {
-                const tl = gsap.timeline();
-                const targetCard = cards?.[cards.length - 1];
-
-                tl.to(targetCard, {
-                    y: "-125%",
-                    duration: 0.5
-                }).set(targetCard, {
-                    zIndex: 1
-                }).to(targetCard, {
-                    y: "0",
-                    duration: 0.5,
-                });
-            },
-        });
-
-        // onLeaveBack
-        ScrollTrigger.create({
-            trigger: ".third_screen",
-            start: "top 20%",
-            end: "bottom 100%",
-            toggleActions: "restart",
             onLeaveBack: () => {
                 const tl = gsap.timeline();
-
                 tl.to(cards, {
-                    rotateZ: 0,
+                    rotateZ: 0, // ترجعهم للوضع الطبيعي
                     duration: 0.3,
-                    ease: 'back.out(1.2)',
+                    ease: 'linear',
                 });
-
                 tl.to(cards, {
+                    top: "100%", // أو المكان اللي كانوا فيه قبل الدخول
+                    transform: "translate(-50%, 0%)", // تراجع الترانسليت Y
                     duration: 0.3,
-                    ease: 'back.out(1.2)',
-                    top: "120%",
-                    xPercent: -50,
+                    ease: 'linear',
                     stagger: {
-                        each: 0.3,
+                        each: 0.1,
                     },
-                })
+                });
             },
         });
+
+        // // onLeaveBack
+        // ScrollTrigger.create({
+        //     trigger: ".third_screen",
+        //     start: "top 20%",
+        //     end: "bottom 140%",
+        //     toggleActions: "restart",
+        //     scroller: "#scroller",
+        //     markers: true,
+        //     onLeaveBack: () => {
+        //         const tl = gsap.timeline();
+
+        //         tl.to(cards, {
+        //             rotateZ: 0,
+        //             duration: 0.3,
+        //             ease: 'back.out(1.2)',
+        //         });
+
+        //         cards.forEach((_, index) => {
+        //             tl.to(cards, {
+        //                 duration: 0.3,
+        //                 ease: 'back.out(1.2)',
+        //                 top: "120%",
+        //                 transform: `translate(-50%, -${5 - (index + 1) * 10}%)`,
+        //                 // transform: `translate(-50%, -50%)`,
+        //                 stagger: {
+        //                     each: 0.3,
+        //                 },
+        //             })
+        //         });
+        //     },
+        // });
 
         gsap.timeline({
             scrollTrigger: {
-                scrub: 1,
-                pin: true,
-                trigger: "._fm-cards",
+                trigger: ".third_screen",
+                endTrigger: "#img-5",
+                scroller: "#scroller",
                 start: "50% 50%",
-                endTrigger: ".scroller",
-                end: "100% 90%",
+                end: "100% 100%",
+                pin: true,
+                pinSpacing: false,
+                scrub: 1,
+                pinType: "transform", // ✅ أضف السطر ده
             },
         });
 

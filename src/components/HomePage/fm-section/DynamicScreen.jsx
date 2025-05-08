@@ -11,6 +11,7 @@ const DynamicScreen = ({ imgIndex, lastScreen }) => {
             start: "top 10%",
             end: "bottom 50%",
             toggleActions: "restart none none none",
+            scroller: "#scroller",
             onEnterBack: () => {
                 const targetCard = cards?.[cards.length - (imgIndex + 2)];
                 if (!targetCard) return;
@@ -37,6 +38,7 @@ const DynamicScreen = ({ imgIndex, lastScreen }) => {
                 start: "top 90%",
                 end: "bottom 80%",
                 toggleActions: "restart",
+                scroller: "#scroller",
             },
         });
 
@@ -55,6 +57,8 @@ const DynamicScreen = ({ imgIndex, lastScreen }) => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         };
     });
+
+    console.log(`img-${imgIndex + 1}`)
 
     return (
         <div id={`img-${imgIndex + 1}`}>

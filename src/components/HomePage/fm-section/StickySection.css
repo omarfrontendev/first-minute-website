@@ -4,9 +4,18 @@
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  overflow: hidden;
 }
 
-.full-height-section__item {
+#scroller {
   height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory; /* لو لسه بتستخدمه */
+  position: relative; /* مهم لـ pin */
+}
+
+.screen {
+  height: 100vh;
+  scroll-snap-align: start;
+  flex-shrink: 0;
 }

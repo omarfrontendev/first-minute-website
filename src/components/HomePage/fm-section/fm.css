@@ -5,6 +5,10 @@
     height: 100vh
 }
 
+.second_screen {
+    z-index: 1;
+}
+
 ._fm-text {
     font-weight: 800;
     font-size: 48px;
@@ -19,6 +23,7 @@
     position: relative;
     width: 100%;
     height: 100%;
+    z-index: -1;
 }
 
 ._fm-cards .screen_card {
@@ -27,6 +32,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
+    /* top: 50%; */
     /* width: 150px;
     height: 200px; */
     width: 215px;
@@ -35,7 +41,27 @@
     display: block;
 }
 
-#text-fm-section .inner__word {
+._fm-cards .screen_card:nth-child(1) {
+    transform: translate(-50%, -50%);
+    background-color: antiquewhite;
+}
+
+._fm-cards .screen_card:nth-child(2) {
+    transform: translate(-50%, -40%);
+    background-color: aqua;
+}
+
+._fm-cards .screen_card:nth-child(3) {
+    transform: translate(-50%, -30%);
+    background-color: cadetblue;
+}
+
+._fm-cards .screen_card:nth-child(4) {
+    transform: translate(-50%, -20%);
+    background-color: blueviolet;
+}
+
+.text-fm-section .inner__word {
     overflow: auto;
     margin-bottom: -18px;
 }
