@@ -1,11 +1,12 @@
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
 import { useSelector } from 'react-redux';
 
 import './fm.css';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 ScrollTrigger.defaults({
     scroller: "#scroller",
@@ -69,16 +70,32 @@ const SecondScreen = () => {
         //     }
         // });
 
+        ScrollTrigger.create({
+            trigger: "#second_screen",
+            start: "top 100%",
+            end: "bottom 100%",
+            toggleActions: "restart",
+            scroller: 'body',
+            onEnter: () => {
+                console.log("Enter")
+                gsap.to(window, {
+                    scrollTo: { y: "#second_screen", offsetY: 0 },
+                });
+            },
+        });
+
         gsap.timeline({
             scrollTrigger: {
-                trigger: "#second_screen ._fm-text",
-                start: "50% 50%",
-                end: "+=500%",
-                pin: true,
-                scrub: 1,
-                markers: true,
+              trigger: "#second_screen ._fm-text",
+              start: "50% 50%",
+              end: "+=5000vh", // ✅ دي بتخلي الـ pin يستمر 500vh
+              pin: true,
+              pinSpacer: false,
+              scrub: 1,
+              markers: true,
+              scroller: "body", // ✅ أو احذفها خالص لو بتسكرول على window
             }
-        });
+          });
 
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
