@@ -7,6 +7,10 @@ import './fm.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+ScrollTrigger.defaults({
+    scroller: "#scroller",
+});
+
 
 const SecondScreen = () => {
 
@@ -39,28 +43,39 @@ const SecondScreen = () => {
         //     },
         // });
 
+        // gsap.timeline({
+        //     scrollTrigger: {
+        //         // trigger: "#second_screen",
+        //         // // endTrigger: "#img-5",
+        //         // start: "top top",
+        //         // // end: "bottom bottom", // لحظة خروج img-5 من الشاشة
+        //         // end: "+=500%", // هنا هينتهي الـ pin بعد ما تمشي 3 سكرينات
+        //         // scroller: "#scroller",
+        //         // pin: true,
+        //         // pinSpacing: true,
+        //         // scrub: 1,
+        //         // // pinType: "transform",
+        //         // markers: true,
+
+        //         // scroller: "#scroller",
+        //         scrub: 1,
+        //         pin: true,
+        //         trigger: "#second_screen ._fm-text",
+        //         start: "50% 50%",
+        //         endTrigger: ".scroller",
+        //         // end: "100% 90%",
+        //         end: "+=500%", // هنا هينتهي الـ pin بعد ما تمشي 3 سكرينات
+        //         markers: true,
+        //     }
+        // });
+
         gsap.timeline({
             scrollTrigger: {
-                // trigger: "#second_screen",
-                // // endTrigger: "#img-5",
-                // start: "top top",
-                // // end: "bottom bottom", // لحظة خروج img-5 من الشاشة
-                // end: "+=500%", // هنا هينتهي الـ pin بعد ما تمشي 3 سكرينات
-                // scroller: "#scroller",
-                // pin: true,
-                // pinSpacing: true,
-                // scrub: 1,
-                // // pinType: "transform",
-                // markers: true,
-
-                // scroller: "#scroller",
-                scrub: 1,
-                pin: true,
                 trigger: "#second_screen ._fm-text",
                 start: "50% 50%",
-                endTrigger: ".scroller",
-                // end: "100% 90%",
-                end: "+=500%", // هنا هينتهي الـ pin بعد ما تمشي 3 سكرينات
+                end: "+=500%",
+                pin: true,
+                scrub: 1,
                 markers: true,
             }
         });
