@@ -12,69 +12,68 @@ const SecondScreen = () => {
 
     const { data: { section_3 } } = useSelector(state => state.home);
 
-    useGSAP(() => {
-        const innerWords = ".text-fm-section .inner-word";
+    // useGSAP(() => {
+    //     const innerWords = ".text-fm-section .inner-word";
 
-        // ON ENTER
-        ScrollTrigger.create({
-            trigger: "#second_screen",
-            start: "top 80%",
-            end: "bottom 100%",
-            scroller: "#scroller",
-            toggleActions: "restart",
-            onEnter: () => {
-                gsap.fromTo(
-                    innerWords,
-                    {
-                        y: 200,
-                        opacity: 0,
-                        duration: .6,
-                    },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        duration: .6,
-                    }
-                );
-            },
-        });
+    //     // ON ENTER
+    //     ScrollTrigger.create({
+    //         trigger: "#second_screen",
+    //         start: "top 80%",
+    //         end: "bottom 100%",
+    //         scroller: "#scroller",
+    //         toggleActions: "restart",
+    //         onEnter: () => {
+    //             gsap.fromTo(
+    //                 innerWords,
+    //                 {
+    //                     y: 200,
+    //                     opacity: 0,
+    //                     duration: .6,
+    //                 },
+    //                 {
+    //                     y: 0,
+    //                     opacity: 1,
+    //                     duration: .6,
+    //                 }
+    //             );
+    //         },
+    //     });
 
-        gsap.timeline({
-            // scrollTrigger: {
-            //     trigger: "#second_screen",
-            //     endTrigger: "#img-5",
-            //     scroller: "#scroller",
-            //     start: "50% 50%",
-            //     markers: true,
-            //     end: "bottom bottom",
-            //     pin: true,
-            //     pinSpacing: false,
-            //     scrub: 1,
-            //     pinType: "transform", // ✅ أضف السطر ده
-            // },
-            scrollTrigger: {
-                trigger: "#second_screen",
-                endTrigger: "#img-5",
-                start: "top top",
-                end: "bottom bottom", // لحظة خروج img-5 من الشاشة
-                scroller: "#scroller",
-                pin: true,
-                pinSpacing: false,
-                scrub: 1,
-                pinType: "transform",
-                markers: true,
-            }
-        });
+    //     gsap.timeline({
+    //         // scrollTrigger: {
+    //         //     trigger: "#second_screen",
+    //         //     endTrigger: "#img-5",
+    //         //     scroller: "#scroller",
+    //         //     start: "50% 50%",
+    //         //     markers: true,
+    //         //     end: "bottom bottom",
+    //         //     pin: true,
+    //         //     pinSpacing: false,
+    //         //     scrub: 1,
+    //         //     pinType: "transform", // ✅ أضف السطر ده
+    //         // },
+    //         scrollTrigger: {
+    //             trigger: "#second_screen",
+    //             endTrigger: "#img-5",
+    //             start: "top top",
+    //             end: "bottom bottom", // لحظة خروج img-5 من الشاشة
+    //             scroller: "#scroller",
+    //             pin: true,
+    //             pinSpacing: false,
+    //             scrub: 1,
+    //             pinType: "transform",
+    //             markers: true,
+    //         }
+    //     });
 
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
-    });
-
+    //     return () => {
+    //         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    //     };
+    // });
 
     return (
         <div id="second_screen" className="panel second_screen d-flex justify-content-center align-items-center">
-            <div className="text-fm-section _fm-title-screen d-flex align-items-center justify-content-center h-100">
+            {/* <div className="text-fm-section _fm-title-screen d-flex align-items-center justify-content-center h-100">
                 <p className="_fm-text text-center">
                     {section_3.split(" ")
                         .map((word, i) => (
@@ -83,7 +82,8 @@ const SecondScreen = () => {
                             </span>
                         ))}
                 </p>
-            </div>
+            </div> */}
+            SCREEN 2
         </div>
 
     );
