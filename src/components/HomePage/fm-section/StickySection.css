@@ -18,6 +18,10 @@
   will-change: transform; /* تحسين البيرفورمانس */
 }
 
+#scroller.is-pinning {
+  scroll-snap-type: none !important;
+}
+
 .screen {
   height: 100vh;
   scroll-snap-align: start;
