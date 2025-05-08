@@ -41,16 +41,26 @@ const SecondScreen = () => {
 
         gsap.timeline({
             scrollTrigger: {
-                trigger: "#second_screen",
-                // endTrigger: "#img-5",
-                start: "top top",
-                // end: "bottom bottom", // لحظة خروج img-5 من الشاشة
-                end: "+=500%", // هنا هينتهي الـ pin بعد ما تمشي 3 سكرينات
-                scroller: "#scroller",
-                pin: true,
-                pinSpacing: false,
+                // trigger: "#second_screen",
+                // // endTrigger: "#img-5",
+                // start: "top top",
+                // // end: "bottom bottom", // لحظة خروج img-5 من الشاشة
+                // end: "+=500%", // هنا هينتهي الـ pin بعد ما تمشي 3 سكرينات
+                // scroller: "#scroller",
+                // pin: true,
+                // pinSpacing: true,
+                // scrub: 1,
+                // // pinType: "transform",
+                // markers: true,
+
+                // scroller: "#scroller",
                 scrub: 1,
-                pinType: "transform",
+                pin: true,
+                trigger: "#second_screen ._fm-text",
+                start: "50% 50%",
+                endTrigger: ".scroller",
+                // end: "100% 90%",
+                end: "+=500%", // هنا هينتهي الـ pin بعد ما تمشي 3 سكرينات
                 markers: true,
             }
         });
