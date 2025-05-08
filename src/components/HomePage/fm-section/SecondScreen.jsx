@@ -42,10 +42,10 @@ const SecondScreen = () => {
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#second_screen",
-                endTrigger: "#img-5",
+                // endTrigger: "#img-5",
                 start: "top top",
-                end: "bottom bottom", // لحظة خروج img-5 من الشاشة
-                // end: "+=300%", // هنا هينتهي الـ pin بعد ما تمشي 3 سكرينات
+                // end: "bottom bottom", // لحظة خروج img-5 من الشاشة
+                end: "+=500%", // هنا هينتهي الـ pin بعد ما تمشي 3 سكرينات
                 scroller: "#scroller",
                 pin: true,
                 pinSpacing: false,
