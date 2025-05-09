@@ -103,7 +103,6 @@ const SecondScreen = () => {
                 start: "50% 50%",
                 endTrigger: "#scroller",
                 end: "bottom bottom",
-                markers: true,
             },
         });
 
