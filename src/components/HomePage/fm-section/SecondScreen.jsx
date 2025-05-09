@@ -35,6 +35,12 @@ const SecondScreen = () => {
                     duration: 0.3,
                 });
             },
+            onLeaveBack: () => {
+                gsap.to(innerWords, {
+                    y: -80,
+                    opacity: 0,
+                });
+            }
         });
 
         gsap.timeline({
