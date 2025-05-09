@@ -36,7 +36,7 @@ const FirstScreen = () => {
                 start: "top bottom",    // أول ما top العنصر يوصل لأسفل الشاشة
                 end: "bottom top",      // لما العنصر يطلع من الشاشة تمامًا
                 toggleActions: "play none none none",
-                //scroller: "#scroller",
+                scroller: "#scroller",
                 onEnter: () => {
                     gsap.fromTo(innerWords, {
                         y: 80,

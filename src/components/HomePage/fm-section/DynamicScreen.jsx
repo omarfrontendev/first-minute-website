@@ -12,7 +12,7 @@ const DynamicScreen = ({ imgIndex, lastScreen }) => {
             start: "top 10%",
             end: "bottom 50%",
             toggleActions: "restart none none none",
-            //scroller: "#scroller",
+            scroller: "#scroller",
             onEnterBack: () => {
                 const targetCard = cards?.[cards.length - (imgIndex + 2)];
                 if (!targetCard) return;
@@ -39,7 +39,7 @@ const DynamicScreen = ({ imgIndex, lastScreen }) => {
                 start: "top 90%",
                 end: "bottom 80%",
                 toggleActions: "restart",
-                //scroller: "#scroller",
+                scroller: "#scroller",
             },
         });
 
@@ -61,7 +61,6 @@ const DynamicScreen = ({ imgIndex, lastScreen }) => {
 
     return (
         <div id={`img-${imgIndex + 1}`} className="panel d-flex justify-content-center align-items-center">
-            SCREEN {imgIndex + 3}
         </div>
     );
 };

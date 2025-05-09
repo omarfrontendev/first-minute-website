@@ -24,7 +24,7 @@ const ThirdScreen = () => {
             // start: "top bottom",
             // end: "bottom top",
             toggleActions: "play none none none",
-            //scroller: "#scroller",
+            scroller: "#scroller",
             onEnter: () => {
                 const tl = gsap.timeline();
                 tl.to(cards, {
@@ -86,7 +86,7 @@ const ThirdScreen = () => {
                 start: "50% 50%",
                 // endTrigger: "#scroller",
                 // end: "bottom bottom",
-                //scroller: "#scroller",
+                scroller: "#scroller",
                 end: `+=${(cards?.length - 1) * 100}%`,
             },
         });

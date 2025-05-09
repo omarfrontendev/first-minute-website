@@ -28,7 +28,7 @@
   flex-shrink: 0;
 }
 
-/* .scroller {
+.scroller {
   display: flex;
   flex-direction: column; 
   scroll-snap-type: y mandatory;
@@ -41,4 +41,4 @@
 
 .scroller::-webkit-scrollbar {
   display: none; 
-} */
+}

@@ -24,7 +24,7 @@ const SecondScreen = () => {
             start: "top bottom",    // أول ما top العنصر يوصل لأسفل الشاشة
             end: "bottom top",      // لما العنصر يطلع من الشاشة تمامًا
             toggleActions: "play none none none",
-            //scroller: "#scroller",
+            scroller: "#scroller",
             onEnter: () => {
                 gsap.fromTo(innerWords, {
                     y: 80,
@@ -55,7 +55,7 @@ const SecondScreen = () => {
                 endTrigger: "#scroller",
                 // end: "bottom bottom",
                 end: `+=${cards?.length * 100}%`,
-                //scroller: "#scroller",
+                scroller: "#scroller",
             },
         });
 
