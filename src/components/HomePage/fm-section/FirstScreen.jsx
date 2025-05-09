@@ -111,19 +111,16 @@ const FirstScreen = () => {
 
     useGSAP(() => {
 
-        // Scroll to first_screen on enter (from top or bottom)
         ScrollTrigger.create({
             trigger: "#first_screen",
-            start: "top 100%",
-            end: "bottom 100%",
+            start: "top 98%",
+            end: "bottom 98%",
             toggleActions: "restart",
             scroller: 'body',
-            markers: true,
-            onEnter: () => {
-                console.log("Enter")
-                gsap.to(window, {
-                    scrollTo: { y: "#first_screen", offsetY: 0 },
-                });
+            snap: {
+                snapTo: 1,
+                duration: 0.5,
+                delay: 0.1,
             },
         });
 
@@ -134,7 +131,7 @@ const FirstScreen = () => {
 
 
     return (
-        <div id="first_screen" className="panel d-flex justify-content-center align-items-center">
+        <div id="first_screen">
             <div className="_fm-title-screen d-flex align-items-center justify-content-center h-100">
                 <h2 className="_fm-section-title fm_title text-center" ref={titleRef}>
                     {section_2.split(" ")

@@ -1,23 +1,21 @@
+import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
 import { useSelector } from 'react-redux';
 
 import './fm.css';
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-ScrollTrigger.defaults({
-    scroller: "#scroller",
-});
-
+gsap.registerPlugin(ScrollTrigger);
 
 const SecondScreen = () => {
-
+    const textRef = useRef(null);
     const { data: { section_3 } } = useSelector(state => state.home);
 
     useGSAP(() => {
+
+        if (!textRef.current) return;
+
         const innerWords = ".text-fm-section .inner-word";
 
         // ON ENTER
@@ -70,52 +68,65 @@ const SecondScreen = () => {
         //     }
         // });
 
-        ScrollTrigger.create({
-            trigger: "#second_screen",
-            start: "top 100%",
-            end: "bottom 100%",
-            toggleActions: "restart",
-            scroller: 'body',
-            onEnter: () => {
-                console.log("Enter")
-                gsap.to(window, {
-                    scrollTo: { y: "#second_screen", offsetY: 0 },
-                });
-            },
-        });
+        // ScrollTrigger.create({
+        //     trigger: "#second_screen",
+        //     start: "top 98%",
+        //     // end: "bottom 98%",
+        //     toggleActions: "restart",
+        //     scroller: 'body',
+        //     onEnter: () => {
+        //         gsap.to(window, {
+        //             scrollTo: { y: "#second_screen", offsetY: 0 },
+        //         });
+        //     },
+        // });
+
+        // gsap.timeline({
+        //     scrollTrigger: {
+        //         trigger: textRef.current,
+        //         start: "50% 50%",
+        //         pin: true,
+        //         scrub: 1,
+        //         scroller: "#scroller",
+        //         endTrigger: "#scroller",
+        //         markers: true,
+        //         end: "+=500vh",
+        //         // end: "100% 90%",
+        //     }
+        // });
 
         gsap.timeline({
             scrollTrigger: {
-              trigger: "#second_screen ._fm-text",
-              start: "50% 50%",
-              end: "+=5000vh", // ✅ دي بتخلي الـ pin يستمر 500vh
-              pin: true,
-              pinSpacer: false,
-              scrub: 1,
-              markers: true,
-              scroller: "body", // ✅ أو احذفها خالص لو بتسكرول على window
-            }
-          });
+                scrub: 1,
+                pin: true,
+                trigger: textRef.current,
+                start: "50% 50%",
+                endTrigger: "#scroller",
+                end: "bottom bottom",
+                markers: true,
+            },
+        });
 
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         };
-    });
+    }, [{ dependencies: textRef }]);
 
     return (
-        <div id="second_screen" className="panel second_screen d-flex justify-content-center align-items-center">
-            <div className="text-fm-section _fm-title-screen d-flex align-items-center justify-content-center h-100">
-                <p className="_fm-text text-center">
-                    {section_3.split(" ")
-                        .map((word, i) => (
-                            <span key={i} className="word" style={{ display: "inline-block", overflow: "hidden" }}>
-                                <span className="inner-word" style={{ display: "inline-block" }}>{word}&nbsp;</span>
-                            </span>
-                        ))}
-                </p>
+        <div id="text-fm-section" className="second_screen d-flex justify-content-center align-items-center">
+            <div ref={textRef} className="_fm-title-screen d-flex align-items-center justify-content-center">
+                <div className="TEST" style={{ zIndex: 5 }}>
+                    <p className="_fm-text">
+                        {section_3.split(" ")
+                            .map((word, i) => (
+                                <span key={i} className="word" style={{ display: "inline-block", overflow: "hidden" }}>
+                                    <span className="inner__word" style={{ display: "inline-block" }}>{word}&nbsp;</span>
+                                </span>
+                            ))}
+                    </p>
+                </div>
             </div>
         </div>
-
     );
 }
 

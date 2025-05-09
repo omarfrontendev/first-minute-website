@@ -12,6 +12,11 @@ import { fetchHomeData } from "../redux/services/home.services";
 import { fetchServicesData } from "../redux/services/services.services";
 import { fetchStandardsData } from "../redux/services/standards.services";
 import LoadingScreen from "../components/LoadingScreen";
+import MobileStickySection from "../components/HomePage/fm-section/MobileStickySection";
+import FirstScreen from "../components/HomePage/fm-section/FirstScreen";
+import SecondScreen from "../components/HomePage/fm-section/SecondScreen";
+import ThirdScreen from "../components/HomePage/fm-section/ThirdScreen";
+import DynamicScreen from "../components/HomePage/fm-section/DynamicScreen";
 
 const Home = ({ progress }) => {
 
@@ -19,6 +24,24 @@ const Home = ({ progress }) => {
     const { status } = useSelector(state => state.home);
     const { status: sevicesStatus, data: services } = useSelector(state => state.services);
     const { status: standardsStatus, data: { our_standards: standards } } = useSelector(state => state.standards);
+    const { data: { section_4 } } = useSelector(state => state.home);
+
+
+
+    const stickyScreens = [
+        { component: FirstScreen },
+        { component: SecondScreen },
+        { component: ThirdScreen },
+        { component: ThirdScreen },
+        { component: ThirdScreen },
+        // ...section_4.images.slice(0, section_4.images.length - 1).map((_, i) => ({
+        //     component: DynamicScreen,
+        //     props: {
+        //         imgIndex: i,
+        //         lastScreen: section_4.images.length - i === 2,
+        //     },
+        // })),
+    ];
 
     useEffect(() => {
         dispatch(fetchHomeData());
@@ -48,7 +71,13 @@ const Home = ({ progress }) => {
                             <Standards standards={standards} />
                         </div>
                     </div>
-                    <StickySection />
+                    {/* {window.innerWidth <= 768 ? (
+                        <MobileStickySection sections={stickyScreens} />
+                        ) : (
+                            <StickySection sections={stickyScreens} />
+                            )} */}
+                    <MobileStickySection sections={stickyScreens} />
+                    {/* <StickySection sections={stickyScreens} /> */}
                     <ContactUs services={services} />
                 </>
             )}

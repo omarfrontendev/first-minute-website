@@ -58,8 +58,6 @@ const DynamicScreen = ({ imgIndex, lastScreen }) => {
     //     };
     // });
 
-    console.log(`img-${imgIndex + 1}`)
-
     return (
         <div id={`img-${imgIndex + 1}`} className="panel d-flex justify-content-center align-items-center">
             SCREEN {imgIndex + 3}

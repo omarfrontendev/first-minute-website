@@ -29,6 +29,7 @@
 ._fm-cards .screen_card {
     position: absolute;
     top: 120%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
@@ -41,7 +42,7 @@
     display: block;
 }
 
-._fm-cards .screen_card:nth-child(1) {
+/* ._fm-cards .screen_card:nth-child(1) {
     transform: translate(-50%, -50%);
     background-color: antiquewhite;
 }
@@ -59,7 +60,7 @@
 ._fm-cards .screen_card:nth-child(4) {
     transform: translate(-50%, -20%);
     background-color: blueviolet;
-}
+} */
 
 .text-fm-section .inner__word {
     overflow: auto;

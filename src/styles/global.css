@@ -195,13 +195,6 @@ a {
     margin: 0 auto;
 }
 
-.panel {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .error_msg {
     font-size: 12px;
     color: rgb(220, 53, 69);

@@ -105,18 +105,30 @@ const ThirdScreen = () => {
         //     },
         // });
 
-        ScrollTrigger.create({
-            trigger: "#third_screen",
-            start: "top 100%",
-            end: "bottom 100%",
-            toggleActions: "restart",
-            scroller: 'body',
-            markers: true,
-            onEnter: () => {
-                console.log("Enter")
-                gsap.to(window, {
-                    scrollTo: { y: "#third_screen", offsetY: 0 },
-                });
+        // ScrollTrigger.create({
+        //     trigger: "#third_screen",
+        //     start: "top 98%",
+        //     // end: "bottom 98%",
+        //     toggleActions: "restart",
+        //     scroller: 'body',
+        //     // markers: true,
+        //     onEnter: () => {
+        //         console.log("Enter")
+        //         gsap.to(window, {
+        //             scrollTo: { y: "#third_screen", offsetY: 0 },
+        //         });
+        //     },
+        // });
+
+        gsap.timeline({
+            scrollTrigger: {
+                scrub: 1,
+                pin: true,
+                trigger: "#third_screen",
+                start: "50% 50%",
+                endTrigger: "#scroller",
+                end: "bottom bottom",
+                markers: true,
             },
         });
 
@@ -127,7 +139,7 @@ const ThirdScreen = () => {
 
     return (
         <div id="third_screen" className='third_screen w-100 h-100 d-flex justify-content-center align-items-center'>
-            {/* <div className="_fm-cards">
+            <div className="_fm-cards">
                 {section_4?.images.map((img, index) => (
                     <img
                         src={img.url}
@@ -136,8 +148,7 @@ const ThirdScreen = () => {
                         className='screen_card block'
                     />
                 ))}
-            </div> */}
-            SCREEN 3
+            </div>
         </div>
     );
 };

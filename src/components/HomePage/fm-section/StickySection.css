@@ -1,4 +1,4 @@
-.scroller {
+.bg_fm_section {
   background-image: url('/src/assets/test.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -6,33 +6,18 @@
   background-attachment: fixed;
 }
 
-#scroller {
-  /* height: 100vh;
+.fm_section_web {
+  height: 100vh;
   overflow-y: scroll;
-  overflow-x: hidden;
-  position: relative; */
-  /* scroll-snap-type: y mandatory;
-   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: none; 
-  will-change: transform; */
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;  
 }
 
-/* html, body {
-  height: 100%;
-  overflow: hidden;
-  margin: 0;
-} */
-/* 
-#scroller {
-  height: 100vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-} */
-
-/* .screen {
+.screen {
   height: 100vh;
   scroll-snap-align: start;
-  flex-shrink: 0;
-} */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
