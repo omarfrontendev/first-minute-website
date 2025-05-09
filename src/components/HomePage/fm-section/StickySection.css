@@ -6,22 +6,6 @@
   background-attachment: fixed;
 }
 
-/* .fm_section_web {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scrollbar-width: none;
-  -ms-overflow-style: none;  
-}
-
-.screen {
-  height: 100vh;
-  scroll-snap-align: start;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
 .screen {
   height: 100vh;
   scroll-snap-align: start;

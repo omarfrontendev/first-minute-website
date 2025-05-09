@@ -25,7 +25,8 @@ const StickySection = () => {
       onEnter: () => {
         gsap.to(window, {
           duration: 0.1,
-          scrollTo: sectionRefs.current[0],
+          // scrollTo: sectionRefs.current[0],
+          scrollTo: "#scroller",
           ease: "linear"
         });
       }
@@ -38,112 +39,112 @@ const StickySection = () => {
       toggleActions: "restart",
       onEnterBack: () => {
         gsap.to(window, {
-          duration: 0.5,
-          scrollTo: sectionRefs.current[sectionRefs.current?.length - 1],
-          ease: "power2.out"
+          duration: 0.1,
+          // scrollTo: sectionRefs.current[0],
+          scrollTo: "#scroller",
+          ease: "linear"
         });
       }
     });
 
+    let currentIndex = 0;
+    let isScrolling = false;
+    let touchStartY = 0;
+    let lastScrollTime = 0;
+    const SCROLL_COOLDOWN = 2000;
+
+    const scrollerEl = document.getElementById("scroller");
+
+    const scrollToSection = (index) => {
+      isScrolling = true;
+      gsap.to(window, {
+        duration: 0.1,
+        scrollTo: sectionRefs.current[index],
+        ease: "linear",
+        onComplete: () => {
+          isScrolling = false;
+        },
+      });
+    };
+
+    const isInView = () => {
+      const rect = scrollerEl.getBoundingClientRect();
+      return rect.top <= 0 && rect.bottom >= window.innerHeight;
+    };
+
+    const onWheel = (e) => {
+      const now = Date.now();
+      if (isScrolling || !isInView()) return;
+      if (now - lastScrollTime < SCROLL_COOLDOWN) return;
+      if (Math.abs(e.deltaY) < 100) return;
+
+      if (e.deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
+        currentIndex++;
+      } else if (e.deltaY < 0 && currentIndex > 0) {
+        currentIndex--;
+      } else {
+        return;
+      }
+
+      lastScrollTime = now;
+      scrollToSection(currentIndex);
+      e.preventDefault();
+    };
+
+
+    const onTouchStart = (e) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const onTouchEnd = (e) => {
+      if (isScrolling || !isInView()) return;
+
+      const touchEndY = e.changedTouches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
+
+      // if (Math.abs(deltaY) < 30) return; // تجاهل السحبات الصغيرة
+
+      if (deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
+        currentIndex++;
+      } else if (deltaY < 0 && currentIndex > 0) {
+        currentIndex--;
+      } else {
+        return;
+      }
+
+      scrollToSection(currentIndex);
+    };
+
+    const onKeyDown = (e) => {
+      if (isScrolling || !isInView()) return;
+
+      if (
+        e.code === "ArrowDown" ||
+        e.code === "PageDown" ||
+        e.code === "Space"
+      ) {
+        if (currentIndex < sectionRefs.current.length - 1) {
+          currentIndex++;
+          scrollToSection(currentIndex);
+          e.preventDefault();
+        }
+      } else if (
+        e.code === "ArrowUp" ||
+        e.code === "PageUp"
+      ) {
+        if (currentIndex > 0) {
+          currentIndex--;
+          scrollToSection(currentIndex);
+          e.preventDefault();
+        }
+      }
+    };
+
+    // window.addEventListener("wheel", onWheel, { passive: false });
+    // window.addEventListener("keydown", onKeyDown);
     if (window.innerWidth <= 768) {
-      let currentIndex = 0;
-      let isScrolling = false;
-      let touchStartY = 0;
-      let lastScrollTime = 0;
-      const SCROLL_COOLDOWN = 2000;
-
-      const scrollerEl = document.getElementById("scroller");
-
-      const scrollToSection = (index) => {
-        isScrolling = true;
-        gsap.to(window, {
-          duration: 0.1,
-          scrollTo: sectionRefs.current[index],
-          ease: "linear",
-          onComplete: () => {
-            isScrolling = false;
-          },
-        });
-      };
-
-      const isInView = () => {
-        const rect = scrollerEl.getBoundingClientRect();
-        return rect.top <= 0 && rect.bottom >= window.innerHeight;
-      };
-
-      const onWheel = (e) => {
-        const now = Date.now();
-        if (isScrolling || !isInView()) return;
-        if (now - lastScrollTime < SCROLL_COOLDOWN) return;
-        if (Math.abs(e.deltaY) < 100) return;
-
-        if (e.deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
-          currentIndex++;
-        } else if (e.deltaY < 0 && currentIndex > 0) {
-          currentIndex--;
-        } else {
-          return;
-        }
-
-        lastScrollTime = now;
-        scrollToSection(currentIndex);
-        e.preventDefault();
-      };
-
-
-      const onTouchStart = (e) => {
-        touchStartY = e.touches[0].clientY;
-      };
-
-      const onTouchEnd = (e) => {
-        if (isScrolling || !isInView()) return;
-
-        const touchEndY = e.changedTouches[0].clientY;
-        const deltaY = touchStartY - touchEndY;
-
-        // if (Math.abs(deltaY) < 30) return; // تجاهل السحبات الصغيرة
-
-        if (deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
-          currentIndex++;
-        } else if (deltaY < 0 && currentIndex > 0) {
-          currentIndex--;
-        } else {
-          return;
-        }
-
-        scrollToSection(currentIndex);
-      };
-
-      const onKeyDown = (e) => {
-        if (isScrolling || !isInView()) return;
-
-        if (
-          e.code === "ArrowDown" ||
-          e.code === "PageDown" ||
-          e.code === "Space"
-        ) {
-          if (currentIndex < sectionRefs.current.length - 1) {
-            currentIndex++;
-            scrollToSection(currentIndex);
-            e.preventDefault();
-          }
-        } else if (
-          e.code === "ArrowUp" ||
-          e.code === "PageUp"
-        ) {
-          if (currentIndex > 0) {
-            currentIndex--;
-            scrollToSection(currentIndex);
-            e.preventDefault();
-          }
-        }
-      };
-
-
-      window.addEventListener("wheel", onWheel, { passive: false });
       window.addEventListener("touchstart", onTouchStart, { passive: true });
       window.addEventListener("touchend", onTouchEnd, { passive: true });
-      window.addEventListener("keydown", onKeyDown);
     }
 
     return () => {
