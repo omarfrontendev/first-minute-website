@@ -19,21 +19,21 @@ const StickySection = ({ sectionsss }) => {
   useEffect(() => {
     ScrollTrigger.create({
       trigger: "#scroller",
-      start: "top 100%",
+      start: "top 60%",
       end: "bottom 20%",
       toggleActions: "restart",
       onEnter: () => {
         gsap.to(window, {
-          duration: 0.5,
+          duration: 0.1,
           scrollTo: sectionRefs.current[0],
-          ease: "power2.out"
+          ease: "linear"
         });
       }
     });
 
     ScrollTrigger.create({
       trigger: "#scroller",
-      start: "top 100%",
+      start: "top 60%",
       end: "bottom 20%",
       toggleActions: "restart",
       onEnterBack: () => {
@@ -54,9 +54,9 @@ const StickySection = ({ sectionsss }) => {
     const scrollToSection = (index) => {
       isScrolling = true;
       gsap.to(window, {
-        duration: 0.5,
+        duration: 0.1,
         scrollTo: sectionRefs.current[index],
-        ease: "power2.out",
+        ease: "linear",
         onComplete: () => {
           isScrolling = false;
         },
@@ -70,6 +70,7 @@ const StickySection = ({ sectionsss }) => {
 
     const onWheel = (e) => {
       if (isScrolling || !isInView()) return;
+      if (Math.abs(e.deltaY) < 30) return; // تجاهل الحركات الصغيرة
 
       if (e.deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
         currentIndex++;
@@ -85,6 +86,25 @@ const StickySection = ({ sectionsss }) => {
 
     const onTouchStart = (e) => {
       touchStartY = e.touches[0].clientY;
+    };
+
+    const onTouchEnd = (e) => {
+      if (isScrolling || !isInView()) return;
+
+      const touchEndY = e.changedTouches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
+
+      if (Math.abs(deltaY) < 30) return; // تجاهل السحبات الصغيرة
+
+      if (deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
+        currentIndex++;
+      } else if (deltaY < 0 && currentIndex > 0) {
+        currentIndex--;
+      } else {
+        return;
+      }
+
+      scrollToSection(currentIndex);
     };
 
     const onKeyDown = (e) => {
@@ -112,23 +132,6 @@ const StickySection = ({ sectionsss }) => {
       }
     };
 
-    const onTouchEnd = (e) => {
-      if (isScrolling || !isInView()) return;
-
-      const touchEndY = e.changedTouches[0].clientY;
-      const deltaY = touchStartY - touchEndY;
-
-      // if (Math.abs(deltaY) < 50) return; // تجاهل السحبات الصغيرة
-      if (deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
-        currentIndex++;
-      } else if (deltaY < 0 && currentIndex > 0) {
-        currentIndex--;
-      } else {
-        return;
-      }
-
-      scrollToSection(currentIndex);
-    };
 
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("touchstart", onTouchStart, { passive: true });
