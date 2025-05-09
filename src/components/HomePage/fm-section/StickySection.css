@@ -6,7 +6,7 @@
   background-attachment: fixed;
 }
 
-.fm_section_web {
+/* .fm_section_web {
   height: 100vh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
@@ -20,4 +20,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+} */
+
+.screen {
+  height: 100vh;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+.scroller {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
 }

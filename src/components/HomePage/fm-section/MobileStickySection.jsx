@@ -17,7 +17,6 @@ const StickySection = ({ sectionsss }) => {
   const { data: { section_4 } } = useSelector(state => state.home);
 
   useEffect(() => {
-
     ScrollTrigger.create({
       trigger: "#scroller",
       start: "top 100%",
@@ -118,7 +117,6 @@ const StickySection = ({ sectionsss }) => {
       window.removeEventListener("touchend", onTouchEnd);
     };
   }, []);
-
 
   const sections = [
     { component: FirstScreen },

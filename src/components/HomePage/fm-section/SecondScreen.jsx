@@ -16,84 +16,26 @@ const SecondScreen = () => {
 
         if (!textRef.current) return;
 
-        const innerWords = ".text-fm-section .inner-word";
+        const innerWords = "#text-fm-section .inner__word";
 
         // ON ENTER
-        // ScrollTrigger.create({
-        //     trigger: "#second_screen",
-        //     start: "top 80%",
-        //     end: "bottom 100%",
-        //     scroller: "#scroller",
-        //     toggleActions: "restart",
-        //     onEnter: () => {
-        //         gsap.fromTo(
-        //             innerWords,
-        //             {
-        //                 y: 200,
-        //                 opacity: 0,
-        //                 duration: .6,
-        //             },
-        //             {
-        //                 y: 0,
-        //                 opacity: 1,
-        //                 duration: .6,
-        //             }
-        //         );
-        //     },
-        // });
-
-        // gsap.timeline({
-        //     scrollTrigger: {
-        //         // trigger: "#second_screen",
-        //         // // endTrigger: "#img-5",
-        //         // start: "top top",
-        //         // // end: "bottom bottom", // لحظة خروج img-5 من الشاشة
-        //         // end: "+=500%", // هنا هينتهي الـ pin بعد ما تمشي 3 سكرينات
-        //         // scroller: "#scroller",
-        //         // pin: true,
-        //         // pinSpacing: true,
-        //         // scrub: 1,
-        //         // // pinType: "transform",
-        //         // markers: true,
-
-        //         // scroller: "#scroller",
-        //         scrub: 1,
-        //         pin: true,
-        //         trigger: "#second_screen ._fm-text",
-        //         start: "50% 50%",
-        //         endTrigger: ".scroller",
-        //         // end: "100% 90%",
-        //         end: "+=500%", // هنا هينتهي الـ pin بعد ما تمشي 3 سكرينات
-        //         markers: true,
-        //     }
-        // });
-
-        // ScrollTrigger.create({
-        //     trigger: "#second_screen",
-        //     start: "top 98%",
-        //     // end: "bottom 98%",
-        //     toggleActions: "restart",
-        //     scroller: 'body',
-        //     onEnter: () => {
-        //         gsap.to(window, {
-        //             scrollTo: { y: "#second_screen", offsetY: 0 },
-        //         });
-        //     },
-        // });
-
-        // gsap.timeline({
-        //     scrollTrigger: {
-        //         trigger: textRef.current,
-        //         start: "50% 50%",
-        //         pin: true,
-        //         scrub: 1,
-        //         scroller: "#scroller",
-        //         endTrigger: "#scroller",
-        //         markers: true,
-        //         end: "+=500vh",
-        //         // end: "100% 90%",
-        //     }
-        // });
+        ScrollTrigger.create({
+            trigger: "#text-fm-section ._fm-text",
+            start: "top bottom",    // أول ما top العنصر يوصل لأسفل الشاشة
+            end: "bottom top",      // لما العنصر يطلع من الشاشة تمامًا
+            toggleActions: "play none none none",
+            onEnter: () => {
+                gsap.fromTo(innerWords, {
+                    y: 80,
+                    opacity: 0,
+                }, {
+                    delay: .3,
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.3,
+                });
+            },
+        });
 
         gsap.timeline({
             scrollTrigger: {
@@ -114,7 +56,7 @@ const SecondScreen = () => {
     return (
         <div id="text-fm-section" className="second_screen d-flex justify-content-center align-items-center">
             <div ref={textRef} className="_fm-title-screen d-flex align-items-center justify-content-center">
-                <div className="TEST" style={{ zIndex: 5 }}>
+                <div style={{ zIndex: 5 }}>
                     <p className="_fm-text">
                         {section_3.split(" ")
                             .map((word, i) => (
