@@ -8,7 +8,7 @@ import './fm.css';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-const ThirdScreen = () => {
+const ThirdScreen = ({ mobile }) => {
 
     const { data: { section_4 } } = useSelector(state => state.home);
 
@@ -24,7 +24,7 @@ const ThirdScreen = () => {
             // start: "top bottom",
             // end: "bottom top",
             toggleActions: "play none none none",
-            scroller: "#scroller",
+            scroller: mobile ? "body" : "#scroller",
             onEnter: () => {
                 const tl = gsap.timeline();
                 tl.to(cards, {
@@ -86,7 +86,7 @@ const ThirdScreen = () => {
                 start: "50% 50%",
                 // endTrigger: "#scroller",
                 // end: "bottom bottom",
-                scroller: "#scroller",
+                scroller: mobile ? "body" : "#scroller",
                 end: `+=${(cards?.length - 1) * 100}%`,
             },
         });

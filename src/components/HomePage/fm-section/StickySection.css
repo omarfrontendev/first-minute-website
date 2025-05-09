@@ -28,17 +28,19 @@
   flex-shrink: 0;
 }
 
-.scroller {
-  display: flex;
-  flex-direction: column; 
-  scroll-snap-type: y mandatory;
-  overflow-y: auto;
-  height: 100vh;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
+@media(min-width: 769px) {
+  .scroller {
+    display: flex;
+    flex-direction: column;
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    height: 100vh;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
 
-.scroller::-webkit-scrollbar {
-  display: none; 
+  .scroller::-webkit-scrollbar {
+    display: none;
+  }
 }

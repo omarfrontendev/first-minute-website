@@ -9,24 +9,11 @@ import './fm.css';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-const FirstScreen = () => {
+const FirstScreen = ({ mobile }) => {
     const titleRef = useRef(null);
     const { data: { section_2 } } = useSelector(state => state.home);
 
     useGSAP(() => {
-
-        // ScrollTrigger.create({
-        //     trigger: "#first_screen",
-        //     start: "top bottom",
-        //     end: "bottom top",
-        //     toggleActions: "restart",
-        //     scroller: 'body',
-        //     snap: {
-        //         snapTo: 1,
-        //         duration: 0.5,
-        //         // delay: 0.1,
-        //     },
-        // });
 
         if (titleRef.current) {
             const innerWords = "#first_screen .inner-word";
@@ -36,7 +23,7 @@ const FirstScreen = () => {
                 start: "top bottom",    // أول ما top العنصر يوصل لأسفل الشاشة
                 end: "bottom top",      // لما العنصر يطلع من الشاشة تمامًا
                 toggleActions: "play none none none",
-                scroller: "#scroller",
+                scroller: mobile ? "body" : "#scroller",
                 onEnter: () => {
                     gsap.fromTo(innerWords, {
                         y: 80,
