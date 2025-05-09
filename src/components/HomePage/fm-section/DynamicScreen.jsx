@@ -4,8 +4,6 @@ import gsap from "gsap";
 
 const DynamicScreen = ({ imgIndex, lastScreen }) => {
 
-    console.log(lastScreen);
-
     useGSAP(() => {
         const cards = gsap.utils.toArray(".screen_card");
 
@@ -14,7 +12,7 @@ const DynamicScreen = ({ imgIndex, lastScreen }) => {
             start: "top 10%",
             end: "bottom 50%",
             toggleActions: "restart none none none",
-            // scroller: "#scroller",
+            //scroller: "#scroller",
             onEnterBack: () => {
                 const targetCard = cards?.[cards.length - (imgIndex + 2)];
                 if (!targetCard) return;
@@ -41,6 +39,7 @@ const DynamicScreen = ({ imgIndex, lastScreen }) => {
                 start: "top 90%",
                 end: "bottom 80%",
                 toggleActions: "restart",
+                //scroller: "#scroller",
             },
         });
 

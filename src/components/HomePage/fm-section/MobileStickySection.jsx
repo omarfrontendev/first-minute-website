@@ -87,6 +87,31 @@ const StickySection = ({ sectionsss }) => {
       touchStartY = e.touches[0].clientY;
     };
 
+    const onKeyDown = (e) => {
+      if (isScrolling || !isInView()) return;
+
+      if (
+        e.code === "ArrowDown" ||
+        e.code === "PageDown" ||
+        e.code === "Space"
+      ) {
+        if (currentIndex < sectionRefs.current.length - 1) {
+          currentIndex++;
+          scrollToSection(currentIndex);
+          e.preventDefault();
+        }
+      } else if (
+        e.code === "ArrowUp" ||
+        e.code === "PageUp"
+      ) {
+        if (currentIndex > 0) {
+          currentIndex--;
+          scrollToSection(currentIndex);
+          e.preventDefault();
+        }
+      }
+    };
+
     const onTouchEnd = (e) => {
       if (isScrolling || !isInView()) return;
 
@@ -95,10 +120,8 @@ const StickySection = ({ sectionsss }) => {
 
       // if (Math.abs(deltaY) < 50) return; // تجاهل السحبات الصغيرة
       if (deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
-        // سحب لتحت
         currentIndex++;
       } else if (deltaY < 0 && currentIndex > 0) {
-        // سحب لفوق
         currentIndex--;
       } else {
         return;
@@ -110,11 +133,13 @@ const StickySection = ({ sectionsss }) => {
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("touchstart", onTouchStart, { passive: true });
     window.addEventListener("touchend", onTouchEnd, { passive: true });
+    window.addEventListener("keydown", onKeyDown);
 
     return () => {
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("keydown", onKeyDown);
     };
   }, []);
 
