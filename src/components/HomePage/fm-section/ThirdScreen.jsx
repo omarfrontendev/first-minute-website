@@ -25,7 +25,6 @@ const ThirdScreen = () => {
             // end: "bottom top",
             toggleActions: "play none none none",
             //scroller: "#scroller",
-            markers: true,
             onEnter: () => {
                 const tl = gsap.timeline();
                 tl.to(cards, {
