@@ -116,7 +116,7 @@ const ContactUs = ({ services }) => {
                         />
                         <Input dir="ltr" register={register} name="phone" type='number' error={errors?.phone?.message} placeholder="500080009" label="رقم الجوال" />
                     </div>
-                    <SelectDropdown
+                    {services?.length ? <SelectDropdown
                         options={services.map(service => {
                             return {
                                 label: service.service_name,
@@ -129,7 +129,7 @@ const ContactUs = ({ services }) => {
                         name="service_id"
                         error={errors?.service_id?.message}
                         value={watch("service_id")}
-                    />
+                    />: ""}
                     <Input register={register} type='textarea' name="message" error={errors?.message?.message} placeholder="اكتب رسالتك هنا  ^_^" label="رسالتك" />
                     <button type='submit' className='contact-us-submit-btn'>ارسل رسالتك</button>
                 </form>

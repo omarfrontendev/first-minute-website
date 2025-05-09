@@ -1,28 +1,47 @@
 import FMHero from "../components/frist-minute/fm-hero";
 import BG from '../assets/BG-SVG.svg';
-import Standards from "../components/HomePage/standards";
 import ContactUs from "../components/HomePage/contact-us";
 import FMComponent from "../components/frist-minute/fm-component";
 import MainBgSectionImg from "../components/layout/main-bg-section";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchOneMinPageData } from "../redux/services/oneMinPage.services";
 
-const FirstMinute = () => (
-    <div className="_fm-temp-bg">
-        <img className="BG-temp" src={BG} alt="..." />
-        <MainBgSectionImg>
-            <div className="_fm-container">
-                <FMHero />
+const FirstMinute = () => {
+    const dispatch = useDispatch();
+    const { status, data: { background_image, slug, description, title, sections } } = useSelector(state => state.oneMinPage);
+
+
+    useEffect(() => {
+        dispatch(fetchOneMinPageData());
+    }, []);
+
+    if (status !== "succeeded") return;
+
+    return (
+        <div className="_fm-temp-bg">
+            <img className="BG-temp" src={background_image} alt="..." />
+            <MainBgSectionImg>
+                <div className="_fm-container">
+                    <FMHero slug={slug} description={description} title={title} />
+                </div>
+            </MainBgSectionImg>
+            <div className="_fm-container mt-5">
+                <div className="d-flex flex-column gap-5">
+                    {sections.map((section, i) => (
+                        <FMComponent
+                            key={i}
+                            subtitle={"رؤيتنا"}
+                            title={section?.title}
+                            text={section.content}
+                        />
+                    ))}
+                </div>
             </div>
-        </MainBgSectionImg>
-        <div className="_fm-container">
-            <Standards />
-            <div className="d-flex flex-column gap-5">
-                <FMComponent subtitle={"رؤيتنا"} text="نرى الحضور الحيوي بأسلوب مختلف، ونسعى لتقديم تصوّرات جديدة تُعيد تشكيل العلاقة بين الفكرة والتجربة." title="نفكّر، نكتب، ونُجسّد الفكرة لتتحول إلى تجربة نابضة بالحياة." />
-                <FMComponent subtitle={"رؤيتنا"} text="نرى الحضور الحيوي بأسلوب مختلف، ونسعى لتقديم تصوّرات جديدة تُعيد تشكيل العلاقة بين الفكرة والتجربة." title="نطمح إلى تشكيل إضافة مُثرية، وممتعة في عالم المحتوى." />
-                <FMComponent subtitle={"رؤيتنا"} text="نرى الحضور الحيوي بأسلوب مختلف، ونسعى لتقديم تصوّرات جديدة تُعيد تشكيل العلاقة بين الفكرة والتجربة." title="نطمح إلى تشكيل إضافة مُثرية، وممتعة في عالم المحتوى." />
-            </div>
+            <ContactUs services={[]} />
         </div>
-        <ContactUs />
-    </div>
-);
+    );
+
+}
 
 export default FirstMinute;

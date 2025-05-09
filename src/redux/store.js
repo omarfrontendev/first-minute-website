@@ -4,6 +4,7 @@ import homeSlice from './features/homeSlice';
 import servicesSlice from './features/servicesSlice';
 import standardsSlice from './features/standardsSlice';
 import settingsSlice from './features/settingsSlice';
+import oneMinPageSlice from './features/oneMinPageSlice';
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     services: servicesSlice,
     standards: standardsSlice,
     settings: settingsSlice,
+    oneMinPage: oneMinPageSlice,
   },
 });
 

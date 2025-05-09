@@ -7,6 +7,7 @@ const standardsSlice = createSlice({
         data: {},
         status: "idle",
         error: null,
+        pageContent: null
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -24,6 +25,7 @@ const standardsSlice = createSlice({
                 state.error = action.error.message;
             });
     },
+    // =============================================== //
 });
 
 export default standardsSlice.reducer;
