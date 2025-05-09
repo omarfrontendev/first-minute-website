@@ -34,6 +34,7 @@ const FirstMinute = () => {
                             subtitle={"رؤيتنا"}
                             title={section?.title}
                             text={section.content}
+                            image={section?.images[0]}
                         />
                     ))}
                 </div>
