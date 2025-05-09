@@ -67,7 +67,7 @@ const SecondScreen = () => {
                         {section_3.split(" ")
                             .map((word, i) => (
                                 <span key={i} className="word" style={{ display: "inline-block", overflow: "hidden" }}>
-                                    <span className="inner__word" style={{ display: "inline-block" }}>{word}&nbsp;</span>
+                                    <span className="inner__word" style={{ display: "inline-block", opacity: 0 }}>{word}&nbsp;</span>
                                 </span>
                             ))}
                     </p>
