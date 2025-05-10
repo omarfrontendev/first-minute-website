@@ -1,4 +1,9 @@
 @media(max-width: 575px) {
+    ._fm-footer {
+        font-size: 12px;
+        padding: 16px;
+        line-height: 20px;
+    }
     .fm__footer_container ._fm-link {
         font-size: 12px;
     }

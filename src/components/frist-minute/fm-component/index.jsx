@@ -1,4 +1,4 @@
-import Image from '../../../assets/Frame.png';
+// import Image from '../../../assets/Frame.png';
 
 import './fm-component.css';
 
@@ -9,7 +9,7 @@ const FMComponent = ({ title, subtitle, text, image }) => (
         </div>
         <div className='_fm-component-content'>
             <span className='_fm-component-subtitle text-truncate-1'>{subtitle}</span>
-            <h4 className='_fm-component-title text-truncate-2'>{title}</h4>
+            <h4 className='_fm-component-title text-truncate-2 _fm-section-title'>{title}</h4>
 
             <p className='_fm-component-text' dangerouslySetInnerHTML={{
                 __html: text

@@ -152,6 +152,7 @@ a {
 ._fm-main-desc {
     font-size: 18px;
     line-height: 32px;
+    max-width: 90%;
 }
 
 ._fm-main-desc ._special_bold {
@@ -216,6 +217,10 @@ a {
 
 .text-truncate-1 {
     -webkit-line-clamp: 1;
+}
+
+.text-truncate-2 {
+    -webkit-line-clamp: 2;
 }
 
 .text-truncate-4 {

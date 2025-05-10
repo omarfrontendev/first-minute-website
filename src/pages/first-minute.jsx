@@ -9,21 +9,21 @@ import { fetchOneMinPageData } from "../redux/services/oneMinPage.services";
 
 const FirstMinute = () => {
     const dispatch = useDispatch();
-    const { status, data: { background_image, slug, description, title, sections } } = useSelector(state => state.oneMinPage);
+    const { status, data: { background_image, page_name, description, title, sections } } = useSelector(state => state.oneMinPage);
 
 
     useEffect(() => {
         dispatch(fetchOneMinPageData());
     }, []);
 
-    if (status !== "succeeded") return;
+    if (status !== "succeeded") return <div style={{ minHeight: "100vh" }}></div>;
 
     return (
         <div className="_fm-temp-bg">
             <img className="BG-temp" src={background_image} alt="..." />
             <MainBgSectionImg>
                 <div className="_fm-container">
-                    <FMHero slug={slug} description={description} title={title} />
+                    <FMHero name={page_name} description={description} title={title} />
                 </div>
             </MainBgSectionImg>
             <div className="_fm-container mt-5">
@@ -31,7 +31,7 @@ const FirstMinute = () => {
                     {sections.map((section, i) => (
                         <FMComponent
                             key={i}
-                            subtitle={"رؤيتنا"}
+                            subtitle={section?.section_name}
                             title={section?.title}
                             text={section.content}
                             image={section?.images[0]}
