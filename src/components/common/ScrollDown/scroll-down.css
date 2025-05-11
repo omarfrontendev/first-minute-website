@@ -11,7 +11,7 @@
 .scroll-down::after {
     content: "";
     position: absolute;
-    width: 128px;
+    width: 118px;
     height: 1px;
     background: #FFF;
     top: 50%;

@@ -9,6 +9,8 @@ import { fetchSettingsData } from '../../../redux/services/settings.services';
 import * as yup from "yup";
 import { toast } from 'react-toastify';
 import api from '../../../api';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 import './contact-us.css';
 
@@ -131,7 +133,9 @@ const ContactUs = () => {
                         value={watch("service_id")}
                     /> : ""}
                     <Input register={register} type='textarea' name="message" error={errors?.message?.message} placeholder="اكتب رسالتك هنا  ^_^" label="رسالتك" />
-                    <button type='submit' className='contact-us-submit-btn'>ارسل رسالتك</button>
+                    <button type='submit' className='contact-us-submit-btn' disabled={isSubmitting} >
+                        {isSubmitting ? <div className='spinner' /> : "ارسل رسالتك"}
+                    </button>
                 </form>
             </div>
             <div className='contact-us-left-boxes'>

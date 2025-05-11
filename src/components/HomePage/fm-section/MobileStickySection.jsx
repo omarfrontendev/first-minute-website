@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-import "./StickySection.css";
 import FirstScreen from "./FirstScreen";
 import SecondScreen from "./SecondScreen";
 import ThirdScreen from "./ThirdScreen";
 import { useSelector } from "react-redux";
 import DynamicScreen from "./DynamicScreen";
+
+import "./StickySection.css";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -25,7 +25,6 @@ const StickySection = () => {
       onEnter: () => {
         gsap.to(window, {
           duration: 0.1,
-          // scrollTo: sectionRefs.current[0],
           scrollTo: "#scroller",
           ease: "linear"
         });
@@ -40,7 +39,6 @@ const StickySection = () => {
       onEnterBack: () => {
         gsap.to(window, {
           duration: 0.1,
-          // scrollTo: sectionRefs.current[0],
           scrollTo: "#scroller",
           ease: "linear"
         });
@@ -51,7 +49,7 @@ const StickySection = () => {
     let isScrolling = false;
     let touchStartY = 0;
     let lastScrollTime = 0;
-    const SCROLL_COOLDOWN = 2000;
+    const SCROLL_COOLDOWN = 1000;
 
     const scrollerEl = document.getElementById("scroller");
 
@@ -72,25 +70,25 @@ const StickySection = () => {
       return rect.top <= 0 && rect.bottom >= window.innerHeight;
     };
 
-    const onWheel = (e) => {
-      const now = Date.now();
-      if (isScrolling || !isInView()) return;
-      if (now - lastScrollTime < SCROLL_COOLDOWN) return;
-      if (Math.abs(e.deltaY) < 100) return;
+    // const onWheel = (e) => {
+    //   const now = Date.now();
+    //   if (isScrolling || !isInView()) return;
+    //   if (now - lastScrollTime < SCROLL_COOLDOWN) return;
+    //   console.log(e.deltaY)
+    //   if (Math.abs(e.deltaY) < 1000000) return;
 
-      if (e.deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
-        currentIndex++;
-      } else if (e.deltaY < 0 && currentIndex > 0) {
-        currentIndex--;
-      } else {
-        return;
-      }
+    //   if (e.deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
+    //     currentIndex++;
+    //   } else if (e.deltaY < 0 && currentIndex > 0) {
+    //     currentIndex--;
+    //   } else {
+    //     return;
+    //   }
 
-      lastScrollTime = now;
-      scrollToSection(currentIndex);
-      e.preventDefault();
-    };
-
+    //   lastScrollTime = now;
+    //   scrollToSection(currentIndex);
+    //   e.preventDefault();
+    // };
 
     const onTouchStart = (e) => {
       touchStartY = e.touches[0].clientY;
@@ -102,8 +100,7 @@ const StickySection = () => {
       const touchEndY = e.changedTouches[0].clientY;
       const deltaY = touchStartY - touchEndY;
 
-      // if (Math.abs(deltaY) < 30) return; // تجاهل السحبات الصغيرة
-
+      if (Math.abs(deltaY) < 30) return; // تجاهل السحبات الصغيرة
       if (deltaY > 0 && currentIndex < sectionRefs.current.length - 1) {
         currentIndex++;
       } else if (deltaY < 0 && currentIndex > 0) {
@@ -115,43 +112,45 @@ const StickySection = () => {
       scrollToSection(currentIndex);
     };
 
-    const onKeyDown = (e) => {
-      if (isScrolling || !isInView()) return;
+    // const onKeyDown = (e) => {
+    //   if (isScrolling || !isInView()) return;
 
-      if (
-        e.code === "ArrowDown" ||
-        e.code === "PageDown" ||
-        e.code === "Space"
-      ) {
-        if (currentIndex < sectionRefs.current.length - 1) {
-          currentIndex++;
-          scrollToSection(currentIndex);
-          e.preventDefault();
-        }
-      } else if (
-        e.code === "ArrowUp" ||
-        e.code === "PageUp"
-      ) {
-        if (currentIndex > 0) {
-          currentIndex--;
-          scrollToSection(currentIndex);
-          e.preventDefault();
-        }
-      }
-    };
+    //   if (
+    //     e.code === "ArrowDown" ||
+    //     e.code === "PageDown" ||
+    //     e.code === "Space"
+    //   ) {
+    //     if (currentIndex < sectionRefs.current.length - 1) {
+    //       currentIndex++;
+    //       scrollToSection(currentIndex);
+    //       e.preventDefault();
+    //     }
+    //   } else if (
+    //     e.code === "ArrowUp" ||
+    //     e.code === "PageUp"
+    //   ) {
+    //     if (currentIndex > 0) {
+    //       currentIndex--;
+    //       scrollToSection(currentIndex);
+    //       e.preventDefault();
+    //     }
+    //   }
+    // };
 
     // window.addEventListener("wheel", onWheel, { passive: false });
-    // window.addEventListener("keydown", onKeyDown);
+
+
     if (window.innerWidth <= 768) {
       window.addEventListener("touchstart", onTouchStart, { passive: true });
       window.addEventListener("touchend", onTouchEnd, { passive: true });
     }
+    // window.addEventListener("keydown", onKeyDown);
 
     return () => {
-      window.removeEventListener("wheel", onWheel);
+      // window.removeEventListener("wheel", onWheel);
+      // window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchend", onTouchEnd);
-      window.removeEventListener("keydown", onKeyDown);
     };
   }, []);
 

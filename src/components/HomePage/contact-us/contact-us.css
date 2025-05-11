@@ -155,6 +155,25 @@ input[type="number"] {
     object-fit: cover;
 }
 
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #ccc;
+    border-top: 3px solid #FAE87D;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spinning 1s linear infinite;
+}
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 /* @media(max-width: 1550px) {
     .contact-us-title {

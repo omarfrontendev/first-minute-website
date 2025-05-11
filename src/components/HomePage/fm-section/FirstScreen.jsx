@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import { useSelector } from "react-redux";
 
 import './fm.css';
+import ScrollDown from "../../common/ScrollDown";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -83,6 +84,7 @@ const FirstScreen = ({ mobile }) => {
                         ))}
                 </h2>
             </div>
+            <ScrollDown arrowColor="dark" />
         </div>
 
     );
