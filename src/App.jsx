@@ -6,9 +6,16 @@ import FirstMinute from './pages/first-minute';
 import Footer from './components/layout/Footer';
 
 import './styles/global.css';
+import { useDispatch } from 'react-redux';
+import { fetchServicesData } from './redux/services/services.services';
 
 function App() {
   const [progress, setProgress] = useState(null);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchServicesData());
+  }, [])
 
   const onFinish = () => { };
 

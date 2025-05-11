@@ -11,7 +11,6 @@ const FirstMinute = () => {
     const dispatch = useDispatch();
     const { status, data: { background_image, page_name, description, title, sections } } = useSelector(state => state.oneMinPage);
 
-
     useEffect(() => {
         dispatch(fetchOneMinPageData());
     }, []);

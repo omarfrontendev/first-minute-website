@@ -26,26 +26,9 @@ const Home = ({ progress }) => {
     const { status: standardsStatus, data: { our_standards: standards } } = useSelector(state => state.standards);
     const { data: { section_4 } } = useSelector(state => state.home);
 
-
-
-    const stickyScreens = [
-        { component: FirstScreen },
-        { component: SecondScreen },
-        { component: ThirdScreen },
-        { component: ThirdScreen },
-        { component: ThirdScreen },
-        // ...section_4.images.slice(0, section_4.images.length - 1).map((_, i) => ({
-        //     component: DynamicScreen,
-        //     props: {
-        //         imgIndex: i,
-        //         lastScreen: section_4.images.length - i === 2,
-        //     },
-        // })),
-    ];
-
     useEffect(() => {
         dispatch(fetchHomeData());
-        dispatch(fetchServicesData());
+        // dispatch(fetchServicesData());
         dispatch(fetchStandardsData());
     }, [dispatch]);
 
@@ -71,14 +54,8 @@ const Home = ({ progress }) => {
                             <Standards standards={standards} />
                         </div>
                     </div>
-                    {/* {window.innerWidth <= 768 ? (
-                        <MobileStickySection sections={stickyScreens} />
-                        ) : (
-                            <StickySection sections={stickyScreens} />
-                            )} */}
-                    <MobileStickySection sections={stickyScreens} />
-                    {/* <StickySection sections={stickyScreens} /> */}
-                    <ContactUs services={services} />
+                    <MobileStickySection />
+                    <ContactUs />
                 </>
             )}
         </>

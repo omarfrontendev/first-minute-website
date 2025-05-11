@@ -42,8 +42,9 @@ const schema = yup.object().shape({
         .required("عليك اختيار الخدمة اولا!")
 });
 
-const ContactUs = ({ services }) => {
+const ContactUs = () => {
     const { status, data: { contact_us_form_title, who_are_we_section, our_vision_section } } = useSelector(state => state.settings);
+    const { data: services } = useSelector(state => state.services);
     const dispatch = useDispatch();
     const { countryCodes, isLoading } = useCountryCodes();
     const sectionRef = useRef(null);
@@ -83,7 +84,6 @@ const ContactUs = ({ services }) => {
     if (status === "succeeded") return (
         <section className='_fm-contact-us main_bg_color' ref={sectionRef}>
             <div className='contact-us-form-box d-flex flex-column' id="contact-us">
-                {/* <h3 className='contact-us-title'>نحن دائمًا هنا لدعمك،<br /> يسعدنا تواصلك معنا.</h3> */}
                 <h3 className='contact-us-title text-truncate-2'>{contact_us_form_title}</h3>
                 <form
                     className='contact-us-form'
@@ -129,7 +129,7 @@ const ContactUs = ({ services }) => {
                         name="service_id"
                         error={errors?.service_id?.message}
                         value={watch("service_id")}
-                    />: ""}
+                    /> : ""}
                     <Input register={register} type='textarea' name="message" error={errors?.message?.message} placeholder="اكتب رسالتك هنا  ^_^" label="رسالتك" />
                     <button type='submit' className='contact-us-submit-btn'>ارسل رسالتك</button>
                 </form>
