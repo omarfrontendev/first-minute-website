@@ -9,8 +9,6 @@ import { fetchSettingsData } from '../../../redux/services/settings.services';
 import * as yup from "yup";
 import { toast } from 'react-toastify';
 import api from '../../../api';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 
 import './contact-us.css';
 
@@ -47,8 +45,8 @@ const schema = yup.object().shape({
 const ContactUs = () => {
     const { status, data: { contact_us_form_title, who_are_we_section, our_vision_section } } = useSelector(state => state.settings);
     const { data: services } = useSelector(state => state.services);
-    const dispatch = useDispatch();
     const { countryCodes, isLoading } = useCountryCodes();
+    const dispatch = useDispatch();
     const sectionRef = useRef(null);
 
     useEffect(() => {

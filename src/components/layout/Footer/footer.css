@@ -1,9 +1,29 @@
+.footer__links {
+    display: flex;
+    gap: 10px 24px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 336px;
+}
+
+.footer__links ._fm-link {
+    width: fit-content;
+    /* flex-basis: calc(25% - 24px); */
+}
+
 @media(max-width: 575px) {
     ._fm-footer {
         font-size: 12px;
         padding: 16px;
         line-height: 20px;
     }
+
+    .footer__links {
+        gap: 0 16px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .fm__footer_container ._fm-link {
         font-size: 12px;
     }
@@ -11,4 +31,5 @@
     .fm__footer_container ._fm-logo {
         width: 114px;
     }
+
 }

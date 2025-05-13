@@ -1,21 +1,28 @@
-import './header.css';
 import LOGO from '../../../assets/logo.svg';
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 import { BiMenuAltRight } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
 import gsap from 'gsap';
+import { useSelector } from 'react-redux';
+import { MdArrowDropDown } from "react-icons/md";
+
+import './header.css';
 
 const Header = () => {
     const [isNavbarVisible, setIsNavbarVisible] = useState(null);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [showMenu, setShwoMenu] = useState(false);
+    const { pathname } = useLocation();
+    const menuRef = useRef(null);
+
+    const { data: dynamicPages } = useSelector(state => state.additionalPages);
 
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
         const headerHeight = document.getElementById('header')?.offsetHeight || 0;
-
-        if (currentScrollY > headerHeight) {
+        if (currentScrollY > headerHeight && !isMenuOpen) {
             setIsNavbarVisible(currentScrollY < lastScrollY);
             setLastScrollY(currentScrollY);
         } else {
@@ -37,7 +44,21 @@ const Header = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [lastScrollY]);
+    }, [lastScrollY, isMenuOpen]);
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setShwoMenu(false);
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     return (
         <nav
@@ -70,10 +91,33 @@ const Header = () => {
             )}
 
             <div className="nav-links d-flex gap-4 align-items-start align-items-md-center">
-                <a href="#standards" className="_fm-link">معاييرنا</a>
-                <a href="#services" className="_fm-link">خدماتنا</a>
-                <Link to="/first-minute" className="_fm-link">أول دقيقة</Link>
-                <a onClick={() => handleSlideBtn("_fm-link._fm-link-main")} href="#contact-us" className="_fm-link _fm-link-main">تواصل معنا</a>
+                <NavLink
+                    to="/standards"
+                    className={({ isActive }) => isActive ? "_fm-link active link-nav" : "_fm-link link-nav"}
+                >
+                    معاييرنا
+                </NavLink>
+                {pathname === '/' && <a href="#services" className="_fm-link link-nav">خدماتنا</a>}
+                <NavLink to="/first-minute" className="_fm-link link-nav">أول دقيقة</NavLink>
+                <div ref={menuRef} className='position-relative'>
+                    <button onClick={() => setShwoMenu(prev => !prev)} className='dropdown-menu-btn link-nav'>الصفحات الاضافية <MdArrowDropDown style={{ transform: `rotateZ(${showMenu ? "180" : "0"}deg)`, transition: ".3s ease-in-out" }} /></button>
+                    {showMenu && (
+                        <div className='dropdown-menu__'>
+                            {dynamicPages
+                                .filter(page => page.show_in_main_nav)
+                                .map(page => (
+                                    <NavLink
+                                        key={page.id}
+                                        to={`/${page.id}`}
+                                        className={({ isActive }) => isActive ? "_fm-link active" : "_fm-link"}
+                                    >
+                                        {page.page_name}
+                                    </NavLink>
+                                ))}
+                        </div>
+                    )}
+                </div>
+                <a onClick={() => handleSlideBtn("_fm-link._fm-link-main")} href="#contact-us" className="_fm-link _fm-link-main link-nav">تواصل معنا</a>
             </div>
         </nav>
     );

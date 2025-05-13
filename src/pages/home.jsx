@@ -5,18 +5,13 @@ import Standards from "../components/HomePage/standards";
 import MainBgSectionImg from "../components/layout/main-bg-section";
 import Vector1 from '../assets/Vector-1.png';
 import Vector2 from '../assets/Vector.png';
-import StickySection from "../components/HomePage/fm-section/StickySection";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchHomeData } from "../redux/services/home.services";
-import { fetchServicesData } from "../redux/services/services.services";
 import { fetchStandardsData } from "../redux/services/standards.services";
 import LoadingScreen from "../components/LoadingScreen";
 import MobileStickySection from "../components/HomePage/fm-section/MobileStickySection";
-import FirstScreen from "../components/HomePage/fm-section/FirstScreen";
-import SecondScreen from "../components/HomePage/fm-section/SecondScreen";
-import ThirdScreen from "../components/HomePage/fm-section/ThirdScreen";
-import DynamicScreen from "../components/HomePage/fm-section/DynamicScreen";
+
 
 const Home = ({ progress }) => {
 
@@ -24,7 +19,6 @@ const Home = ({ progress }) => {
     const { status } = useSelector(state => state.home);
     const { status: sevicesStatus, data: services } = useSelector(state => state.services);
     const { status: standardsStatus, data: { our_standards: standards } } = useSelector(state => state.standards);
-    const { data: { section_4 } } = useSelector(state => state.home);
 
     useEffect(() => {
         dispatch(fetchHomeData());

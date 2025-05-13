@@ -1,16 +1,15 @@
 import FMHero from "../components/frist-minute/fm-hero";
-import BG from '../assets/BG-SVG.svg';
 import ContactUs from "../components/HomePage/contact-us";
 import FMComponent from "../components/frist-minute/fm-component";
 import MainBgSectionImg from "../components/layout/main-bg-section";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchOneMinPageData } from "../redux/services/oneMinPage.services";
+import { fetchStandardsData } from "../redux/services/standards.services";
 import { useLocation } from "react-router-dom";
 
-const FirstMinute = () => {
+const StandardsPage = () => {
     const dispatch = useDispatch();
-    const { status, data: { background_image, page_name, description, title, sections } } = useSelector(state => state.oneMinPage);
+    const { status, data: { background_image, page_name, description, title, sections } } = useSelector(state => state.standards);
     const { pathname } = useLocation();
 
     useEffect(() => {
@@ -18,7 +17,7 @@ const FirstMinute = () => {
     }, [pathname]);
     
     useEffect(() => {
-        dispatch(fetchOneMinPageData());
+        dispatch(fetchStandardsData());
     }, []);
 
     if (status !== "succeeded") return <div style={{ minHeight: "100vh" }}></div>;
@@ -50,4 +49,4 @@ const FirstMinute = () => {
 
 }
 
-export default FirstMinute;
+export default StandardsPage;

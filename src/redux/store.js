@@ -5,6 +5,7 @@ import servicesSlice from './features/servicesSlice';
 import standardsSlice from './features/standardsSlice';
 import settingsSlice from './features/settingsSlice';
 import oneMinPageSlice from './features/oneMinPageSlice';
+import additionalPagesSlice from './features/additionalPages.slice';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     standards: standardsSlice,
     settings: settingsSlice,
     oneMinPage: oneMinPageSlice,
+    additionalPages: additionalPagesSlice
   },
 });
 

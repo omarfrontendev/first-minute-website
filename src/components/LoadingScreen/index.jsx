@@ -35,7 +35,7 @@ const onStartAnimation = () => {
         ease: 'power2.inOut',
     }, '<');
 
-    heroTl.from(['._fm-logo', '._fm-link'], {
+    heroTl.from(['._fm-logo', '.link-nav'], {
         y: -40,
         opacity: 0,
         duration: 0.6,

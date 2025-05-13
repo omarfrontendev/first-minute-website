@@ -32,6 +32,7 @@
     position: relative;
 }
 
+._fm-link.active,
 ._fm-link:hover {
     opacity: 1 !important;
     color: #B8555A !important;
@@ -49,6 +50,7 @@
     transition: 0.2s ease-in;
 }
 
+._fm-link.active::after,
 ._fm-link:not(._fm-link-main):hover::after {
     width: 100%;
 }
@@ -88,87 +90,44 @@
     display: none;
 }
 
-/* @media(max-width: 1550px) {
-    ._fm-nav {
-        padding: 18px;
-    }
+.dropdown-menu-btn {
+    all: unset;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0%;
+    text-decoration: none;
+    opacity: .7;
+    color: #1E1E1E !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
 
-    ._fm-link-main,
-    ._fm-link {
-        font-size: 14px;
-        line-height: 28px;
-    }
+.dropdown-menu__ {
+    position: absolute;
+    top: calc(100% + 10px);
+    background: #FFF;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 8px;
+    row-gap: 10px;
+}
 
-    ._fm-link-main {
-        border-radius: 30px;
-    }
-
-    ._fm-logo {
-        width: 140px;
-        height: auto;
-    }
-
-
-    ._fm-footer {
-        padding: 28px;
-        font-size: 14px;
-        line-height: 28px;
-    }
-} */
-
-/* @media(max-width: 1199px) {
-    ._fm-nav {
-        padding-left: 18px;
-        padding-right: 18px;
-    }
-
-    ._fm-link-main,
-    ._fm-link {
-        font-size: 14px;
-        line-height: 28px;
-    }
-
-    ._fm-link-main {
-        border-radius: 30px;
-    }
-
-    ._fm-logo {
-        width: 110px;
-        height: auto;
-    }
-
-
-    ._fm-footer {
-        padding: 28px;
-        font-size: 14px;
-        line-height: 28px;
-    }
+.dropdown-menu__ ._fm-link::after {
+    display: none;
 }
 
 @media(max-width: 991px) {
-
-    ._fm-link-main,
-    ._fm-link {
-        font-size: 12px;
-        line-height: normal;
-    }
-
-    ._fm-link-main {
-        padding: 12px 24px;
-    }
-
-    ._fm-footer {
-        padding: 18px;
-        font-size: 12px;
-        line-height: normal;
-    }
-
-} */
-
-@media(max-width: 768px) {
     ._fm-nav {
         flex-direction: row-reverse;
         padding: 8px 18px;
+        ;
     }
 
     ._fm-nav._fm-nav.show {
@@ -186,7 +145,6 @@
         height: 100vh;
         padding-right: 28px;
         justify-content: center;
-        align-items: flex-start !important;
         opacity: 0;
         transform: translateX(100%);
         transition: .3s ease-in;
@@ -195,6 +153,7 @@
     ._fm-nav.menu-opened .nav-links {
         opacity: 1;
         transform: translateX(0);
+        align-items: flex-start !important;
     }
 
     ._fm-nav.hide.menu-opened {
@@ -220,12 +179,14 @@
         z-index: 1;
     }
 
+    .dropdown-menu__ {
+        position: relative;
+        top: 0;
+    }
+
 }
 
 @media(max-width: 575px) {
-    ._fm-nav {
-        /* padding: 0 18px; */
-    }
 
     ._fm-logo {
         width: 150px;
