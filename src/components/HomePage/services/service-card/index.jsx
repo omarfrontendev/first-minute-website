@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { useState, useRef, useLayoutEffect } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { TextPlugin } from "gsap/TextPlugin";
+import { Link } from "react-router-dom";
 
 // gsap.registerPlugin(TextPlugin);
 
@@ -11,7 +12,6 @@ const ServiceCard = ({ title, text, image, color, id }) => {
     const [cardSize, setCardSize] = useState({ width: 0, height: 0 });
     const [linkSize, setLinkSize] = useState({ width: 0, height: 0 });
     const cardRef = useRef(null);
-    const textRef = useRef(null);
     const linkRef = useRef(null);
 
     useLayoutEffect(() => {
@@ -63,13 +63,13 @@ const ServiceCard = ({ title, text, image, color, id }) => {
                     </p>
                 </div>
             </div>
-            <button ref={linkRef} className="service-card-link d-flex align-items-center justify-content-center">
+            <Link to={`/services/${id}`} ref={linkRef} className="service-card-link d-flex align-items-center justify-content-center">
                 <span className="service-arrow-icon" style={{ background: color }}>
                     <IoIosArrowRoundBack size={40} />
                 </span>
                 <span className="card-top-curve"></span>
                 <span className="card-bottom-curve"></span>
-            </button>
+            </Link>
         </div>
     );
 };

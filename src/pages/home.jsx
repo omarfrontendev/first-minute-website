@@ -10,7 +10,8 @@ import { useEffect } from "react";
 import { fetchHomeData } from "../redux/services/home.services";
 import { fetchStandardsData } from "../redux/services/standards.services";
 import LoadingScreen from "../components/LoadingScreen";
-import MobileStickySection from "../components/HomePage/fm-section/MobileStickySection";
+import StickySection from "../components/HomePage/fm-section/StickySection";
+import { useLocation } from "react-router-dom";
 
 
 const Home = ({ progress }) => {
@@ -48,7 +49,7 @@ const Home = ({ progress }) => {
                             <Standards standards={standards} />
                         </div>
                     </div>
-                    <MobileStickySection />
+                    <StickySection />
                     <ContactUs />
                 </>
             )}

@@ -96,7 +96,7 @@ const ServicesSection = ({ services }) => {
                                 text={service?.description || ''}
                                 image={service?.image}
                                 color={service?.color}
-                                id={services?.id}
+                                id={service?.id}
                             />
                         </SwiperSlide>
                     ))}

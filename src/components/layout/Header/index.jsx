@@ -3,11 +3,14 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { BiMenuAltRight } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
-import gsap from 'gsap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { MdArrowDropDown } from "react-icons/md";
+import gsap from 'gsap';
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 import './header.css';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const Header = () => {
     const [isNavbarVisible, setIsNavbarVisible] = useState(null);
@@ -15,8 +18,8 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showMenu, setShwoMenu] = useState(false);
     const { pathname } = useLocation();
+    const dispatch = useDispatch();
     const menuRef = useRef(null);
-
     const { data: dynamicPages } = useSelector(state => state.additionalPages);
 
     const handleScroll = () => {
@@ -35,7 +38,7 @@ const Header = () => {
             scale: .7
         }, {
             scale: 1
-        })
+        });
     };
 
     useEffect(() => {
@@ -97,7 +100,21 @@ const Header = () => {
                 >
                     معاييرنا
                 </NavLink>
-                {pathname === '/' && <a href="#services" className="_fm-link link-nav">خدماتنا</a>}
+                {pathname === '/' && <a
+                    href="#services"
+                    className="_fm-link link-nav"
+                // onClick={(e) => {
+                //     e.preventDefault(); // امنع التنقل التلقائي بالهاش
+                //     const el = document.querySelector("#services");
+                //     if (el) {
+                //         el.scrollIntoView({ behavior: "smooth" });
+                //         // اختياري: حدث الهاش يدويًا عشان يبان في العنوان
+                //         window.history.replaceState(null, "", "#services");
+                //     }
+                // }}
+                >
+                    خدماتنا
+                </a>}
                 <NavLink to="/first-minute" className="_fm-link link-nav">أول دقيقة</NavLink>
                 <div ref={menuRef} className='position-relative'>
                     <button onClick={() => setShwoMenu(prev => !prev)} className='dropdown-menu-btn link-nav'>الصفحات الاضافية <MdArrowDropDown style={{ transform: `rotateZ(${showMenu ? "180" : "0"}deg)`, transition: ".3s ease-in-out" }} /></button>
@@ -117,7 +134,24 @@ const Header = () => {
                         </div>
                     )}
                 </div>
-                <a onClick={() => handleSlideBtn("_fm-link._fm-link-main")} href="#contact-us" className="_fm-link _fm-link-main link-nav">تواصل معنا</a>
+                <a
+                    href="#contact-us"
+                    className="_fm-link _fm-link-main link-nav"
+                    onClick={(e) => {
+                        // e.preventDefault(); // امنع التنقل التلقائي بالهاش
+                        // const el = document.querySelector("#contact-us");
+                        // if (el) {
+                        //     el.scrollIntoView({ behavior: "smooth" });
+                        //     // اختياري: حدث الهاش يدويًا عشان يبان في العنوان
+                        //     window.history.replaceState(null, "", "#contact-us");
+                        // }
+                        handleSlideBtn("_fm-link._fm-link-main");
+                        // window.history.replaceState(null, "", "#contact-us");
+                    }}
+                    // onClick={handleSlideBtn}
+                >
+                    تواصل معنا
+                </a>
             </div>
         </nav>
     );

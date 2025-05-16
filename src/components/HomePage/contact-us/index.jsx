@@ -9,8 +9,12 @@ import { fetchSettingsData } from '../../../redux/services/settings.services';
 import * as yup from "yup";
 import { toast } from 'react-toastify';
 import api from '../../../api';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import gsap from 'gsap';
 
 import './contact-us.css';
+
+// gsap.registerPlugin(ScrollTrigger);
 
 const schema = yup.object().shape({
     name: yup
@@ -51,7 +55,7 @@ const ContactUs = () => {
 
     useEffect(() => {
         dispatch(fetchSettingsData())
-    }, [])
+    }, []);
 
     const {
         register,

@@ -1,9 +1,7 @@
-// import Image from '../../../assets/Frame.png';
-
 import './fm-component.css';
 
-const FMComponent = ({ title, subtitle, text, image }) => (
-    <div className="_fm-component-box d-flex align-items-center justify-content-between gap-4" style={{minHeight: "100vh"}}>
+const FMComponent = ({ title, subtitle, text, image, loading }) => (
+    <div className="_fm-component-box d-flex align-items-center justify-content-between gap-4">
         <div className='_fm-component-image'>
             <img src={image?.url} alt={image?.alt} className='-fm_component-image' />
         </div>
