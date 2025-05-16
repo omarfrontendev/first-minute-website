@@ -7,8 +7,6 @@ const HeroSection = () => {
 
     const { data: { section_1 } } = useSelector(state => state.home);
 
-    // const text = "هنا، حيث تصبح البداية حكاية، والإبداع توقيعاً لكل لحظة"
-
     return (
         <div className="_fm-hero-section d-flex align-items-center justify-content-center position-relative ">
             <div style={{ overflow: "hidden" }}>

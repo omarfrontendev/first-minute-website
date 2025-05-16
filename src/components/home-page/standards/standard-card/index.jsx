@@ -1,6 +1,7 @@
-import '../standards.css';
 import Overlay from '../../../../assets/Rectangle_10.png';
 import { useRef, useState } from 'react';
+
+import '../standards.css';
 
 const StandardCard = ({ text, title, icon, backgroundColor}) => {
 

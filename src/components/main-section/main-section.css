@@ -6,7 +6,7 @@
     flex-direction: row;
 }
 
-._fm-component-box > div {
+._fm-component-box>div {
     flex: 1;
 }
 
@@ -33,11 +33,17 @@
     color: #1E1E1E;
     /* max-width: 500px; */
 }
+
+._fm-component-text img {
+    max-width: 100%;
+}
+
 ._fm-component-image {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 ._fm-component-image>img {
     width: 579px;
     max-width: 100%;
@@ -73,4 +79,10 @@
 
 .-fm_component-image {
     max-width: 100%;
+}
+
+@media(max-width: 991px) {
+    .skeleton-box {
+        max-width: 37% !important;
+    }
 }

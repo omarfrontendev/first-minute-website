@@ -1,21 +1,16 @@
-import FMHero from "../../components/frist-minute/fm-hero";
-import MainBgSectionImg from "../../components/layout/main-bg-section";
+import MainBgSectionImg from "../components/layout/main-bg-section";
 import { useEffect, useState } from "react";
-import FMComponent from "../frist-minute/fm-component";
-import ContactUs from "../HomePage/contact-us";
 import { useLocation, useParams } from "react-router-dom";
+import MainSection from "../components/main-section";
+import MainHero from "../components/main-hero";
 
 const PageTemplate = ({ onGetData }) => {
     const [pageContent, setPageContent] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const { pathname } = useLocation();
     const { id } = useParams();
 
     useEffect(() => {
-        window.scrollTo({
-            top: 0,
-        });
-        
         (async () => {
             try {
                 setLoading(true);
@@ -35,13 +30,13 @@ const PageTemplate = ({ onGetData }) => {
             {!loading && pageContent?.background_image && <img className="BG-temp" src={pageContent?.background_image} alt="..." />}
             <MainBgSectionImg>
                 <div className="_fm-container">
-                    <FMHero name={pageContent?.page_name} description={pageContent?.description} title={pageContent?.title} loading={loading} />
+                    <MainHero name={pageContent?.page_name} description={pageContent?.description} title={pageContent?.title} loading={loading} />
                 </div>
             </MainBgSectionImg>
             <div className="_fm-container" style={{ marginTop: "160px" }}>
                 <div className="d-flex flex-column gap-5">
                     {pageContent?.sections?.map((section, i) => (
-                        <FMComponent
+                        <MainSection
                             key={i}
                             subtitle={section?.section_name}
                             title={section?.title}
@@ -51,7 +46,6 @@ const PageTemplate = ({ onGetData }) => {
                     ))}
                 </div>
             </div>
-            <ContactUs />
         </div>
     );
 

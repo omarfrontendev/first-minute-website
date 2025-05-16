@@ -13,6 +13,7 @@
 
 .footer__link {
     text-decoration: none;
+    font-weight: 700;
 }
 
 .footer__link:hover {
@@ -24,20 +25,23 @@
         font-size: 12px;
         padding: 16px;
         line-height: 20px;
+        margin-top: 8px;
     }
 
     .footer__links {
-        gap: 0 16px;
+        gap: 7px 14px;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .fm__footer_container ._fm-link {
-        font-size: 12px;
+        font-size: 11px;
+        line-height: normal;
     }
 
     .fm__footer_container ._fm-logo {
         width: 114px;
+        height: auto;
     }
 
 }

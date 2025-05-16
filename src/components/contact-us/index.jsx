@@ -1,17 +1,16 @@
 import { useEffect, useRef } from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Input from '../../common/Input';
-import { useCountryCodes } from '../../../context/CountriesContext';
-import SelectDropdown from '../../common/SelectDropdown';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchSettingsData } from '../../../redux/services/settings.services';
+import Input from '../common/Input';
+import { useCountryCodes } from '../../context/CountriesContext';
+import SelectDropdown from '../common/SelectDropdown';
+import { useSelector } from 'react-redux';
 import * as yup from "yup";
 import { toast } from 'react-toastify';
-import api from '../../../api';
+import api from '../../api';
+import { useParams } from 'react-router-dom';
 
 import './contact-us.css';
-import { useParams } from 'react-router-dom';
 
 const schema = yup.object().shape({
     name: yup
@@ -47,13 +46,8 @@ const ContactUs = () => {
     const { status, data: { contact_us_form_title, who_are_we_section, our_vision_section } } = useSelector(state => state.settings);
     const { data: services } = useSelector(state => state.services);
     const { countryCodes, isLoading } = useCountryCodes();
-    const dispatch = useDispatch();
     const sectionRef = useRef(null);
     const { id } = useParams();
-
-    useEffect(() => {
-        dispatch(fetchSettingsData())
-    }, []);
 
     const {
         register,
@@ -143,7 +137,7 @@ const ContactUs = () => {
                         value={watch("service_id")}
                         defaultValue={() => {
                             const defaultService = services?.find(service => service.id === +id);
-                            if(id) return {
+                            if (id) return {
                                 label: defaultService.service_name,
                                 value: defaultService.id,
                             }

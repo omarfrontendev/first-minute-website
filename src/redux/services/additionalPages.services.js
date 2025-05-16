@@ -6,6 +6,7 @@ export const fetchAdditionalPages = createAsyncThunk("additionalPages/fetchAddit
   const response = await api.get(`additional-pages`);
   return response.data;
 });
+
 // Async thunk to fetch users from an API
 export const fetchAdditionalPageContent = createAsyncThunk("additionalPages/fetchAdditionalPageContent", async (id) => {
   const response = await api.get(`additional-page-content/${id}`);

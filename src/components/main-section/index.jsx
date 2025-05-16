@@ -1,6 +1,6 @@
-import './fm-component.css';
+import './main-section.css';
 
-const FMComponent = ({ title, subtitle, text, image, loading }) => (
+const MainSection = ({ title, subtitle, text, image }) => (
     <div className="_fm-component-box d-flex align-items-center justify-content-between gap-4">
         <div className='_fm-component-image'>
             <img src={image?.url} alt={image?.alt} className='-fm_component-image' />
@@ -15,4 +15,4 @@ const FMComponent = ({ title, subtitle, text, image, loading }) => (
         </div>
     </div>
 );
-export default FMComponent;
+export default MainSection;

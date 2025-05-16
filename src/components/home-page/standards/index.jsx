@@ -1,34 +1,10 @@
 import StandardCard from "./standard-card";
-import TimeIcon from '../../../assets/01.svg';
 import ExpandedWord from "./ExpandedWord";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
-import { useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
-
-// const standards = [
-//     {
-//         title: "الوقت",
-//         text: "عامل الوقت مهم في تجربتنا، ومؤثر في صناعتنا الإبداعية. نستغل التوقيت لنبتكر الدهشة ومعالمها الفاتنة.",
-//         icon: TimeIcon,
-//         bgColor: "#000",
-//     },
-//     {
-//         title: "الوقت",
-//         text: "عامل الوقت مهم في تجربتنا، ومؤثر في صناعتنا الإبداعية. نستغل التوقيت لنبتكر الدهشة ومعالمها الفاتنة.",
-//         icon: TimeIcon,
-//         bgColor: "#362E57",
-//     },
-//     {
-//         title: "الوقت",
-//         text: "عامل الوقت مهم في تجربتنا، ومؤثر في صناعتنا الإبداعية. نستغل التوقيت لنبتكر الدهشة ومعالمها الفاتنة.",
-//         icon: TimeIcon,
-//         bgColor: "#D16166",
-//     },
-// ];
-
 
 const Standards = ({ standards }) => {
 

@@ -3,12 +3,10 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { BiMenuAltRight } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
-import { useDispatch, useSelector } from 'react-redux';
-import { MdArrowDropDown } from "react-icons/md";
+import { useSelector } from 'react-redux';
 import gsap from 'gsap';
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { fetchServicesData } from '../../../redux/services/services.services';
-import { fetchAdditionalPages } from '../../../redux/services/additionalPages.services';
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 import './header.css';
 
@@ -20,7 +18,6 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showMenu, setShwoMenu] = useState(false);
     const { pathname } = useLocation();
-    const dispatch = useDispatch();
     const menuRef = useRef(null);
     const { data: dynamicPages, status } = useSelector(state => state.additionalPages);
 
@@ -65,10 +62,6 @@ const Header = () => {
         };
     }, []);
 
-    useEffect(() => {
-        dispatch(fetchServicesData());
-        dispatch(fetchAdditionalPages());
-    }, []);
 
     return (
         <nav
@@ -80,7 +73,7 @@ const Header = () => {
                 ${isNavbarVisible === null ? '' : isNavbarVisible ? 'show' : 'hide'}
             `}
         >
-            <Link to="/" className="d-flex align-items-center justify-content-center">
+            <Link to="" className="d-flex align-items-center justify-content-center">
                 <img src={LOGO} alt="Logo" className="_fm-logo" />
             </Link>
 
@@ -115,7 +108,12 @@ const Header = () => {
                 </a>}
                 <NavLink to="/first-minute" className="_fm-link link-nav">أول دقيقة</NavLink>
                 <div ref={menuRef} className='position-relative'>
-                    <button onClick={() => setShwoMenu(prev => !prev)} className='dropdown-menu-btn link-nav'>الصفحات الاضافية <MdArrowDropDown style={{ transform: `rotateZ(${showMenu ? "180" : "0"}deg)`, transition: ".3s ease-in-out" }} /></button>
+                    <button
+                        onClick={() => setShwoMenu(prev => !prev)}
+                        className={`dropdown-menu-btn link-nav ${status === "succeeded" && dynamicPages?.find(page => `/${page?.id}` === pathname) ? "active" : ""}`}>
+                        الصفحات الاضافية
+                        <RiArrowDropDownLine size={24} style={{ transform: `rotateZ(${showMenu ? "180" : "0"}deg)`, transition: ".3s ease-in-out" }} />
+                    </button>
                     {showMenu && (
                         <div className='dropdown-menu__'>
                             {status === "succeeded" && dynamicPages
@@ -124,7 +122,7 @@ const Header = () => {
                                     <NavLink
                                         key={page.id}
                                         to={`/${page.id}`}
-                                        className={({ isActive }) => isActive ? "_fm-link active" : "_fm-link"}
+                                        className={({ isActive }) => isActive ? "_fm-link active dropdonw-link" : "_fm-link dropdonw-link"}
                                     >
                                         {page.page_name}
                                     </NavLink>

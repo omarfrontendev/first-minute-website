@@ -3,16 +3,26 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import RoutesPages from './pages/RoutePages';
 import { BsWifiOff } from "react-icons/bs";
+import MainBgSectionImg from './components/layout/main-bg-section';
+import { useDispatch } from 'react-redux';
+import { fetchServicesData } from './redux/services/services.services';
+import { fetchAdditionalPages } from './redux/services/additionalPages.services';
+import { fetchSettingsData } from './redux/services/settings.services';
+import ContactUs from './components/contact-us';
 
 import './styles/global.css';
 import 'react-loading-skeleton/dist/skeleton.css'
-import MainBgSectionImg from './components/layout/main-bg-section';
 
 function App() {
 
   const [status, setStatus] = useState(navigator.onLine);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+
+    dispatch(fetchServicesData());
+    dispatch(fetchAdditionalPages());
+    dispatch(fetchSettingsData());
 
     const online = () => {
       setStatus(true);
@@ -47,6 +57,7 @@ function App() {
     <NetRequired>
       <Header />
       <RoutesPages />
+      <ContactUs />
       <Footer />
     </NetRequired>
   );

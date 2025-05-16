@@ -2,10 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useState, useRef, useLayoutEffect } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { TextPlugin } from "gsap/TextPlugin";
 import { Link } from "react-router-dom";
-
-// gsap.registerPlugin(TextPlugin);
 
 const ServiceCard = ({ title, text, image, color, id }) => {
     const [hovered, setHovered] = useState(false);

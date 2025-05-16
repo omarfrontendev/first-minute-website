@@ -1,7 +1,6 @@
-import ContactUs from "../components/HomePage/contact-us";
-import HeroSection from "../components/HomePage/hero";
-import ServicesSection from "../components/HomePage/services";
-import Standards from "../components/HomePage/standards";
+import HeroSection from "../components/home-page/hero";
+import ServicesSection from "../components/home-page/services";
+import Standards from "../components/home-page/standards";
 import MainBgSectionImg from "../components/layout/main-bg-section";
 import Vector1 from '../assets/Vector-1.png';
 import Vector2 from '../assets/Vector.png';
@@ -10,7 +9,7 @@ import { useEffect, useState } from "react";
 import { fetchHomeData } from "../redux/services/home.services";
 import { fetchStandardsData } from "../redux/services/standards.services";
 import LoadingScreen from "../components/LoadingScreen";
-import StickySection from "../components/HomePage/fm-section/StickySection";
+import StickySection from "../components/home-page/fm-section/StickySection";
 
 
 const Home = () => {
@@ -91,7 +90,6 @@ const Home = () => {
                         </div>
                     </div>
                     <StickySection />
-                    <ContactUs />
                 </>
             )}
         </>
