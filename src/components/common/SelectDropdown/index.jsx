@@ -2,8 +2,10 @@ import Select from "react-select";
 import './selectDropdown.css';
 import { Controller } from "react-hook-form";
 
-const SelectDropdown = ({ options, name, label, error, placeholder, control, value, formatOptionLabel, isLoading }) => {
+const SelectDropdown = ({ options, name, label, error, placeholder, control, value, formatOptionLabel, isLoading, defaultValue }) => {
     const isCode = name === "code";
+
+
     return (
         <div className='select__container w-100 position-relative'>
             <label className="label" htmlFor={name}>{label}</label>
@@ -14,6 +16,7 @@ const SelectDropdown = ({ options, name, label, error, placeholder, control, val
                 render={({ field }) => (
                     <Select
                         {...field}
+                        defaultValue={() => defaultValue()}
                         isLoading={isLoading}
                         isDisabled={isLoading}
                         value={options.find(option => option.value === value)}

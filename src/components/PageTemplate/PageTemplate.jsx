@@ -12,7 +12,10 @@ const PageTemplate = ({ onGetData }) => {
     const { id } = useParams();
 
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({
+            top: 0,
+        });
+        
         (async () => {
             try {
                 setLoading(true);
@@ -29,7 +32,7 @@ const PageTemplate = ({ onGetData }) => {
 
     return (
         <div className="_fm-temp-bg" style={{ minHeight: "100vh" }}>
-            {!loading && <img className="BG-temp" src={pageContent?.background_image} alt="..." />}
+            {!loading && pageContent?.background_image && <img className="BG-temp" src={pageContent?.background_image} alt="..." />}
             <MainBgSectionImg>
                 <div className="_fm-container">
                     <FMHero name={pageContent?.page_name} description={pageContent?.description} title={pageContent?.title} loading={loading} />

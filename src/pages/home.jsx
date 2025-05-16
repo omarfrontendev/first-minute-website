@@ -6,31 +6,72 @@ import MainBgSectionImg from "../components/layout/main-bg-section";
 import Vector1 from '../assets/Vector-1.png';
 import Vector2 from '../assets/Vector.png';
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchHomeData } from "../redux/services/home.services";
 import { fetchStandardsData } from "../redux/services/standards.services";
 import LoadingScreen from "../components/LoadingScreen";
 import StickySection from "../components/HomePage/fm-section/StickySection";
-import { useLocation } from "react-router-dom";
 
 
-const Home = ({ progress }) => {
-
+const Home = () => {
+    const [progress, setProgress] = useState(null);
     const dispatch = useDispatch();
     const { status } = useSelector(state => state.home);
-    const { status: sevicesStatus, data: services } = useSelector(state => state.services);
+    const { status: servicesStatus, data: services } = useSelector(state => state.services);
     const { status: standardsStatus, data: { our_standards: standards } } = useSelector(state => state.standards);
 
     useEffect(() => {
         dispatch(fetchHomeData());
-        // dispatch(fetchServicesData());
         dispatch(fetchStandardsData());
     }, [dispatch]);
+
+
+    const onFinish = () => { };
+
+    useEffect(() => {
+        const images = document.images;
+        const totalImages = images.length;
+        let loadedImages = 0;
+
+        const updateProgress = () => {
+            loadedImages += 1;
+            const newProgress = Math.floor((loadedImages / totalImages) * 100);
+            setProgress(newProgress);
+
+            if (newProgress === 100) {
+                setTimeout(onFinish, 300);
+            }
+        };
+
+        if (totalImages === 0) {
+            setProgress(100);
+            setTimeout(onFinish, 300);
+            return;
+        }
+
+        for (let i = 0; i < totalImages; i++) {
+            const img = images[i];
+            if (img.complete) {
+                updateProgress();
+            } else {
+                img?.addEventListener('load', updateProgress);
+                img?.addEventListener('error', updateProgress);
+            }
+        }
+
+        return () => {
+            for (let i = 0; i < totalImages; i++) {
+                const img = images[i];
+                img?.removeEventListener('load', updateProgress);
+                img?.removeEventListener('error', updateProgress);
+            }
+        };
+    }, []);
 
     return (
         <>
             <LoadingScreen progress={progress} />
-            {[status, sevicesStatus, standardsStatus].every(s => s === "succeeded") && (
+            {[status, servicesStatus, standardsStatus].every(s => s === "succeeded") && (
                 <>
                     <MainBgSectionImg>
                         <div className="_fm-container">

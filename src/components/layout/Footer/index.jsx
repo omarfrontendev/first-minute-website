@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
 const Footer = () => {
-    const { data: dynamicPages } = useSelector(state => state.additionalPages);
+    const { data: dynamicPages, status } = useSelector(state => state.additionalPages);
     const { pathname } = useLocation();
 
     return (
@@ -19,9 +19,9 @@ const Footer = () => {
                     {pathname === "/" && <a href="#services" className="_fm-link">خدماتنا</a>}
                     <Link to="/first-minute" className="_fm-link">أول دقيقة</Link>
                     <a href="#contact-us" className="_fm-link">تواصل معنا</a>
-                    {dynamicPages
-                        .filter(page => page.show_in_footer)
-                        .map(page => (
+                    {status === "succeeded" && dynamicPages
+                        ?.filter(page => page.show_in_footer)
+                        ?.map(page => (
                             <Link key={page.id} to={`/${page.id}`} className="_fm-link">
                                 {page.page_name}
                             </Link>
@@ -29,7 +29,8 @@ const Footer = () => {
                 </div>
             </div>
             <footer className='_fm-footer'>
-                © 2025 جميع الحقوق محفوظة. صُنع بكل حب وشغف بواسطة الشوربجي.
+                © 2025 جميع الحقوق محفوظة. صُنع بكل حب وشغف بواسطة ❤️ <a className='footer__link' target='_blank' href="https://wa.me/201080835034?text=مرحبًا،">
+                    الشوربجي</a>.
             </footer>
         </>
     );

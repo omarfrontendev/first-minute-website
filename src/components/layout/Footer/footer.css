@@ -11,6 +11,14 @@
     /* flex-basis: calc(25% - 24px); */
 }
 
+.footer__link {
+    text-decoration: none;
+}
+
+.footer__link:hover {
+    color: #D16166 !important;
+}
+
 @media(max-width: 575px) {
     ._fm-footer {
         font-size: 12px;

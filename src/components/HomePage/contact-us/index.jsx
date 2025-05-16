@@ -9,12 +9,9 @@ import { fetchSettingsData } from '../../../redux/services/settings.services';
 import * as yup from "yup";
 import { toast } from 'react-toastify';
 import api from '../../../api';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import gsap from 'gsap';
 
 import './contact-us.css';
-
-// gsap.registerPlugin(ScrollTrigger);
+import { useParams } from 'react-router-dom';
 
 const schema = yup.object().shape({
     name: yup
@@ -52,6 +49,7 @@ const ContactUs = () => {
     const { countryCodes, isLoading } = useCountryCodes();
     const dispatch = useDispatch();
     const sectionRef = useRef(null);
+    const { id } = useParams();
 
     useEffect(() => {
         dispatch(fetchSettingsData())
@@ -71,6 +69,16 @@ const ContactUs = () => {
             code: "+20",
         }
     });
+
+    useEffect(() => {
+        if (services?.length) {
+            const matchedService = services.find(service => service?.id === +id);
+            reset({
+                code: "+20",
+                service_id: matchedService?.id || null,
+            });
+        }
+    }, [services, id, reset]);
 
     const onSubmit = async (data) => {
         try {
@@ -133,6 +141,13 @@ const ContactUs = () => {
                         name="service_id"
                         error={errors?.service_id?.message}
                         value={watch("service_id")}
+                        defaultValue={() => {
+                            const defaultService = services?.find(service => service.id === +id);
+                            if(id) return {
+                                label: defaultService.service_name,
+                                value: defaultService.id,
+                            }
+                        }}
                     /> : ""}
                     <Input register={register} type='textarea' name="message" error={errors?.message?.message} placeholder="اكتب رسالتك هنا  ^_^" label="رسالتك" />
                     <button type='submit' className='contact-us-submit-btn' disabled={isSubmitting} >

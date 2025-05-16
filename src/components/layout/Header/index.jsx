@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MdArrowDropDown } from "react-icons/md";
 import gsap from 'gsap';
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { fetchServicesData } from '../../../redux/services/services.services';
+import { fetchAdditionalPages } from '../../../redux/services/additionalPages.services';
 
 import './header.css';
 
@@ -20,7 +22,7 @@ const Header = () => {
     const { pathname } = useLocation();
     const dispatch = useDispatch();
     const menuRef = useRef(null);
-    const { data: dynamicPages } = useSelector(state => state.additionalPages);
+    const { data: dynamicPages, status } = useSelector(state => state.additionalPages);
 
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
@@ -63,6 +65,11 @@ const Header = () => {
         };
     }, []);
 
+    useEffect(() => {
+        dispatch(fetchServicesData());
+        dispatch(fetchAdditionalPages());
+    }, []);
+
     return (
         <nav
             id="header"
@@ -103,15 +110,6 @@ const Header = () => {
                 {pathname === '/' && <a
                     href="#services"
                     className="_fm-link link-nav"
-                // onClick={(e) => {
-                //     e.preventDefault(); // امنع التنقل التلقائي بالهاش
-                //     const el = document.querySelector("#services");
-                //     if (el) {
-                //         el.scrollIntoView({ behavior: "smooth" });
-                //         // اختياري: حدث الهاش يدويًا عشان يبان في العنوان
-                //         window.history.replaceState(null, "", "#services");
-                //     }
-                // }}
                 >
                     خدماتنا
                 </a>}
@@ -120,7 +118,7 @@ const Header = () => {
                     <button onClick={() => setShwoMenu(prev => !prev)} className='dropdown-menu-btn link-nav'>الصفحات الاضافية <MdArrowDropDown style={{ transform: `rotateZ(${showMenu ? "180" : "0"}deg)`, transition: ".3s ease-in-out" }} /></button>
                     {showMenu && (
                         <div className='dropdown-menu__'>
-                            {dynamicPages
+                            {status === "succeeded" && dynamicPages
                                 .filter(page => page.show_in_main_nav)
                                 .map(page => (
                                     <NavLink
@@ -137,18 +135,9 @@ const Header = () => {
                 <a
                     href="#contact-us"
                     className="_fm-link _fm-link-main link-nav"
-                    onClick={(e) => {
-                        // e.preventDefault(); // امنع التنقل التلقائي بالهاش
-                        // const el = document.querySelector("#contact-us");
-                        // if (el) {
-                        //     el.scrollIntoView({ behavior: "smooth" });
-                        //     // اختياري: حدث الهاش يدويًا عشان يبان في العنوان
-                        //     window.history.replaceState(null, "", "#contact-us");
-                        // }
+                    onClick={() => {
                         handleSlideBtn("_fm-link._fm-link-main");
-                        // window.history.replaceState(null, "", "#contact-us");
                     }}
-                    // onClick={handleSlideBtn}
                 >
                     تواصل معنا
                 </a>
