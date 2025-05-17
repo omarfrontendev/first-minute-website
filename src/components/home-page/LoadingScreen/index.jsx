@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { LogoFav } from '../../icons';
+import { LogoFav } from '../../../icons';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from "gsap/TextPlugin";
 import gsap from 'gsap';

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-import RoutesPages from './pages/RoutePages';
+import RoutesPages from './pages/RoutesPages';
 import { BsWifiOff } from "react-icons/bs";
 import MainBgSectionImg from './components/layout/main-bg-section';
 import { useDispatch } from 'react-redux';
@@ -19,10 +19,12 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-
     dispatch(fetchServicesData());
     dispatch(fetchAdditionalPages());
     dispatch(fetchSettingsData());
+  }, [])
+
+  useEffect(() => {
 
     const online = () => {
       setStatus(true);
@@ -46,8 +48,8 @@ function App() {
       <MainBgSectionImg>
         <div className='d-flex align-items-center justify-content-center flex-column text-center h-100' style={{ minHeight: "100vh" }}>
           <BsWifiOff size={72} color="#f00" />
-          <h1 className='_fm-main-title mt-3 mb-2'>الاتصال مفقود</h1>
-          <p className='_fm-main-desc'>يبدو إن الإنترنت عندك مفصول. يرجى التأكد من إن الاتصال شغّال وحاول مرة تانية.</p>
+          <h1 className='_fm-main-title mt-3 mb-2'>فقد الاتصال بالشبكة</h1>
+          <p className='_fm-main-desc'>يبدو أنه لا يوجد اتصال بالإنترنت حالياً. يُرجى التحقق من حالة الشبكة الخاصة بك، ثم المحاولة مرة أخرى.</p>
         </div>
       </MainBgSectionImg>
     )

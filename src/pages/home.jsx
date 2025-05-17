@@ -8,8 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchHomeData } from "../redux/services/home.services";
 import { fetchStandardsData } from "../redux/services/standards.services";
-import LoadingScreen from "../components/LoadingScreen";
 import StickySection from "../components/home-page/fm-section/StickySection";
+import LoadingScreen from "../components/home-page/LoadingScreen";
 
 
 const Home = () => {
