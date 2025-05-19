@@ -89,8 +89,8 @@ const ContactUs = () => {
 
     if (status === "succeeded") return (
         <section className='_fm-contact-us main_bg_color' ref={sectionRef}>
-            <div className='contact-us-form-box d-flex flex-column' id="contact-us">
-                <h3 className='contact-us-title text-truncate-2'>{contact_us_form_title}</h3>
+            <div className='contact-us-form-box d-flex flex-column'>
+                <h3 className='contact-us-title text-truncate-2' id="contact-us">{contact_us_form_title}</h3>
                 <form
                     className='contact-us-form'
                     autoComplete="off"

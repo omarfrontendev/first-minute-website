@@ -3,10 +3,29 @@ import LOGO from '../../../assets/logo.svg';
 import './footer.css';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import gsap from 'gsap';
+
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 const Footer = () => {
     const { data: dynamicPages, status } = useSelector(state => state.additionalPages);
     const { pathname } = useLocation();
+
+    const handleScrollToContact = (e) => {
+        e.preventDefault();
+
+        ScrollTrigger.getAll().forEach(trigger => trigger.disable());
+
+        const el = document.querySelector("#services");
+        el?.scrollIntoView({ behavior: "smooth" });
+
+        setTimeout(() => {
+            ScrollTrigger.getAll().forEach(trigger => trigger.enable());
+        }, 1200);
+    };
+
 
     return (
         <>
@@ -16,7 +35,7 @@ const Footer = () => {
                 </a>
                 <div className="footer__links">
                     <Link to="/standards" className="_fm-link">معاييرنا</Link>
-                    {pathname === "/" && <a href="#services" className="_fm-link">خدماتنا</a>}
+                    {pathname === "/" && <a href="#services" onClick={handleScrollToContact} className="_fm-link">خدماتنا</a>}
                     <Link to="/first-minute" className="_fm-link">أول دقيقة</Link>
                     <a href="#contact-us" className="_fm-link">تواصل معنا</a>
                     {status === "succeeded" && dynamicPages

@@ -67,6 +67,7 @@ const Home = () => {
         };
     }, []);
 
+
     return (
         <>
             <LoadingScreen progress={progress} />

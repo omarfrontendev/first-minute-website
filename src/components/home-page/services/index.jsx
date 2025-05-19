@@ -67,8 +67,8 @@ const ServicesSection = ({ services }) => {
     }, []);
 
     return (
-        <section className='_fm-services-container' id='services'>
-            <div className='d-flex _fm-services-content'>
+        <section className='_fm-services-container'>
+            <div className='d-flex _fm-services-content' id='services'>
                 <div className='d-flex flex-row flex-sm-column align-items-center align-items-sm-end'>
                     <div className='overflow-hidden'>
                         <h2 className="_fm-section-title">خدماتنا</h2>

@@ -4,13 +4,14 @@ import { useEffect, useRef, useState } from 'react';
 import { BiMenuAltRight } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
 import { useSelector } from 'react-redux';
-import gsap from 'gsap';
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import gsap from 'gsap';
 
 import './header.css';
 
-gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 const Header = () => {
     const [isNavbarVisible, setIsNavbarVisible] = useState(null);
@@ -62,6 +63,31 @@ const Header = () => {
         };
     }, []);
 
+    const handleScrollToContact = (e) => {
+        e.preventDefault();
+
+        ScrollTrigger.getAll().forEach(trigger => trigger.disable());
+
+        const el = document.querySelector("#contact-us");
+        el?.scrollIntoView({ behavior: "smooth" });
+
+        setTimeout(() => {
+            ScrollTrigger.getAll().forEach(trigger => trigger.enable());
+        }, 1200);
+    };
+
+    const handleScrollToServices = (e) => {
+        e.preventDefault();
+
+        ScrollTrigger.getAll().forEach(trigger => trigger.disable());
+
+        const el = document.querySelector("#services");
+        el?.scrollIntoView({ behavior: "smooth" });
+
+        setTimeout(() => {
+            ScrollTrigger.getAll().forEach(trigger => trigger.enable());
+        }, 1200);
+    };
 
     return (
         <nav
@@ -73,7 +99,10 @@ const Header = () => {
                 ${isNavbarVisible === null ? '' : isNavbarVisible ? 'show' : 'hide'}
             `}
         >
-            <Link to="" className="d-flex align-items-center justify-content-center">
+            <Link to="" className="d-flex align-items-center justify-content-center" onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/";
+            }}>
                 <img src={LOGO} alt="Logo" className="_fm-logo" />
             </Link>
 
@@ -103,6 +132,7 @@ const Header = () => {
                 {pathname === '/' && <a
                     href="#services"
                     className="_fm-link link-nav"
+                    onClick={handleScrollToServices}
                 >
                     خدماتنا
                 </a>}
@@ -133,9 +163,10 @@ const Header = () => {
                 <a
                     href="#contact-us"
                     className="_fm-link _fm-link-main link-nav"
-                    onClick={() => {
-                        handleSlideBtn("_fm-link._fm-link-main");
-                    }}
+                    // onClick={() => {
+                    //     // handleSlideBtn("_fm-link._fm-link-main");
+                    // }}
+                    onClick={handleScrollToContact}
                 >
                     تواصل معنا
                 </a>

@@ -21,7 +21,7 @@ const RoutesPages = () => {
 
     return (
         <Routes>
-            <Route path='' element={<Home />} />
+            <Route path='/' element={<Home />} />
             <Route path='/first-minute' element={<PageTemplate onGetData={() => dispatch(fetchOneMinPageData())} />} />
             <Route path={`/standards`} element={<PageTemplate onGetData={() => dispatch(fetchStandardsData())} />} />
             <Route path={`/services/:id`} element={<PageTemplate onGetData={(id) => dispatch(getServiceById(id))} />} />

@@ -25,6 +25,11 @@ const PageTemplate = ({ onGetData }) => {
         })()
     }, [pathname]);
 
+    console.log(pageContent);
+    useEffect(() => {
+        document.title = pageContent?.page_name || pageContent?.title || "First minute - أول دقيقة";
+    }, [pageContent]);
+
     return (
         <div className="_fm-temp-bg" style={{ minHeight: "100vh" }}>
             {!loading && pageContent?.background_image && <img className="BG-temp" src={pageContent?.background_image} alt="..." />}

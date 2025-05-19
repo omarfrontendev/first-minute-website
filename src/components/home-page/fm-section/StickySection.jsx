@@ -7,7 +7,6 @@ import SecondScreen from "./SecondScreen";
 import ThirdScreen from "./ThirdScreen";
 import { useSelector } from "react-redux";
 import DynamicScreen from "./DynamicScreen";
-import { useLocation } from "react-router-dom";
 
 import "./StickySection.css";
 
@@ -16,7 +15,6 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 const StickySection = () => {
   const sectionRefs = useRef([]);
   const { data: { section_4 } } = useSelector(state => state.home);
-  const { hash } = useLocation();
 
   useEffect(() => {
     const trigger = ScrollTrigger.create({
@@ -25,6 +23,10 @@ const StickySection = () => {
       end: "bottom 20%",
       toggleActions: "restart",
       onEnter: () => {
+        const y = window.scrollY;
+        const sectionTop = document.querySelector("#scroller")?.offsetTop;
+
+        if (y > sectionTop + 100) return;
         gsap.to(window, {
           duration: 0.1,
           scrollTo: "#scroller",
@@ -34,7 +36,7 @@ const StickySection = () => {
     });
 
     return () => {
-      trigger.kill(); // نظف الـ ScrollTrigger
+      trigger.kill();
     };
   }, []);
 
@@ -166,7 +168,7 @@ const StickySection = () => {
       window.removeEventListener("touchend", onTouchEnd);
     };
 
-  }, [hash]);
+  }, []);
 
   const sections = [
     { component: FirstScreen, props: { mobile: window.innerWidth <= 768 } },
